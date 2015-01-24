@@ -1,0 +1,202 @@
+@import "../fonts/fonts.css";
+@import "normalize.css";
+
+@import "../fonts/fonts.css";
+@import "normalize.css";
+
+/* Reset texinfo styles */
+div.display,
+div.example,
+div.indentedblock,
+div.lisp,
+div.smalldisplay,
+div.smallexample,
+div.smallindentedblock,
+div.smalllisp {
+    margin-left: 0;
+}
+
+kbd {
+    font-style: normal;
+}
+
+/* Basic typography styles */
+body {                          /* Body text */
+    font-family: "Charter", serif;
+    font-size: 18px;
+    line-height: 1.35;
+    color: #444;
+    word-wrap: break-word;
+    font-feature-settings: "kern", "liga", "swsh", "calt";
+    text-rendering: optimizeLegibility;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0.86em;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    color: #222;
+    margin-top: 2em;
+    margin-bottom: 0.86em;
+    hyphens: none;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+h3 {
+    font-size: 1.05em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+kbd, pre, code, samp, kbd {
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.83em;
+    font-style: normal;
+    background-color: #FDF6E3;
+    color: #657B83;
+    font-variant: normal;
+}
+
+code, samp, kbd {
+    padding: 2px 4px;
+}
+
+pre {
+    overflow: auto;
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    margin: 0;
+    margin: 0.86em 0;
+}
+
+blockquote {
+    margin: 1.2em 0;
+    padding: 0 2em;
+    line-height: 1.25;
+    font-size: 0.9em;
+    border-left: 5px solid #EEE;
+}
+
+hr {
+    border-width: 1px;
+    border-color: #CCC;
+    border-style: none none solid;
+}
+
+small {
+    font-size: 0.86em;
+}
+
+h1 small, h2 small, h3 small, h4 small {
+    font-weight: normal;
+    font-size: 0.65em;
+    line-height: 1;
+    color: #777;
+}
+
+ul, ol {
+    margin: 0.86em 2.86em;
+    padding: 0;
+}
+
+dl {
+    margin: 0.86em 0;
+}
+
+dt + dd {
+    margin-top: 0.86em;
+}
+
+dd {
+    margin-left: 2.86em;
+}
+
+dl[compact="compact"] dt + dd {
+    margin-top: 0.1em;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    font-variant: small-caps;
+    text-transform: lowercase;
+}
+
+a:hover {
+    background-color: #eee;
+    border-radius: 4px;
+    transition-property: background;
+    transition-duration: 0.2s;
+}
+
+/* Texinfo navigation headers */
+.header {
+    margin-top: 2rem;
+}
+
+hr + .header {                  /* Remove margin from bottom header */
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.header p {
+    margin-bottom: 0;
+    text-align: right;
+}
+
+a[rel="up"]:before {
+    content: " ↑ ";
+}
+
+a[rel="prev"]:before {
+    content: " ← ";
+}
+
+a[rel="next"]:before {
+    content: " → ";
+}
+
+.index-cp {
+    margin: 0.86em 0;
+}
+
+td {
+    margin: 0.1em;
+}
+
+@media print {
+    .header {                   /* No header in print */
+        display: none;
+    }
+}
+
+@media screen and (min-width: 750px) {     /* Larger devices */
+    body {
+        width: 700px;
+    }
+}
