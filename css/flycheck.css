@@ -1,25 +1,3 @@
-@import "../fonts/fonts.css";
-@import "normalize.css";
-
-@import "../fonts/fonts.css";
-@import "normalize.css";
-
-/* Reset texinfo styles */
-div.display,
-div.example,
-div.indentedblock,
-div.lisp,
-div.smalldisplay,
-div.smallexample,
-div.smallindentedblock,
-div.smalllisp {
-    margin-left: 0;
-}
-
-kbd {
-    font-style: normal;
-}
-
 /* Basic typography styles */
 body {                          /* Body text */
     font-family: "Charter", serif;
@@ -29,6 +7,9 @@ body {                          /* Body text */
     word-wrap: break-word;
     font-feature-settings: "kern", "liga", "swsh", "calt";
     text-rendering: optimizeLegibility;
+}
+
+.container {                    /* Page container */
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -196,7 +177,7 @@ td {
 }
 
 @media screen and (min-width: 750px) {     /* Larger devices */
-    body {
+    .container {
         width: 700px;
     }
 }

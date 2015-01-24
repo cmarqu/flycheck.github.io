@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <link rel="stylesheet" href="{{ "/css/flycheck.css" | prepend: site.baseurl }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/flycheck.css">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
 
     <link rel="icon" sizes="16x16"   href="/icon-16.png">
     <link rel="icon" sizes="32x32"   href="/icon-32.png">
@@ -16,8 +18,10 @@
   </head>
 
   <body>
-    <div id="content">
-      {{ content }}
+    <div class="container">
+      <div id="content">
+        {{ content }}
+      </div>
     </div>
   </body>
 </html>
