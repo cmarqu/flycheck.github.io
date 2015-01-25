@@ -23,7 +23,7 @@ from __future__ import print_function
 
 import os
 import errno
-from shutil import rmtree
+import shutil
 from subprocess import check_call
 from itertools import chain
 
@@ -64,15 +64,15 @@ def ensure_directory(directory):
 
 
 def build_manual(source_file):
-    # Clean the build directory
-    if os.path.exists(BUILD_DIRECTORY):
-        rmtree(BUILD_DIRECTORY)
-    ensure_directory(BUILD_DIRECTORY)
-
     texi2any = ['texi2any', '--html', '-o', BUILD_DIRECTORY]
     variables = [['--set-customization-variable', var + '=' + value]
                  for (var, value) in CUSTOMIZATION]
     check_call(texi2any + list(chain(*variables)) + [source_file])
+
+
+def copy_images(source_file):
+    image_directory = os.path.join(os.path.dirname(source_file), 'images')
+    shutil.copytree(image_directory, os.path.join(BUILD_DIRECTORY, 'images'))
 
 
 def sync_manual(version='latest'):
@@ -84,8 +84,6 @@ def sync_manual(version='latest'):
                 BUILD_DIRECTORY + '/',
                 target_directory])
 
-    rmtree(BUILD_DIRECTORY)
-
 
 def main():
     from argparse import ArgumentParser
@@ -95,8 +93,17 @@ def main():
     parser.add_argument('-v', '--version', default='latest')
     args = parser.parse_args()
 
-    build_manual(args.source_file)
-    sync_manual(version=args.version)
+    # Clean the build directory
+    if os.path.exists(BUILD_DIRECTORY):
+        shutil.rmtree(BUILD_DIRECTORY)
+    ensure_directory(BUILD_DIRECTORY)
+
+    try:
+        build_manual(args.source_file)
+        copy_images(args.source_file)
+        sync_manual(version=args.version)
+    finally:
+        shutil.rmtree(BUILD_DIRECTORY)
 
 if __name__ == '__main__':
     main()
