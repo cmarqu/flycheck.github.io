@@ -30,7 +30,7 @@ from itertools import chain
 # Don't care about docstrings and */** magic
 # pylint: disable=C0111,W0142
 
-SOURCE_DIRECTORY = os.path.dirname(__file__)
+SOURCE_DIRECTORY = os.path.join(os.path.dirname(__file__), os.pardir)
 BUILD_DIRECTORY = os.path.join(SOURCE_DIRECTORY, '_tmp')
 MANUAL_DIRECTORY = os.path.join(SOURCE_DIRECTORY, 'manual')
 
@@ -104,6 +104,7 @@ def main():
         sync_manual(version=args.version)
     finally:
         shutil.rmtree(BUILD_DIRECTORY)
+
 
 if __name__ == '__main__':
     main()

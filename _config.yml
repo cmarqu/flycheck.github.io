@@ -7,5 +7,3 @@ github_username: flycheck
 
 # Build settings
 markdown: kramdown
-exclude:
-  - update-manual.py
