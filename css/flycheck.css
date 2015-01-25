@@ -56,23 +56,13 @@ strong {
 kbd, pre, code, samp, kbd {
     font-family: "Source Code Pro", monospace;
     font-size: 0.83em;
-    font-style: normal;
-    background-color: #FDF6E3;
-    color: #657B83;
     font-variant: normal;
-}
-
-code, samp, kbd {
-    padding: 2px 4px;
 }
 
 pre {
     overflow: auto;
-    padding: 10px;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-    margin: 0;
     margin: 0.86em 0;
+    margin-left: 1.2em;
 }
 
 blockquote {
