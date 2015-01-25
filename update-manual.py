@@ -37,9 +37,9 @@ MANUAL_DIRECTORY = os.path.join(SOURCE_DIRECTORY, 'manual')
 CUSTOMIZATION = [
     # Inject our CSS files
     ('CSS_LINES', '''\
-<link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/css/normalize.css">
-<link rel="stylesheet" href="/css/flycheck.css">
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<link rel="stylesheet" href="../../css/normalize.css">
+<link rel="stylesheet" href="../../css/flycheck.css">
 '''),
     # Wrap our container around the body
     ('AFTER_BODY_OPEN', '<div class="container">'),
