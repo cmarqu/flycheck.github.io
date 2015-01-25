@@ -2,7 +2,7 @@
 layout: index
 ---
 
-Flycheck <small>Syntax checking for GNU Emacs</small>
+Flycheck <small>Syntax checking for GNU Emacs</small> ![](images/logo.png){: .title-logo}
 =====================================================
 
 [![Flycheck screencast](images/screencast.gif)](images/screencast.gif)

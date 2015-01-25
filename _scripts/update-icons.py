@@ -31,6 +31,9 @@ ICON_HEAD_FILE = os.path.join(SOURCE_DIRECTORY, '_includes', 'head-icon.html')
 SIZES = [16, 32, 64, 96, 196]
 BASENAME = 'icon-{size}'
 
+LOGO = os.path.join(SOURCE_DIRECTORY, 'images', 'logo.png')
+LOGO_HEIGHT = 30
+
 
 def generate_favicons(source_file):
     inkscape = ['inkscape',
@@ -60,6 +63,17 @@ def write_head_icon_include(icons):
         sink.write('\n'.join(links))
 
 
+def generate_logo(source_file):
+     inkscape = ['inkscape',
+                 '--without-gui',
+                 '--export-area-drawing',
+                 '--export-background-opacity=0,0',
+                 '--export-height={0}'.format(LOGO_HEIGHT),
+                 '--export-png={0}'.format(LOGO),
+                 source_file]
+     check_call(inkscape)
+
+
 def main():
     parser = ArgumentParser()
     parser.add_argument('source_file')
@@ -67,6 +81,7 @@ def main():
 
     icons = generate_favicons(args.source_file)
     write_head_icon_include(icons)
+    generate_logo(args.source_file)
 
 
 if __name__ == '__main__':

@@ -134,6 +134,11 @@ a:hover {
     transition-duration: 0.2s;
 }
 
+.title-logo {
+    float: right;
+    margin: 0;
+}
+
 /* Texinfo navigation headers */
 .header {
     margin-top: 2rem;
