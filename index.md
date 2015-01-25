@@ -5,6 +5,8 @@ layout: index
 Flycheck <small>Syntax checking for GNU Emacs</small>
 =====================================================
 
+[![Flycheck screencast](images/screencast.gif)](images/screencast.gif)
+
 {% if site.data.releases %}
 *Latest release: {{site.data.releases}}*
 {% endif %}
