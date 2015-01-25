@@ -120,6 +120,10 @@ dl[compact="compact"] dt + dd {
     margin-top: 0.1em;
 }
 
+td {
+    margin: 0.1em;
+}
+
 a {
     color: #333;
     text-decoration: none;
@@ -166,12 +170,15 @@ a[rel="next"]:before {
     content: " → ";
 }
 
+/* Texinfo indexes */
 .index-cp {
     margin: 0.86em 0;
 }
 
-td {
-    margin: 0.1em;
+/* Texinfo blocks */
+.smallindentedblock {
+    font-size: 0.86em;
+    margin-left: 1.2em;
 }
 
 @media print {
