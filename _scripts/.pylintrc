@@ -1,0 +1,16 @@
+[MESSAGES CONTROL]
+
+# Don't warn about missing docstrings, wrong module names and */** magic
+disable=C0111,C0103,W0142,
+
+[BASIC]
+# Accept all functions
+bad-functions=
+
+[FORMAT]
+
+# Maximum number of characters on a single line.
+max-line-length=79
+
+# Regexp for a line that is allowed to be longer than the limit.
+ignore-long-lines=^\s*(# )?<?https?://\S+>?$

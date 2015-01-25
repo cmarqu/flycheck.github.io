@@ -27,9 +27,6 @@ import shutil
 from subprocess import check_call
 from itertools import chain
 
-# Don't care about docstrings and */** magic
-# pylint: disable=C0111,W0142
-
 SOURCE_DIRECTORY = os.path.join(os.path.dirname(__file__), os.pardir)
 BUILD_DIRECTORY = os.path.join(SOURCE_DIRECTORY, '_tmp')
 MANUAL_DIRECTORY = os.path.join(SOURCE_DIRECTORY, 'manual')
