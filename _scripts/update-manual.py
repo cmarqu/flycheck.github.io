@@ -34,25 +34,19 @@ SOURCE_DIRECTORY = os.path.join(os.path.dirname(__file__), os.pardir)
 BUILD_DIRECTORY = os.path.join(SOURCE_DIRECTORY, '_tmp')
 MANUAL_DIRECTORY = os.path.join(SOURCE_DIRECTORY, 'manual')
 
-CUSTOMIZATION = [
-    # Inject our CSS files
-    ('CSS_LINES', '''\
-<link rel="stylesheet" href="../../fonts/fonts.css">
-<link rel="stylesheet" href="../../css/normalize.css">
-<link rel="stylesheet" href="../../css/flycheck.css">
-'''),
+CUSTOMIZATION = {
     # Wrap our container around the body
-    ('AFTER_BODY_OPEN', '<div class="container">'),
-    ('PRE_BODY_CLOSE', '</div>'),
+    'AFTER_BODY_OPEN': '<div class="container">',
+    'PRE_BODY_CLOSE': '</div>',
     # Add classes to Texinfo rulers
-    ('BIG_RULE', '<hr class="texinfo-big-rule"/>'),
-    ('DEFAULT_RULE', '<hr class="texinfo-default-rule"/>'),
+    'BIG_RULE': '<hr class="texinfo-big-rule"/>',
+    'DEFAULT_RULE': '<hr class="texinfo-default-rule"/>',
     # Point up from top to the right place
-    ('TOP_NODE_UP_URL', '/index.html'),
+    'TOP_NODE_UP_URL': '/index.html',
     # Suggest that we use HTML 5.  We don't do actually, but we want the browse
     # to think that we do
-    ('DOCTYPE', '<!DOCTYPE html>')
-]
+    'DOCTYPE': '<!DOCTYPE html>',
+}
 
 
 def ensure_directory(directory):
@@ -63,10 +57,28 @@ def ensure_directory(directory):
             raise
 
 
-def build_manual(source_file):
-    texi2any = ['texi2any', '--html', '-o', BUILD_DIRECTORY]
+def include_path(filename):
+    return os.path.join(SOURCE_DIRECTORY, '_includes', filename)
+
+
+def read_extra_customization():
+    extra_customization = {}
+    extra_head = []
+    with open(include_path('head-css.html'), 'r') as source:
+        extra_customization['CSS_LINES'] = source.read()
+    for filename in ['head-static.html', 'head-icon.html']:
+        with open(include_path(filename), 'r') as source:
+            extra_head.append(source.read())
+    extra_customization['EXTRA_HEAD'] = '\n'.join(extra_head)
+    return extra_customization
+
+
+def build_manual(source_file, extra_customization=None):
+    customization = dict(CUSTOMIZATION)
+    customization.update(extra_customization or {})
     variables = [['--set-customization-variable', var + '=' + value]
-                 for (var, value) in CUSTOMIZATION]
+                 for var, value in customization.iteritems()]
+    texi2any = ['texi2any', '--html', '-o', BUILD_DIRECTORY]
     check_call(texi2any + list(chain(*variables)) + [source_file])
 
 
@@ -99,7 +111,8 @@ def main():
     ensure_directory(BUILD_DIRECTORY)
 
     try:
-        build_manual(args.source_file)
+        extra_customization = read_extra_customization()
+        build_manual(args.source_file, extra_customization=extra_customization)
         copy_images(args.source_file)
         sync_manual(version=args.version)
     finally:

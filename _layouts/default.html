@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include head-static.html %}
 
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <link rel="stylesheet" href="/fonts/fonts.css">
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/flycheck.css">
+
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
 
-    <link rel="icon" sizes="16x16"   href="/icon-16.png">
-    <link rel="icon" sizes="32x32"   href="/icon-32.png">
-    <link rel="icon" sizes="96x96"   href="/icon-96.png">
-    <link rel="icon" sizes="196x196" href="/icon-196.png">
+    {% include head-css.html %}
+    {% include head-icon.html %}
   </head>
 
   <body>
