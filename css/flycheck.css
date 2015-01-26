@@ -24,7 +24,7 @@ h1, h2, h3, h4 {
     font-weight: bold;
     line-height: 1;
     color: #222;
-    margin-top: 2em;
+    margin-top: 1.5em;
     margin-bottom: 0.86em;
     hyphens: none;
 }
@@ -165,7 +165,7 @@ a:hover {
 }
 
 .navbar-brand {
-    padding: 0.8em;
+    padding-right: 0.8em;
 }
 
 .navbar-nav {
