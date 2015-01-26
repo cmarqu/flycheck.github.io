@@ -226,7 +226,12 @@ a[rel="next"]:before {
 }
 
 @media print {
-    .header {                   /* No header in print */
+    .container {
+        width: auto;
+    }
+
+    /* No headers and navigation in print */
+    .header {
         display: none;
     }
 
