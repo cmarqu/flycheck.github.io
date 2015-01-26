@@ -7,8 +7,8 @@ Flycheck <small>Syntax checking for GNU Emacs</small> ![](images/logo.png){: .ti
 
 [![Flycheck screencast](images/screencast.gif)](images/screencast.gif)
 
-{% if site.data.releases %}
-*Latest release: {{site.data.releases}}*
+{% if site.data.releases.versions %}
+*Latest release: {{site.data.releases.versions | last}}*
 {% endif %}
 
 Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs.
@@ -22,8 +22,8 @@ Installation
 Manual
 ------
 
-- [Snapshot](manual/latest/index.html) (for MELPA users)
-{% if site.data.releases %}
-- [Latest release](manual/{{site.data.releases | last}}/index.html) (for
+{% if site.data.releases.include_latest %}
+- [Snapshot](manual/latest/index.html) (for MELPA users){% endif %}{% if site.data.releases.versions %}
+- [Latest release](manual/{{site.data.releases.versions | last}}/index.html) (for
 Marmalade and MELPA Stable users)
 {% endif %}
