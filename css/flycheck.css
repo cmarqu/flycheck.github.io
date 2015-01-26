@@ -143,9 +143,48 @@ a:hover {
     transition-duration: 0.2s;
 }
 
-.title-logo {
-    float: right;
+/* Navigation bar, for non-texinfo pages */
+.navbar {
+    padding: 0.8em;
+}
+
+.navbar .container {
+    padding-bottom: 0.2em;
+    border-bottom: solid 1px #ccc;
+}
+
+.navbar-header {
+    display: block;
+    text-align: center;
+}
+
+.navbar-header img {
     margin: 0;
+    display: inline;
+    vertical-align: bottom;
+}
+
+.navbar-brand {
+    padding: 0.8em;
+}
+
+.navbar-nav {
+    display: block;
+    text-align: center;
+    list-style: outside none;
+    margin: 0;
+}
+
+.navbar-nav > li {
+    display: inline;
+}
+
+.navbar-nav > li:after {
+    content: " · "
+}
+
+.navbar-nav > li:last-child:after {
+    content: ""
 }
 
 /* Texinfo navigation headers */
@@ -190,10 +229,33 @@ a[rel="next"]:before {
     .header {                   /* No header in print */
         display: none;
     }
+
+    .navbar {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 750px) {     /* Larger devices */
     .container {
         width: 700px;
+    }
+
+    /* Put the nav header beneath the nav links instead of placing it on top */
+    .navbar {
+        width: 100%;
+    }
+
+    .navbar-header {
+        display: inline;
+        text-align: left;
+    }
+
+    .navbar-brand {
+        margin-left: -0.8em;
+    }
+
+    .navbar-nav {
+        display: inline;
+        text-align: left;
     }
 }
