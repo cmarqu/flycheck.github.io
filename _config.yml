@@ -2,6 +2,7 @@
 title: Flycheck
 email: flycheck@lunaryorn.com
 description: On the fly syntax checking for GNU Emacs
+baseurl: ""
 url: "http://flycheck.github.io"
 github_username: flycheck
 
