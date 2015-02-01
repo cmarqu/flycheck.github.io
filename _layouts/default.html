@@ -25,7 +25,7 @@
               {% else %}
                 {% assign href = link.href | prepend: site.baseurl %}
               {% endif %}
-              <li><a href="{{href}}"{% if link.external %}target="_blank"{% endif %}>{{ link.label }}</a></li>
+              <li><a href="{{href}}"{% if link.external %} target="_blank"{% endif %}>{{ link.label }}</a></li>
             {% endfor %}
           </ul>
         </div>
