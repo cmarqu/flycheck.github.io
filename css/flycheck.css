@@ -257,6 +257,7 @@ a[rel="next"]:before {
     }
 
     .navbar-brand {
+        display: inline-block;
     }
 
     .navbar-nav {
