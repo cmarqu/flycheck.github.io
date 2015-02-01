@@ -248,6 +248,7 @@ a[rel="next"]:before {
     /* Put the nav header beneath the nav links instead of placing it on top */
     .navbar {
         width: 100%;
+        padding-left: 0;
     }
 
     .navbar-header {
@@ -256,7 +257,6 @@ a[rel="next"]:before {
     }
 
     .navbar-brand {
-        margin-left: -0.8em;
     }
 
     .navbar-nav {
