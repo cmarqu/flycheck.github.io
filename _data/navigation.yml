@@ -1,3 +1,3 @@
 ---
-- { label: Extensions, href: '/extensions.md' }
+- { label: Extensions, href: '/extensions.html' }
 - { label: Github, href: 'https://github.com/flycheck/flycheck', external: true }
