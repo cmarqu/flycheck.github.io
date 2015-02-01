@@ -21,15 +21,18 @@
 
 from __future__ import print_function
 
+import sys
 import os
 import errno
 import shutil
-from subprocess import check_call
+from subprocess import CalledProcessError, check_call
 from itertools import chain
+
 
 SOURCE_DIRECTORY = os.path.join(os.path.dirname(__file__), os.pardir)
 BUILD_DIRECTORY = os.path.join(SOURCE_DIRECTORY, '_tmp')
 MANUAL_DIRECTORY = os.path.join(SOURCE_DIRECTORY, 'manual')
+
 
 CUSTOMIZATION = {
     # Wrap our container around the body
@@ -94,6 +97,21 @@ def sync_manual(version='latest'):
                 target_directory])
 
 
+class Colors(object):           # pylint: disable=R0903
+    red = '\033[31m'
+    green = '\033[32m'
+    reset = '\033[0m'
+    bold = '\033[1m'
+
+
+def success(s):
+    return Colors.green + Colors.bold + s + Colors.reset
+
+
+def fail(s):
+    return Colors.red + Colors.bold + s + Colors.reset
+
+
 def main():
     from argparse import ArgumentParser
 
@@ -108,10 +126,16 @@ def main():
     ensure_directory(BUILD_DIRECTORY)
 
     try:
+        print('Building {0.source_file} for version {0.version}... '.format(args),
+              end='')
         extra_customization = read_extra_customization()
         build_manual(args.source_file, extra_customization=extra_customization)
         copy_images(args.source_file)
         sync_manual(version=args.version)
+        print(success('success'))
+    except CalledProcessError:
+        print(fail('FAILED'))
+        sys.exit(1)
     finally:
         shutil.rmtree(BUILD_DIRECTORY)
 
