@@ -1,12 +1,12 @@
 /* Basic typography styles */
 body {                          /* Body text */
-    font-family: "Charter", serif;
+    font-family: "Lato Light", sans-serif;
     font-size: 18px;
     line-height: 1.35;
     color: #444;
     word-wrap: break-word;
-    font-feature-settings: "kern", "liga", "swsh", "calt";
-    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "clig", "calt";
+    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
 }
 
 .container {                    /* Page container */
@@ -20,7 +20,7 @@ p {
 }
 
 h1, h2, h3, h4 {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Lato Light", sans-serif;
     font-weight: bold;
     line-height: 1;
     color: #222;
@@ -131,9 +131,6 @@ td {
 
 a {
     color: #333;
-    text-decoration: none;
-    font-variant: small-caps;
-    text-transform: lowercase;
 }
 
 a:hover {
@@ -141,6 +138,7 @@ a:hover {
     border-radius: 4px;
     transition-property: background;
     transition-duration: 0.2s;
+    text-decoration: none;
 }
 
 /* Navigation bar, for non-texinfo pages */

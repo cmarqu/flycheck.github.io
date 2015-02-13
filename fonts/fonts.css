@@ -10,49 +10,25 @@
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("SourceSansPro-Regular.woff") format('woff');
+    font-family: "Lato Light";
+    src: url("Lato-Light.woff") format('woff');
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("SourceSansPro-Bold.woff") format('woff');
+    font-family: "Lato Light";
+    src: url("Lato-LightItalic.woff") format('woff');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato Light";
+    src: url("Lato-Medium.woff") format('woff');
     font-weight: bold;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("SourceSansPro-Italic.woff") format('woff');
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Source Sans Pro";
-    src: url("SourceSansPro-Bold-Italic.woff") format('woff');
-    font-style: italic;
-    font-weight: bold
-}
-
-@font-face {
-    font-family: "Charter";
-    src: url("Charter-Regular.woff") format('woff');
-}
-
-@font-face {
-    font-family: "Charter";
-    src: url("Charter-Bold.woff") format('woff');
+    font-family: "Lato Light";
+    src: url("Lato-MediumItalic.woff") format('woff');
     font-weight: bold;
-}
-
-@font-face {
-    font-family: "Charter";
-    src: url("Charter-Italic.woff") format('woff');
     font-style: italic;
-}
-
-@font-face {
-    font-family: "Charter";
-    src: url("Charter-Bold-Italic.woff") format('woff');
-    font-style: italic;
-    font-weight: bold
 }
