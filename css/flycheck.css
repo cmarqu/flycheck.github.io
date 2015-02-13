@@ -200,6 +200,10 @@ hr + .header {                  /* Remove margin from bottom header */
     text-align: right;
 }
 
+.header a {
+    white-space: nowrap;
+}
+
 a[rel="up"]:before {
     content: " ↑ ";
 }
