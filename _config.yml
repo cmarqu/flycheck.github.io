@@ -8,3 +8,10 @@ github_username: flycheck
 
 # Build settings
 markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
