@@ -27,3 +27,15 @@ Manual
 - [Latest release](manual/{{site.data.releases.versions | last}}/index.html) (for
 Marmalade and MELPA Stable users)
 {% endif %}
+
+Latest news
+-----------
+
+<div class="post-list">
+<dl>
+{% for post in site.posts | slice: 0, 5 %}
+<dt>{{ post.date | date_to_string }}</dt>
+<dd><a href="{{site.baseurl}}{{post.url}}">{{ post.title | escape }}</a></dd>
+{% endfor %}
+</dl>
+</div>

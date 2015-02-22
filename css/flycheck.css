@@ -145,6 +145,25 @@ a:hover {
     text-decoration: none;
 }
 
+/* Post lists */
+.post-list {                    /* Post lists */
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.post-list dt {
+    font-weight: bold;
+    float: left;
+    clear: left;
+    text-align: right;
+    width: 25%;
+}
+
+.post-list dd {
+    margin-top: 0;
+    margin-left: 28%;
+}
+
 /* Navigation bar, for non-texinfo pages */
 .navbar {
     padding: 0.8em;
