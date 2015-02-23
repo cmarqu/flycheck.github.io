@@ -22,6 +22,17 @@ the buffer, or in an optional error list:
 Features
 --------
 
+- Supports over 30 programming and markup languages with more than 60 different
+  syntax checking tools
+- Fully automatic, fail-safe, on-the-fly syntax checking in background
+- Nice error indication and highlighting
+- Optional error list popup
+- Many customization options
+- A [comprehensive manual](#manual)
+- A simple interface to define new syntax checkers
+- A “doesn't get in your way” guarantee
+- Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
+
 Manual
 ------
 
