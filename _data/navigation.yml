@@ -1,3 +1,4 @@
 ---
 - { label: Extensions, href: '/extensions.html' }
+- { label: Manual (MELPA), href: '/manual/latest/index.html' }
 - { label: Github, href: 'https://github.com/flycheck/flycheck', external: true }
