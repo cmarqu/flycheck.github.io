@@ -3,9 +3,6 @@ layout: page
 title: 3rd party extensions
 ---
 
-3rd party extensions
-====================
-
 The following extensions provide additional cool features for Flycheck:
 
 - [flycheck-cask][] makes Flycheck use Cask packages in [Cask][] projects.
