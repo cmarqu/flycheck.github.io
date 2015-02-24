@@ -76,7 +76,7 @@ contributor agreement.
 
 **Flycheck** is not part of GNU Emacs, and is **unlikely to ever be**.  However,
 it is free software as well, and publicly developed on the well-known code
-hosting platform [Github][]_.  Contributing to Flycheck does not require a
+hosting platform [Github][].  Contributing to Flycheck does not require a
 copyright assignments.
 
 [Github]: https://github.com/flycheck/flycheck
