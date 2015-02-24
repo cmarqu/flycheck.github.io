@@ -167,6 +167,16 @@ figcaption:before {
     margin-right: 0.5em;
 }
 
+/* Table of contents */
+#markdown-toc ul {
+    margin-left: 1em;
+}
+
+#markdown-toc ul ul {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 /* Post lists */
 .post-list {                    /* Post lists */
     margin-left: 0;
