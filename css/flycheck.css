@@ -145,6 +145,21 @@ a:hover {
     text-decoration: none;
 }
 
+/* Tables */
+td,
+th {
+    padding: 0.5em 0.66em;;
+}
+
+tr,
+th {
+    border-bottom: 1px solid #ccc;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
 /* Images and figures */
 img {
     max-width: 100%;
