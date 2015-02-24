@@ -18,17 +18,17 @@
           <a class="navbar-brand" href="{{ site.baseurl }}/index.html">
             <img src="{{ site.baseurl }}/images/logo.png" />
           </a>
-          <ul class="navbar-nav">
-            {% for link in site.data.navigation %}
-              {% if link.external %}
-                {% assign href = link.href %}
-              {% else %}
-                {% assign href = link.href | prepend: site.baseurl %}
-              {% endif %}
-              <li><a href="{{href}}"{% if link.external %} target="_blank"{% endif %}>{{ link.label }}</a></li>
-            {% endfor %}
-          </ul>
         </div>
+        <ul class="navbar-nav">
+          {% for link in site.data.navigation %}
+            {% if link.external %}
+              {% assign href = link.href %}
+            {% else %}
+              {% assign href = link.href | prepend: site.baseurl %}
+            {% endif %}
+            <li><a href="{{href}}"{% if link.external %} target="_blank"{% endif %}>{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
     <div class="container">
