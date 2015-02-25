@@ -183,13 +183,14 @@ figcaption:before {
 }
 
 /* Table of contents */
-#markdown-toc ul {
-    margin-left: 1em;
+.toc {
+    list-style-position: disc inside none;
+    margin-left: 0;
 }
 
-#markdown-toc ul ul {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+.toc ul {
+    list-style: disc inside none;
+    margin: 0.2em 1em;
 }
 
 /* Post lists */

@@ -18,7 +18,7 @@ factual mistake or lack of information.  Please suggest improvements.
 {:.no_toc}
 
 - contents
-{:toc}
+{:toc .toc}
 
 Overview
 ========
