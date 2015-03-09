@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Syntax checkers</title>
+
+<meta name="description" content="Flycheck: Syntax checkers">
+<meta name="keywords" content="Flycheck: Syntax checkers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="Usage.html#Usage" rel="up" title="Usage">
+<link href="Reporting-results.html#Reporting-results" rel="next" title="Reporting results">
+<link href="Checking-buffers.html#Checking-buffers" rel="prev" title="Checking buffers">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div class="container"><a name="Syntax-checkers"></a>
+<div class="header">
+<p>
+Next: <a href="Reporting-results.html#Reporting-results" accesskey="n" rel="next">Reporting results</a>, Previous: <a href="Checking-buffers.html#Checking-buffers" accesskey="p" rel="prev">Checking buffers</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Syntax-checkers-1"></a>
+<h3 class="section">4.2 Syntax checkers</h3>
+
+<a name="index-syntax-checker"></a>
+<a name="index-syntax-checker-selection_002c-automatic"></a>
+<a name="index-automatic-syntax-checker-selection"></a>
+
+<p>Flycheck does not check buffers by itself, but relies on external
+<em>syntax checkers</em>.  When checking a buffer Flycheck automatically
+selects the best syntax checker from <code>flycheck-checkers</code>:
+</p>
+<dl>
+<dt><a name="index-flycheck_002dcheckers"></a>User Option: <strong>flycheck-checkers</strong></dt>
+<dd><p>A list of all syntax checkers available for syntax checking.
+</p>
+<p>A syntax checker in this list is a <em>registered</em> syntax checker.
+</p></dd></dl>
+
+<a name="index-chaining-of-syntax-checkers"></a>
+
+<p>Flycheck may apply further syntax checkers to the current buffer, if the
+selected syntax checker <em>chains</em> to other syntax checkers.  For
+instance, the <code>emacs-lisp</code> syntax checker, which checks Emacs Lisp
+with Emacs&rsquo; byte compiler, <em>chains</em> to the
+<code>emacs-lisp-checkdoc</code> syntax checker, which checks Emacs Lisp for
+violations of documentation conventions, <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Documentation-Tips.html#Documentation-Tips">(elisp)Documentation
+Tips</a>.  In Emacs Lisp buffers, Flycheck will first use
+<code>emacs-lisp</code>, and then <code>emacs-lisp-checkdoc</code>.
+</p>
+<p>Flycheck ignores chained checkers which are not contained in
+<code>flycheck-checkers</code>.
+</p>
+<p>Like everything else in GNU Emacs, syntax checkers have online
+documentation as well.  If you are interested what major modes a
+particular syntax checker in <code>flycheck-checkers</code> supports, or what
+tool it uses, type <tt class="key">C-c ! ?</tt>:
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-_0021-_003f"></a>
+<a name="index-flycheck_002ddescribe_002dchecker"></a>
+</dd>
+<dt><kbd>C-c ! ?</kbd></dt>
+<dt><kbd>M-x flycheck-describe-checker</kbd></dt>
+<dd><p>Prompt for a syntax checker and show its documentation.
+</p>
+<p>The documentation includes the name of the program or service used by
+the syntax checker, a list of major modes in which the checker will be
+used, and a list of its options.
+</p></dd>
+</dl>
+
+<a name="index-syntax-checker-selection_002c-manual"></a>
+<a name="index-manual-syntax-checker-selection"></a>
+
+<p>Instead of letting Flycheck select a syntax checker automatically you
+can also explicitly tell Flycheck which checker to use for the current
+buffer, by manually selecting a specific syntax checker:
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-_0021-s"></a>
+<a name="index-flycheck_002dselect_002dchecker"></a>
+</dd>
+<dt><kbd>C-c ! s</kbd></dt>
+<dt><kbd>M-x flycheck-select-checker</kbd></dt>
+<dd><p>Prompt for a syntax checker and select this syntax checker for the
+current buffer.
+</p>
+<a name="index-C_002du-C_002dc-_0021-s"></a>
+</dd>
+<dt><kbd>C-u C-c ! s</kbd></dt>
+<dt><kbd>C-u M-x flycheck-select-checker</kbd> Remove any manual</dt>
+<dd><p>syntax checker selection for the current buffer, and let Flycheck
+automatically select a syntax checker from <code>flycheck-checkers</code>
+again.
+</p></dd>
+</dl>
+
+<p>You can also select a syntax checker via the variable
+<code>flycheck-checker</code>.  In fact, <code>flycheck-select-checker</code>
+just sets this variable accordingly:
+</p>
+<dl>
+<dt><a name="index-flycheck_002dchecker"></a>Variable: <strong>flycheck-checker</strong></dt>
+<dd><p>A syntax checker to use for the current buffer.
+</p>
+<p>If nil (the default), Flycheck will automatically select the best
+checker from <code>flycheck-checkers</code>.
+</p>
+<p>If set to a syntax checker, Flycheck will use this syntax checker for
+the current buffer, and never automatically select any other.  Flycheck
+still runs chained checkers, though.
+</p>
+<p>If the syntax checker selected by this variable does not work in the
+current buffer, Flycheck signals an error.
+</p>
+<p>You can set this variable locally.  For instance, if your Python project
+mandates <a href="http://flake8.readthedocs.org/en/2.2.3/">Flake8</a> as a
+syntax checker, you can tell Flycheck to only use the corresponding
+checker <code>python-flake8</code> in Python files of your project by setting
+<code>flycheck-checker</code> as a directory-local variable in the top-level
+directory of your project with <kbd>M-x add-dir-local-variable RET
+python-mode RET flycheck-checker RET python-flake8</kbd>.  See <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html#Directory-Variables">(emacs)Directory
+Variables</a>, for more information about directory variables.
+</p></dd></dl>
+
+<p>Occasionally you may want to disable specific syntax checkers
+completely, so that they can never be used at all, neither via automatic
+nor via manual selection:
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-_0021-x"></a>
+<a name="index-flycheck_002ddisable_002dchecker"></a>
+</dd>
+<dt><kbd>C-c ! x</kbd></dt>
+<dt><kbd>M-x flycheck-disable-checker</kbd></dt>
+<dd><p>Prompt for a syntax checker to disable in the current buffer.
+</p>
+<a name="index-C_002du-C_002dc-_0021-x"></a>
+</dd>
+<dt><kbd>C-u C-c ! x</kbd></dt>
+<dt><kbd>C-u M-x flycheck-disable-checker</kbd></dt>
+<dd><p>Prompt for a syntax checker to re-enable in the current buffer.
+</p></dd>
+</dl>
+
+<p>This is particularly useful if you want to disable syntax checkers that
+are chained after others.  For instance, if you do not care for
+documentation conventions of Emacs Lisp you may not need for the
+<code>emacs-lisp-checkdoc</code> checker, so you can disable it for the
+current buffer with <tt class="key">M-x flycheck-disable-checker RET
+emacs-lisp-checkdoc</tt>.
+</p>
+<p><code>flycheck-disable-checker</code> acutally sets the buffer-local value of
+the <code>flycheck-disabled-checkers</code> option:
+</p>
+<dl>
+<dt><a name="index-flycheck_002ddisabled_002dcheckers"></a>User Option: <strong>flycheck-disabled-checkers</strong></dt>
+<dd><p>A list of disabled syntax checkers.  Flycheck will <em>never</em> use
+disabled syntax checkers to check a buffer.
+</p>
+<p>You can customise this variable with <tt class="key">M-x customize-variable RET
+flycheck-disabled-checkers</tt> or set its default value in your init file
+to permanently disable specific checkers.  For instance, to permanently
+disable Clang for all C/C++ buffers:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq-default flycheck-disabled-checkers '(c/c++-clang))
+</pre></div>
+
+<p>You can also disable checkers via local variables.  For instance, to
+disable <code>emacs-lisp-checkdoc</code> for your entire project, add it to
+<code>flycheck-disabled-checkers</code> in the <samp>.dir-locals.el</samp> file of
+your project:
+</p>
+<div class="lisp">
+<pre class="lisp">((emacs-lisp-mode (flycheck-disabled-checkers emacs-lisp-checkdoc)))
+</pre></div>
+
+<p>See <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html#Directory-Variables">(emacs)Directory Variables</a>, for more information about directory
+variables.
+</p></dd></dl>
+
+<a name="index-flycheck_002dcompletion_002dsystem"></a>
+
+<p>You can change the completion system used by the commands of this
+section with <code>flycheck-completion-system</code>.
+</p>
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Reporting-results.html#Reporting-results" accesskey="n" rel="next">Reporting results</a>, Previous: <a href="Checking-buffers.html#Checking-buffers" accesskey="p" rel="prev">Checking buffers</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>

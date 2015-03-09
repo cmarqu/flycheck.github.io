@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Defining syntax checkers</title>
+
+<meta name="description" content="Flycheck: Defining syntax checkers">
+<meta name="keywords" content="Flycheck: Defining syntax checkers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="Syntax-checker-definitions.html#Syntax-checker-definitions" rel="up" title="Syntax checker definitions">
+<link href="Finding-error-patterns.html#Finding-error-patterns" rel="next" title="Finding error patterns">
+<link href="Syntax-checker-definitions.html#Syntax-checker-definitions" rel="prev" title="Syntax checker definitions">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div class="container"><a name="Defining-syntax-checkers"></a>
+<div class="header">
+<p>
+Next: <a href="Finding-error-patterns.html#Finding-error-patterns" accesskey="n" rel="next">Finding error patterns</a>, Up: <a href="Syntax-checker-definitions.html#Syntax-checker-definitions" accesskey="u" rel="up">Syntax checker definitions</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Defining-syntax-checkers-1"></a>
+<h3 class="section">5.1 Defining syntax checkers</h3>
+
+<p>Flycheck provides the macro <code>flycheck-define-checker</code> to define a
+new syntax checker.  The following example defines a simple syntax
+checker for the popular <a href="http://www.pylint.org/">Pylint</a> tool for
+Python:
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-define-checker python-pylint
+  &quot;A Python syntax and style checker using Pylint.
+
+See URL `http://www.pylint.org/'.&quot;
+  :command (&quot;pylint&quot;
+            &quot;--msg-template&quot; &quot;{path}:{line}:{column}:{C}:{msg} ({msg_id})&quot;
+            source)
+  :error-patterns
+  ((error line-start (file-name) &quot;:&quot; line &quot;:&quot; column &quot;:&quot;
+          (or &quot;E&quot; &quot;F&quot;) &quot;:&quot; (message) line-end)
+   (warning line-start (file-name) &quot;:&quot; line &quot;:&quot; column &quot;:&quot;
+            (or &quot;W&quot; &quot;R&quot;) &quot;:&quot; (message) line-end)
+   (info line-start (file-name) &quot;:&quot; line &quot;:&quot; column &quot;:&quot;
+         &quot;C:&quot; (message) line-end))
+  :modes python-mode)
+</pre></div>
+
+<p>The first argument to <code>flycheck-define-checker</code> is the <em>name</em>
+of a syntax checker, by which we can refer to this particular syntax
+checker.
+</p>
+<p>Next comes the <em>docstring</em>, which should provide a bit of
+information about the syntax checker.  It&rsquo;s a good idea to provide a
+link to the homepage of the syntax checker tool here.  You can view this
+docstring in Emacs with <code>flycheck-describe-checker</code> at
+<kbd>C-c ! ?</kbd>, e.g. <kbd>C-c ! ? python-pylint</kbd>.
+</p>
+<p>Eventually we specify the <em>properties</em> of the new syntax checker.
+These properties tell Flycheck when to use your new syntax checker, how
+to run it, and how to parse its output:
+</p>
+<ul>
+<li> The <code>:command</code> specifies the command Flycheck should run to check
+the buffer.  It&rsquo;s a simple list containing the executable and its
+arguments.
+
+<p>In our example we first the <samp>--msg-template</samp> option to
+<code>pylint</code> to configure a comprehensive and parseable output
+format.
+</p>
+<p>Then we use the “special” <code>source</code> argument to pass the contents of
+the buffer as input file to <code>pylint</code>.  Whenever it sees the
+<code>source</code> argument, Flycheck creates a temporary file, fills it with
+the current contents of the buffer and passes that file to the syntax
+checker.  This allows to check the real contents of a buffer even if the
+buffer is not saved to disk.
+</p>
+<p>Refer to the function <code>flycheck-substitute-argument</code> for a complete
+list of all special symbols.
+</p>
+</li><li> The <code>:error-patterns</code> tell Flycheck how to parse the output of the
+command in order to obtain error locations.  Each pattern has a
+<em>level</em>, followed by <code>rx</code> forms which specify a regular
+expression to find an error in the output of the command.
+
+<p>Flycheck understands three error levels by default: <code>error</code> is for
+critical errors that absolutely require the user&rsquo;s attention
+(e.g. syntax errors), <code>warning</code> is for issues that can be ignored,
+but should not (e.g. unused variables), and <code>info</code> is for other
+messages that provide information about the buffer, but do not
+immediately require action from the user.
+<code>flycheck-define-error-level</code> lets you define custom error levels.
+</p>
+<p>Flycheck provides special <code>rx</code> forms to extract the relevant
+information from each error:
+</p>
+<ul>
+<li> The <code>(file-name)</code> and <code>(message)</code> forms match a sequence of
+any character save new line as file name and message of the error.  Both
+optionally accept further <code>rx</code> forms, to specify an alternative
+regular expression to match the file name or the message, for instance
+to parse multi-line error messages.
+</li><li> The <code>line</code> and <code>column</code> forms match a sequence of one or more
+digits as line and column respectively of the error.
+</li></ul>
+
+<p>Refer to the function <code>flycheck-rx-to-string</code> for a complete list
+of supported forms.
+</p>
+</li><li> The <code>:modes</code> property denotes the major modes, in which Flycheck
+may use this syntax checker.  <code>pylint</code> checks Javascript, so the
+<code>:modes</code> of our example specify <code>python-mode</code>.
+
+</li></ul>
+
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Finding-error-patterns.html#Finding-error-patterns" accesskey="n" rel="next">Finding error patterns</a>, Up: <a href="Syntax-checker-definitions.html#Syntax-checker-definitions" accesskey="u" rel="up">Syntax checker definitions</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>

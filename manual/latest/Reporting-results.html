@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Reporting results</title>
+
+<meta name="description" content="Flycheck: Reporting results">
+<meta name="keywords" content="Flycheck: Reporting results">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="Usage.html#Usage" rel="up" title="Usage">
+<link href="Navigating-errors.html#Navigating-errors" rel="next" title="Navigating errors">
+<link href="Syntax-checkers.html#Syntax-checkers" rel="prev" title="Syntax checkers">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div class="container"><a name="Reporting-results"></a>
+<div class="header">
+<p>
+Next: <a href="Navigating-errors.html#Navigating-errors" accesskey="n" rel="next">Navigating errors</a>, Previous: <a href="Syntax-checkers.html#Syntax-checkers" accesskey="p" rel="prev">Syntax checkers</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Reporting-results-of-syntax-checking"></a>
+<h3 class="section">4.3 Reporting results of syntax checking</h3>
+
+<p>When a syntax check in the current buffer has finished, Flycheck reports
+the results of the syntax checkers used by the check in the current
+buffer:
+</p>
+<ul>
+<li> It highlights errors and warnings reported by a syntax checking in the
+buffer according to <code>flycheck-highlighting-mode</code>,
+</li><li> and indicates these locations in the fringe according to
+<code>flycheck-indication-mode</code>.
+</li></ul>
+
+<dl>
+<dt><a name="index-flycheck_002dhighlighting_002dmode"></a>User Option: <strong>flycheck-highlighting-mode</strong></dt>
+<dd><p>How Flycheck highlights errors and warnings in the buffer:
+</p>
+<dl compact="compact">
+<dt><code>columns</code></dt>
+<dd><p>Highlight the column of the error, if the error has a column, otherwise
+behave as <code>lines</code>.
+</p></dd>
+<dt><code>symbols</code></dt>
+<dd><p>Highlight the symbol at the error column, if any, otherwise behave like
+<code>columns</code>.  This is default
+</p></dd>
+<dt><code>sexps</code></dt>
+<dd><p>Highlight the expression at the error column, if any, otherwise behave
+like <code>columns</code>.  <strong>Warning:</strong> <code>sexps</code> can be <em>very</em>
+slow in some major modes, notably the built-in <code>python-mode</code>.
+</p></dd>
+<dt><code>nil</code></dt>
+<dd><p>Do not highlight errors at all.
+</p></dd>
+</dl>
+
+<a name="index-flycheck_002derror"></a>
+<a name="index-flycheck_002dwarning"></a>
+<a name="index-flycheck_002dinfo"></a>
+
+<p>Flycheck uses the <code>flycheck-error</code>, <code>flycheck-warning</code> and
+<code>flycheck-info</code> faces to highlight errors, warnings and info
+messages respectively.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-flycheck_002dindication_002dmode"></a>User Option: <strong>flycheck-indication-mode</strong></dt>
+<dd><p>How Flycheck indicates errors and warnings:
+</p>
+<dl compact="compact">
+<dt><code>left-fringe</code></dt>
+<dt><code>right-fringe</code></dt>
+<dd><p>Indicate errors in the left or right fringe respectively.
+See <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Fringes.html#Fringes">(emacs)Fringes</a>, for more information about fringes.
+</p>
+<p>Flycheck uses the <code>flycheck-fringe-error</code>,
+<code>flycheck-fringe-warning</code>, and <code>flycheck-fringe-info</code> faces
+for the indicators for the corresponding error levels.
+</p></dd>
+<dt><code>nil</code></dt>
+<dd><p>Do not indicate errors and warnings.
+</p></dd>
+</dl>
+</dd></dl>
+
+<a name="index-flycheck_002dchecker_002derror_002dthreshold"></a>
+
+<p>To avoid flooding a buffer with excessive reports, Flycheck discards any
+reports and <em>disables</em> the corresponding syntax checker
+subsequently, if the total number of reported errors of any level
+exceeds the value of <code>flycheck-checker-error-threshold</code>.
+</p>
+<a name="index-flycheck_002dclear"></a>
+
+<p>You can explicitly clear with the <code>flycheck-clear</code> command.
+</p>
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Navigating-errors.html#Navigating-errors" accesskey="n" rel="next">Navigating errors</a>, Previous: <a href="Syntax-checkers.html#Syntax-checkers" accesskey="p" rel="prev">Syntax checkers</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>
