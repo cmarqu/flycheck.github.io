@@ -300,6 +300,19 @@ a[rel="next"]:before {
     content: " → ";
 }
 
+/* Texinfo menus */
+.menu {
+    margin: 2em 0;
+}
+
+.menu tr {
+    border: none;
+}
+
+.menu td {
+    padding: 0.1em 0;
+}
+
 /* Texinfo indexes */
 .index-cp {
     margin: 0.86em 0;
