@@ -127,6 +127,15 @@ dd {
 
 dl[compact="compact"] dt + dd {
     margin-top: 0.1em;
+    margin-bottom: 0.5;
+}
+
+dl[compact="compact"] dd {
+    margin-left: 2em;
+}
+
+dl[compact="compact"] p:last-child {
+    margin-bottom: 0.5em;
 }
 
 td {
