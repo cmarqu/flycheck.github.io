@@ -83,6 +83,7 @@ more information about a syntax checker.
 
 
 
+
 <a name="Ada"></a>
 <h3 class="unnumberedsec">Ada</h3>
 <a name="language_002dAda"></a><a name="index-Language_002c-Ada"></a>
@@ -261,7 +262,16 @@ yield more false positives than normal checks.
 <ol>
 <li> <code>coffee</code> (syntax check with <a href="http://coffeescript.org/">coffee</a>)
 </li><li> <code>coffee-coffeelint</code> (code style check with
-<a href="http://www.coffeelint.org/">coffeelint</a>)
+<a href="http://www.coffeelint.org/">coffeelint</a>), with the following
+option:
+
+<dl compact="compact">
+<dt><code>flycheck-coffeelintrc</code></dt>
+<dd><a name="index-flycheck_002dcoffeelintrc"></a>
+<p>Configuration file for coffeelint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
 </li></ol>
 
 <a name="Coq"></a>
@@ -526,7 +536,16 @@ option.
 <a name="index-HTML-language"></a>
 
 <ul>
-<li> <code>html-tidy</code> (<a href="https://github.com/w3c/tidy-html5">Tidy HTML5</a>)
+<li> <code>html-tidy</code> (<a href="https://github.com/w3c/tidy-html5">Tidy HTML5</a>),
+with the following option:
+
+<dl compact="compact">
+<dt><code>flycheck-tidyrc</code></dt>
+<dd><a name="index-flycheck_002dtidyrc"></a>
+<p>Configuration file for Tidy.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
 </li></ul>
 
 <a name="Javascript"></a>
@@ -541,12 +560,30 @@ option.
 (<a href="https://developers.google.com/closure/utilities">Closure Linter</a>)
 </li></ul>
 
-<p>The <code>javascript-eslint</code> checker provides the following options:
+<p>The <code>javascript-eslint</code> checker provides the following option:
 </p>
 <dl compact="compact">
 <dt><code>flycheck-eslint-rulesdir</code></dt>
 <dd><a name="index-flycheck_002deslint_002drulesdir"></a>
 <p>A directory with custom rules for ESLint.
+</p></dd>
+<dt><code>flycheck-eslintrc</code></dt>
+<dd><a name="index-flycheck_002deslintrc"></a>
+<p>Configuration file for ESLint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<p><code>javascript-jshint</code> and <code>javascript-gjslint</code> read
+configuration files:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-jshintrc</code></dt>
+<dd><a name="index-flycheck_002djshintrc"></a>
+<p>Configuration file for JSHint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+<dt><code>flycheck-gjslintrc</code></dt>
+<dd><a name="index-flycheck_002dgjslintrc"></a>
+<p>Configuration file for Closure Linter.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
 </p></dd>
 </dl>
 
@@ -677,6 +714,20 @@ syntax checker using
 <dt><code>flycheck-flake8-maximum-line-length</code></dt>
 <dd><a name="index-flycheck_002dflake8_002dmaximum_002dline_002dlength"></a>
 <p>The maximum length of lines for Flake8.
+</p>
+</dd>
+<dt><code>flycheck-flake8rc</code></dt>
+<dd><a name="index-flycheck_002dflake8rc"></a>
+<p>Configuration file for Flake8.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<p><code>python-pylint</code> reads a configuration file:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-pylintrc</code></dt>
+<dd><a name="index-flycheck_002dpylintrc"></a>
+<p>Configuration file for Pylint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
 </p></dd>
 </dl>
 
@@ -764,6 +815,14 @@ documentation files)
 <dd><a name="index-flycheck_002drubocop_002dlint_002donly"></a>
 <p>Whether to suppress warnings about style issues in Rubocop, via the
 <samp>--lint</samp> option.
+</p></dd>
+<dt><code>flycheck-rubocoprc</code></dt>
+<dd><a name="index-flycheck_002drubocoprc"></a>
+<p>Configuration file for Rubocop.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+<dt><code>flycheck-rubylintrc</code></dt>
+<dd><a name="index-flycheck_002drubylintrc"></a>
+<p>Configuration file for ruby-lint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
 </p></dd>
 </dl>
 
@@ -856,6 +915,10 @@ processor</a>), with the following option:
 <dd><a name="index-flycheck_002dscalastyle_002djar"></a>
 <p>The path to the main JAR file of Scalastyle.
 </p></dd>
+<dt><code>flycheck-scalastylerc</code></dt>
+<dd><a name="index-flycheck_002dscalastylerc"></a>
+<p>Configuration file for Scalastyle.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
 </dl>
 
 <p>If these options are not set, <code>scala-scalastyle</code> will not be used.
@@ -927,6 +990,15 @@ using <a href="http://gondor.apana.org.au/~herbert/dash/">Dash</a> or
 </li><li> <code>tex-lacheck</code> (style check using
 <a href="http://www.ctan.org/pkg/lacheck">Lacheck</a>)
 </li></ul>
+
+<p><code>tex-chktex</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-chktexrc</code></dt>
+<dd><a name="index-flycheck_002dchktexrc"></a>
+<p>Configuration file for ChkTeX.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
 
 <a name="Texinfo"></a>
 <h3 class="unnumberedsec">Texinfo</h3>
