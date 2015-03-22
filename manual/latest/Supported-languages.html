@@ -81,6 +81,8 @@ buffer.  Use <kbd>C-c ! ?</kbd> (<code>flycheck-describe-checker</code>) to obta
 more information about a syntax checker.
 </p>
 
+
+
 <a name="Ada"></a>
 <h3 class="unnumberedsec">Ada</h3>
 <a name="language_002dAda"></a><a name="index-Language_002c-Ada"></a>
@@ -88,7 +90,30 @@ more information about a syntax checker.
 
 <ul>
 <li> <code>ada-gnat</code>
-(<a href="https://gcc.gnu.org/onlinedocs/gnat_ugn_unw/">GNAT</a>)
+(<a href="https://gcc.gnu.org/onlinedocs/gnat_ugn_unw/">GNAT</a>), with the
+following options:
+
+<dl compact="compact">
+<dt><code>flycheck-gnat-args</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dargs"></a>
+<p>A list of additional arguments to GNAT.
+</p></dd>
+<dt><code>flycheck-gnat-include-path</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dinclude_002dpath"></a>
+<p>A list of include directories for GNAT.  Relative paths are relative to
+the file being checked.
+</p></dd>
+<dt><code>flycheck-gnat-language-standard</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dlanguage_002dstandard"></a>
+<p>The language standard to use in GNAT, as string.
+</p></dd>
+<dt><code>flycheck-gnat-warnings</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dwarnings"></a>
+<p>A list of additional warnings to enable in GNAT.  Each item is the name
+of a warning category to enable.
+</p></dd>
+</dl>
+
 </li></ul>
 
 <a name="AsciiDoc"></a>
@@ -97,7 +122,7 @@ more information about a syntax checker.
 <a name="index-AsciiDoc-language"></a>
 
 <ul>
-<li> <code>asciidoc</code>: <a href="http://www.methods.co.nz/asciidoc">AsciiDoc</a>
+<li> <code>asciidoc</code> (<a href="http://www.methods.co.nz/asciidoc">AsciiDoc</a>)
 </li></ul>
 
 <a name="C_002fC_002b_002b"></a>
@@ -107,12 +132,107 @@ more information about a syntax checker.
 
 <ol>
 <li> <code>c/c++-clang</code> (syntax and type check with
-<a href="http://clang.llvm.org/">Clang</a>) or <code>c/c++-gcc</code>
-(syntax and type check with <a href="https://gcc.gnu.org/">GCC</a>)
-
+<a href="http://clang.llvm.org/">Clang</a>) or <code>c/c++-gcc</code> (syntax and
+type check with <a href="https://gcc.gnu.org/">GCC</a>), and
 </li><li> <code>c/c++-cppcheck</code> (style and error check with
-<a href="http://cppcheck.sourceforge.net/">cppcheck</a>)
+<a href="http://cppcheck.sourceforge.net/">cppcheck</a>).
 </li></ol>
+
+<p><code>c/c++-clang</code> and <code>c/c++-gcc</code> provide the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-clang-args</code></dt>
+<dd><a name="index-flycheck_002dclang_002dargs"></a>
+</dd>
+<dt><code>flycheck-gcc-args</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dargs"></a>
+<p>A list of additional arguments for Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-blocks</code></dt>
+<dd><a name="index-flycheck_002dclang_002dblocks"></a>
+<p>Whether to enable blocks in Clang.
+</p></dd>
+<dt><code>flycheck-clang-definitions</code></dt>
+<dd><a name="index-flycheck_002dclang_002ddefinitions"></a>
+</dd>
+<dt><code>flycheck-gcc-definitions</code></dt>
+<dd><a name="index-flycheck_002dgcc_002ddefinitions"></a>
+<p>A list of additional preprocessor definitions for Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-include-path</code></dt>
+<dd><a name="index-flycheck_002dclang_002dinclude_002dpath"></a>
+</dd>
+<dt><code>flycheck-gcc-include-path</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dinclude_002dpath"></a>
+<p>A list of include directories for Clang/GCC, relative to the file being
+checked.
+</p></dd>
+<dt><code>flycheck-clang-includes</code></dt>
+<dd><a name="index-flycheck_002dclang_002dincludes"></a>
+</dd>
+<dt><code>flycheck-gcc-includes</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dincludes"></a>
+<p>A list of additional include files for Clang/GCC, relative to the file
+being checked.
+</p></dd>
+<dt><code>flycheck-clang-language-standard</code></dt>
+<dd><a name="index-flycheck_002dclang_002dlanguage_002dstandard"></a>
+</dd>
+<dt><code>flycheck-gcc-language-standard</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dlanguage_002dstandard"></a>
+<p>The language standard to use in Clang/GCC, as string, via the
+<samp>-std</samp> option.
+</p></dd>
+<dt><code>flycheck-clang-ms-extensions</code></dt>
+<dd><a name="index-flycheck_002dclang_002dms_002dextensions"></a>
+<p>Whether to enable Microsoft extensions to C/C++ in Clang.
+</p></dd>
+<dt><code>flycheck-clang-no-exceptions</code></dt>
+<dd><a name="index-flycheck_002dclang_002dno_002dexceptions"></a>
+</dd>
+<dt><code>flycheck-gcc-no-exceptions</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dno_002dexceptions"></a>
+<p>Whether to disable exceptions in Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-no-rtti</code></dt>
+<dd><a name="index-flycheck_002dclang_002dno_002drtti"></a>
+</dd>
+<dt><code>flycheck-gcc-no-rtti</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dno_002drtti"></a>
+<p>Whether to disable RTTI in Clang/GCC, via <samp>-fno-rtti</samp>.
+</p></dd>
+<dt><code>flycheck-clang-standard-library</code></dt>
+<dd><a name="index-flycheck_002dclang_002dstandard_002dlibrary"></a>
+<p>The name of the standard library to use for Clang, as string.
+</p></dd>
+<dt><code>flycheck-gcc-openmp</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dopenmp"></a>
+<p>Whether to enable OpenMP in GCC.
+</p></dd>
+<dt><code>flycheck-clang-warnings</code></dt>
+<dd><a name="index-flycheck_002dclang_002dwarnings"></a>
+</dd>
+<dt><code>flycheck-gcc-warnings</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dwarnings"></a>
+<p>A list of additional warnings to enable in Clang.  Each item is the name
+of a warning or warning category for <samp>-W</samp>.
+</p></dd>
+</dl>
+
+<p><code>c/c++-cppcheck</code> provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-cppcheck-checks</code></dt>
+<dd><a name="index-flycheck_002dcppcheck_002dchecks"></a>
+<p>A list of enabled checks for cppcheck.  Each item is the name of a
+check for the <samp>--enable</samp> option.
+</p></dd>
+<dt><code>flycheck-cppcheck-inconclusive</code></dt>
+<dd><a name="index-flycheck_002dcppcheck_002dinconclusive"></a>
+<p>Whether to enable inconclusive checks in cppcheck.  These checks may
+yield more false positives than normal checks.
+</p></dd>
+</dl>
 
 <a name="CFEngine"></a>
 <h3 class="unnumberedsec">CFEngine</h3>
@@ -169,7 +289,15 @@ more information about a syntax checker.
 <a name="index-D-language"></a>
 
 <ul>
-<li> <code>d-dmd</code> (<a href="http://dlang.org/">DMD</a>)
+<li> <code>d-dmd</code> (<a href="http://dlang.org/">DMD</a>), with the following options:
+
+<dl compact="compact">
+<dt><code>flycheck-dmd-include-path</code></dt>
+<dd><a name="index-flycheck_002ddmd_002dinclude_002dpath"></a>
+<p>A list of include directories for DMD.
+</p></dd>
+</dl>
+
 </li></ul>
 
 <div class="smallindentedblock">
@@ -204,6 +332,31 @@ syntax checker which checks for violations of Emacs Lisp packaging
 conventions.
 </p></div>
 
+<p>The <code>emacs-lisp</code> checker provides the following options
+</p>
+<dl compact="compact">
+<dt><code>flycheck-emacs-lisp-load-path</code></dt>
+<dd><a name="index-flycheck_002demacs_002dlisp_002dload_002dpath"></a>
+<p>The load path to use while checking Emacs Lisp files, as list of
+strings.  Relative directories are expanded against the
+<code>default-directory</code> of the buffer being checked.
+</p>
+</dd>
+<dt><code>flycheck-emacs-lisp-initialize-packages</code></dt>
+<dd><a name="index-flycheck_002demacs_002dlisp_002dinitialize_002dpackages"></a>
+<p>Whether to initialize Emacs&rsquo; package manager with
+<code>package-initialize</code> before checking the buffer.  If set to
+<code>auto</code> (the default), only initialize the package managers for
+files in under <code>user-emacs-directory</code>.
+</p>
+</dd>
+<dt><code>flycheck-emacs-lisp-package-user-dir</code></dt>
+<dd><a name="index-flycheck_002demacs_002dlisp_002dpackage_002duser_002ddir"></a>
+<p>The package directory for the Emacs Lisp checker, as string.  Has no
+effect if <code>flycheck-emacs-lisp-initialize-packages</code> is nil.
+</p></dd>
+</dl>
+
 <a name="Erlang"></a>
 <h3 class="unnumberedsec">Erlang</h3>
 <a name="language_002dErlang"></a><a name="index-Language_002c-Erlang"></a>
@@ -230,7 +383,40 @@ conventions.
 
 <ol>
 <li> <code>fortran-gfortran</code>
-(<a href="https://gcc.gnu.org/onlinedocs/gfortran/">GFortran</a>)
+(<a href="https://gcc.gnu.org/onlinedocs/gfortran/">GFortran</a>), with the
+following options:
+
+<dl compact="compact">
+<dt><code>flycheck-gfortran-args</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dargs"></a>
+<p>A list of additional arguments to GFortran.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-include-path</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dinclude_002dpath"></a>
+<p>A list of include directories for GFortran.  Relative paths are relative
+to the file being checked.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-language-standard</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dlanguage_002dstandard"></a>
+<p>The language standard to use with GFortran, for the <samp>-std</samp>
+option.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-layout</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dlayout"></a>
+<p>The source code layout to use with GFortran.  Set to <code>free</code> or
+<code>fixed</code> for free or fixed layout respectively, or nil (the default)
+to let GFortran automatically determine the layout.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-warnings</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dwarnings"></a>
+<p>A list of warnings enabled for GFortran, via the <samp>-W</samp> option.
+</p></dd>
+</dl>
+
 </li></ol>
 
 <a name="Go"></a>
@@ -252,6 +438,16 @@ respectively)
 </li><li> <code>go-errcheck</code> (check for unhandled error returns with
 <a href="https://github.com/kisielk/errcheck">errcheck</a>)
 </li></ol>
+
+<p><code>go-vet</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-go-vet-print-functions</code></dt>
+<dd><a name="index-flycheck_002dgo_002dvet_002dprint_002dfunctions"></a>
+<p>A list of print-like functions for go vet.  Go vet will check these
+functions for format string problems.
+</p></dd>
+</dl>
 
 <a name="Haml"></a>
 <h3 class="unnumberedsec">Haml</h3>
@@ -278,7 +474,8 @@ respectively)
 
 <ol>
 <li> <code>haskell-ghc</code> (syntax and type checker with
-<a href="http://www.haskell.org/ghc/">GHC</a>)
+<a href="http://www.haskell.org/ghc/">GHC</a>), and
+
 </li><li> <code>haskell-hlint</code> (style checker with
 <a href="https://github.com/ndmitchell/hlint">hlint</a>)
 </li></ol>
@@ -291,6 +488,37 @@ Cabal sandboxes.  The extension
 alternative syntax checker for <code>haskell-ghc</code> using
 <a href="https://github.com/bitc/hdevtools/">hdevtools</a>.
 </p></div>
+
+<p>The <code>haskell-ghc</code> checker provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-ghc-args</code></dt>
+<dd><a name="index-flycheck_002dghc_002dargs"></a>
+<p>A list of additional arguments for GHC.
+</p>
+</dd>
+<dt><code>flycheck-ghc-no-user-package-database</code></dt>
+<dd><a name="index-flycheck_002dghc_002dno_002duser_002dpackage_002ddatabase"></a>
+<p>Whether to disable the user package database in GHC.
+</p>
+</dd>
+<dt><code>flycheck-ghc-package-databases</code></dt>
+<dd><a name="index-flycheck_002dghc_002dpackage_002ddatabases"></a>
+<p>A list of additional package databases for GHC.  Each item points to a
+directory containing a package directory, for the <samp>-package-db</samp>
+option.
+</p>
+</dd>
+<dt><code>flycheck-ghc-search-path</code></dt>
+<dd><a name="index-flycheck_002dghc_002dsearch_002dpath"></a>
+<p>A list of module directories for GHC, via the <samp>-i</samp> option.
+</p>
+</dd>
+<dt><code>flycheck-ghc-language-extensions</code></dt>
+<dd><a name="index-flycheck_002dghc_002dlanguage_002dextensions"></a>
+<p>A list of language extensions for GHC, via <samp>-X</samp>.
+</p></dd>
+</dl>
 
 <a name="HTML"></a>
 <h3 class="unnumberedsec">HTML</h3>
@@ -307,11 +535,20 @@ alternative syntax checker for <code>haskell-ghc</code> using
 <a name="index-Javascript-language"></a>
 
 <ul>
-<li> <code>javascript-jshint</code> (<a href="http://jshint.com/">JSHint</a>), or
-</li><li> <code>javascript-eslint</code> (<a href="http://eslint.org/">ESLint</a>), or
-</li><li> <code>javascript-gjslint</code>
+<li> <code>javascript-jshint</code> (<a href="http://jshint.com/">JSHint</a>)
+</li><li> Or <code>javascript-eslint</code> (<a href="http://eslint.org/">ESLint</a>)
+</li><li> Or <code>javascript-gjslint</code>
 (<a href="https://developers.google.com/closure/utilities">Closure Linter</a>)
 </li></ul>
+
+<p>The <code>javascript-eslint</code> checker provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-eslint-rulesdir</code></dt>
+<dd><a name="index-flycheck_002deslint_002drulesdir"></a>
+<p>A directory with custom rules for ESLint.
+</p></dd>
+</dl>
 
 <a name="JSON"></a>
 <h3 class="unnumberedsec">JSON</h3>
@@ -352,6 +589,16 @@ interpreter</a>)
 <a href="https://metacpan.org/pod/Perl::Critic">Perl::Critic</a>)
 </li></ol>
 
+<p>The <code>perl-perlcritic</code> checker provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-perlcritic-severity</code></dt>
+<dd><a name="index-flycheck_002dperlcritic_002dseverity"></a>
+<p>The severity level for Perl::Critic, as integer for the
+<samp>--severity</samp> option of Perl::Critic.
+</p></dd>
+</dl>
+
 <a name="PHP"></a>
 <h3 class="unnumberedsec">PHP</h3>
 <a name="language_002dPHP"></a><a name="index-Language_002c-PHP"></a>
@@ -365,6 +612,23 @@ Detector</a>)
 </li><li> <code>php-phpcs</code> (style check with
 <a href="http://pear.php.net/package/PHP_CodeSniffer/">PHP CodeSniffer</a>)
 </li></ol>
+
+<p>These checkers provide the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-phpmd-rulesets</code></dt>
+<dd><a name="index-flycheck_002dphpmd_002drulesets"></a>
+<p>A list of rule sets for PHP Mess Detector as strings.  Each item is
+either the name of a default rule set, or the path to a custom rule set
+file.
+</p>
+</dd>
+<dt><code>flycheck-phpcs-standard</code></dt>
+<dd><a name="index-flycheck_002dphpcs_002dstandard"></a>
+<p>The coding standard for PHP CodeSniffer, either as name of a built-in
+standard, or as path to a standard specification.
+</p></dd>
+</dl>
 
 <a name="Puppet"></a>
 <h3 class="unnumberedsec">Puppet</h3>
@@ -397,6 +661,25 @@ syntax checker using
 <a href="https://pypi.python.org/pypi/pyflakes">Pyflakes</a>.
 </p></div>
 
+<p><code>python-flake8</code> provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-flake8-error-level-alist</code></dt>
+<dd><a name="index-flycheck_002dflake8_002derror_002dlevel_002dalist"></a>
+<p>An alist mapping Flake8 error IDs to Flycheck error levels.
+</p>
+</dd>
+<dt><code>flycheck-flake8-maximum-complexity</code></dt>
+<dd><a name="index-flycheck_002dflake8_002dmaximum_002dcomplexity"></a>
+<p>The maximum McCabe complexity of methods allowed by Flake8.
+</p>
+</dd>
+<dt><code>flycheck-flake8-maximum-line-length</code></dt>
+<dd><a name="index-flycheck_002dflake8_002dmaximum_002dline_002dlength"></a>
+<p>The maximum length of lines for Flake8.
+</p></dd>
+</dl>
+
 <a name="R"></a>
 <h3 class="unnumberedsec">R</h3>
 <a name="language_002dR"></a><a name="index-Language_002c-R"></a>
@@ -404,7 +687,22 @@ syntax checker using
 
 <ul>
 <li> <code>r-lintr</code> (syntax and style check with
-<a href="jimhester/lintr">lintr</a>)
+<a href="jimhester/lintr">lintr</a>), with the following options:
+
+<dl compact="compact">
+<dt><code>flycheck-lintr-caching</code></dt>
+<dd><a name="index-flycheck_002dlintr_002dcaching"></a>
+<p>Whether to enable caching in lintr.  On by default.  Only disable it if
+caching causes real problems.
+</p>
+</dd>
+<dt><code>flycheck-lintr-linters</code></dt>
+<dd><a name="index-flycheck_002dlintr_002dlinters"></a>
+<p>Linters to use with lintr, as a string containing an R expression which
+selects the linters to use.
+</p></dd>
+</dl>
+
 </li></ul>
 
 <a name="Racket"></a>
@@ -438,6 +736,15 @@ plain reStructuredFiles files), or
 documentation files)
 </li></ul>
 
+<p><code>rst-sphinx</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-sphinx-warn-on-missing-references</code></dt>
+<dd><a name="index-flycheck_002dsphinx_002dwarn_002don_002dmissing_002dreferences"></a>
+<p>Whether to emit warnings for all missing references in Sphinx.
+</p></dd>
+</dl>
+
 <a name="Ruby"></a>
 <h3 class="unnumberedsec">Ruby</h3>
 <a name="language_002dRuby"></a><a name="index-Language_002c-Ruby"></a>
@@ -449,6 +756,16 @@ documentation files)
 </li><li> <code>ruby-rubylint</code> (syntax and style check using
 <a href="http://code.yorickpeterse.com/ruby-lint/latest/">ruby-lint</a>)
 </li></ol>
+
+<p>These checkers provide the following options
+</p>
+<dl compact="compact">
+<dt><code>flycheck-rubocop-lint-only</code></dt>
+<dd><a name="index-flycheck_002drubocop_002dlint_002donly"></a>
+<p>Whether to suppress warnings about style issues in Rubocop, via the
+<samp>--lint</samp> option.
+</p></dd>
+</dl>
 
 <p>If none of the above is available, Flycheck will fall back to one of the
 following checkers for very basic checking:
@@ -465,7 +782,34 @@ interpreter</a>),
 <a name="index-Rust-language"></a>
 
 <ul>
-<li> <code>rust</code> (using the <a href="http://www.rust-lang.org/">Rust compiler</a>)
+<li> <code>rust</code> (using the <a href="http://www.rust-lang.org/">Rust compiler</a>),
+with the following options:
+
+<dl compact="compact">
+<dt><code>flycheck-rust-check-tests</code></dt>
+<dd><a name="index-flycheck_002drust_002dcheck_002dtests"></a>
+<p>Whether to check test code in Rust.
+</p>
+</dd>
+<dt><code>flycheck-rust-crate-root</code></dt>
+<dd><a name="index-flycheck_002drust_002dcrate_002droot"></a>
+<p>A path to the crate root for the current buffer, or nil if the current
+buffer is a crate by itself.
+</p>
+</dd>
+<dt><code>flycheck-rust-crate-type</code></dt>
+<dd><a name="index-flycheck_002drust_002dcrate_002dtype"></a>
+<p>The type of the crate to check, as string for the <samp>--crate-type</samp>
+option.
+</p>
+</dd>
+<dt><code>flycheck-rust-library-path</code></dt>
+<dd><a name="index-flycheck_002drust_002dlibrary_002dpath"></a>
+<p>A list of library directories for Rust.  Relative paths are relative to
+the buffer being checked.
+</p></dd>
+</dl>
+
 </li></ul>
 
 <div class="smallindentedblock">
@@ -481,7 +825,16 @@ Flycheck according to the current
 
 <ul>
 <li> <code>sass</code> (using the <a href="http://sass-lang.com/">standard Sass
-processor</a>)
+processor</a>), with the following option:
+
+<dl compact="compact">
+<dt><code>flycheck-sass-compass</code></dt>
+<dd><a name="index-flycheck_002dsass_002dcompass"></a>
+<p>Whether to enable the Compass CSS framework in SASS, via
+<samp>--compass</samp>.
+</p></dd>
+</dl>
+
 </li></ul>
 
 <a name="Scala"></a>
@@ -496,6 +849,17 @@ processor</a>)
 <a href="http://www.scalastyle.org/">Scalastyle</a>)
 </li></ol>
 
+<p>The <code>scala-scalastyle</code> syntax checker needs the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-scalastyle-jar</code></dt>
+<dd><a name="index-flycheck_002dscalastyle_002djar"></a>
+<p>The path to the main JAR file of Scalastyle.
+</p></dd>
+</dl>
+
+<p>If these options are not set, <code>scala-scalastyle</code> will not be used.
+</p>
 <a name="SCSS"></a>
 <h3 class="unnumberedsec">SCSS</h3>
 <a name="language_002dSCSS"></a><a name="index-Language_002c-SCSS"></a>
@@ -503,9 +867,17 @@ processor</a>)
 
 <ul>
 <li> <code>scss</code> (using the <a href="http://sass-lang.com/">standard SCSS
-processor</a>
-</li></ul>
+processor</a>, with the following option:
 
+<dl compact="compact">
+<dt><code>flycheck-scss-compass</code></dt>
+<dd><a name="index-flycheck_002dscss_002dcompass"></a>
+<p>Whether to enable the Compass CSS framework in SCSS, via
+<samp>--compass</samp>.
+</p></dd>
+</dl>
+
+</li></ul>
 
 <a name="Shell-scripting-languages"></a>
 <h3 class="unnumberedsec">Shell scripting languages</h3>
@@ -525,6 +897,15 @@ using <a href="http://gondor.apana.org.au/~herbert/dash/">Dash</a> or
 </li><li> <code>sh-shellcheck</code> (code and style check using
 <a href="https://github.com/koalaman/shellcheck/">ShellCheck</a>)
 </li></ol>
+
+<p><code>sh-shellcheck</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-shellcheck-excluded-warnings</code></dt>
+<dd><a name="index-flycheck_002dshellcheck_002dexcluded_002dwarnings"></a>
+<p>A list of excluded warnings for ShellCheck.
+</p></dd>
+</dl>
 
 <a name="Slim"></a>
 <h3 class="unnumberedsec">Slim</h3>
