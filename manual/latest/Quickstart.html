@@ -61,12 +61,15 @@ Next: <a href="Usage.html#Usage" accesskey="n" rel="next">Usage</a>, Previous: <
 <h3 class="section">3.1 Install and enable Flycheck</h3>
 
 <p>To get started with Flycheck, enable it by adding the following to your
-init file (see <code>user-init-file</code>):
+init file:
 </p>
 <div class="lisp">
 <pre class="lisp">(add-hook 'after-init-hook #'global-flycheck-mode)
 </pre></div>
 
+<p>If you don&rsquo;t know where your init file is take a look at the value of
+the variable <code>user-init-file</code> with <kbd>C-h v user-init-file</kbd>.
+</p>
 <a name="Install-syntax-checker-tools"></a>
 <h3 class="section">3.2 Install syntax checker tools</h3>
 

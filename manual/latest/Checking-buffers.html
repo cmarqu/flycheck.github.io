@@ -76,9 +76,8 @@ temporary directories.  You may still check syntax in these buffers by
 manually enabling <code>flycheck-mode</code> with <kbd>M-x flycheck-mode</kbd>.
 However, this is <em>not</em> recommended for said reasons.
 </p>
-<p>To enable syntax checking permanently, either customise
-<code>global-flycheck-mode</code> with <kbd>M-x customize-variable RET
-global-flycheck-mode</kbd>, or add the following code to your init file:
+<p>Add the following code to your init file to enable syntax checking
+permanently:
 </p>
 <div class="lisp">
 <pre class="lisp">(add-hook 'after-init-hook #'global-flycheck-mode)
