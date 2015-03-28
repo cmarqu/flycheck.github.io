@@ -427,7 +427,7 @@ required to have test cases.  The tests are continuously run on [Travis CI][].
 [^4]: However, the [Flymake page][] in the EmacsWiki provides recipes for many
       other languages, although of varying quality.  Furthermore, the popular
       ELPA archive MELPA provides many packages which add more languages to
-      Flymake.  There is also a `Flymake fork`_, which supports more languages
+      Flymake.  There is also a [Flymake fork][], which supports more languages
       out of the box, among other fixes and improvements.
 
 [^5]: [flymake-easy][] provides a function to define a new syntax checker, which
