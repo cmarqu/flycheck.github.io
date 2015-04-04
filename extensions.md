@@ -16,9 +16,6 @@ The following extensions provide additional cool features for Flycheck:
 - [flycheck-haskell](https://github.com/flycheck/flycheck-haskell) improves
   Haskell support in Flycheck, by configuring Flycheck according to the current
   Cabal project, and using Cabal sandbox packages.
-- [flycheck-hdevtools](https://github.com/flycheck/flycheck-hdevtools) adds a
-  Flycheck syntax checker for Haskell based on
-  [hdevtools](https://github.com/bitc/hdevtools/).
 - [flycheck-irony](https://github.com/Sarcasm/flycheck-irony) adds a Flycheck
   syntax checker for C, C++ and Objective C using
   [Irony Mode](https://github.com/Sarcasm/irony-mode).
