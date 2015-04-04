@@ -70,6 +70,9 @@ def read_extra_customization():
         with open(include_path(filename), 'r') as source:
             extra_head.append(source.read())
     extra_customization['EXTRA_HEAD'] = '\n'.join(extra_head)
+    with open(include_path('ga.html'), 'r') as source:
+        after_body = source.read() + CUSTOMIZATION['AFTER_BODY_OPEN']
+        extra_customization['AFTER_BODY_OPEN'] = after_body
     return extra_customization
 
 
