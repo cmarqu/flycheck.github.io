@@ -7,6 +7,8 @@ The following extensions provide additional cool features for Flycheck:
 
 - [flycheck-cask](https://github.com/flycheck/flycheck-cask) makes Flycheck use
   Cask packages in [Cask](https://github.com/cask/cask) projects.
+- [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure) provides
+  syntax checking for Clojure.
 - [flycheck-color-mode-line](https://github.com/flycheck/flycheck-color-mode-line)
   colors the mode line according to the Flycheck status.
 - [flycheck-d-unittest](https://github.com/flycheck/flycheck-d-unittest) adds a
