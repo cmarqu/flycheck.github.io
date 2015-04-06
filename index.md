@@ -38,8 +38,8 @@ Manual
 
 {% if site.data.releases.include_latest %}
 - [Snapshot](manual/latest/index.html) (for MELPA users){% endif %}{% if site.data.releases.versions %}
-- [Latest release](manual/{{site.data.releases.versions | last}}/index.html) (for
-Marmalade and MELPA Stable users)
+- [Latest release](manual/{{site.data.releases.versions | last}}/index.html)
+v{{site.data.releases.versions | last}} (for Marmalade and MELPA Stable users)
 {% endif %}
 
 Latest news
