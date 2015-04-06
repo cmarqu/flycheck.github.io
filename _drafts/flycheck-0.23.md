@@ -76,7 +76,7 @@ Lua
 ---
 
 In addition to the old `lua` syntax checker Flycheck now includes a syntax
-checker for[Luacheck](https://github.com/mpeterv/luacheck).
+checker for [Luacheck](https://github.com/mpeterv/luacheck).
 
 R
 -
@@ -88,6 +88,12 @@ Rust
 
 Flycheck parses multi-line type errors from `rustc` now, and extracts error IDs
 from some `rustc` messages.
+
+SCSS
+----
+
+In addition to the `scss` syntax checker, Flycheck now provides a
+[SCSS-Lint](https://github.com/brigade/scss-lint) syntax checker.
 
 Syntax checking
 ===============
