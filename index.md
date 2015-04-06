@@ -5,6 +5,10 @@ layout: index
 Flycheck <small>Syntax checking for GNU Emacs</small>
 =====================================================
 
+{% if site.data.releases.versions %}
+*Latest release: {{site.data.releases.versions | last}}*
+{% endif %}
+
 Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
 intended as replacement for the older Flymake extension which is part of GNU
 Emacs.
@@ -14,10 +18,6 @@ contents of buffers while you type, and reports warnings and errors directly in
 the buffer, or in an optional error list:
 
 [![Flycheck screencast](images/screencast.gif)](images/screencast.gif)
-
-{% if site.data.releases.versions %}
-*Latest release: {{site.data.releases.versions | last}}*
-{% endif %}
 
 Features
 --------
