@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Quickstart</title>
+
+<meta name="description" content="Flycheck: Quickstart">
+<meta name="keywords" content="Flycheck: Quickstart">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Usage.html#Usage" rel="next" title="Usage">
+<link href="Installation.html#Installation" rel="prev" title="Installation">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59155409-4', 'auto');
+  ga('send', 'pageview');
+</script>
+<div class="container"><a name="Quickstart"></a>
+<div class="header">
+<p>
+Next: <a href="Usage.html#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="Installation.html#Installation" accesskey="p" rel="prev">Installation</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Quickstart-1"></a>
+<h2 class="chapter">3 Quickstart</h2>
+<a name="Install-and-enable-Flycheck"></a>
+<h3 class="section">3.1 Install and enable Flycheck</h3>
+
+<p>To get started with Flycheck, enable it by adding the following to your
+init file:
+</p>
+<div class="lisp">
+<pre class="lisp">(add-hook 'after-init-hook #'global-flycheck-mode)
+</pre></div>
+
+<p>If you don&rsquo;t know where your init file is take a look at the value of
+the variable <code>user-init-file</code> with <kbd>C-h v user-init-file</kbd>.
+</p>
+<a name="Install-syntax-checker-tools"></a>
+<h3 class="section">3.2 Install syntax checker tools</h3>
+
+<p>Next you need to install syntax checking tools for the major modes you
+are using.  For instance, for Python you may want to install
+<a href="http://pylint.org">Pylint</a>:
+</p>
+<div class="example">
+<pre class="example">$ pip install pylint
+</pre></div>
+
+<p>For Ruby, you might want to use <a href="https://github.com/bbatsov/rubocop">Rubocop</a> and
+<a href="https://github.com/YorickPeterse/ruby-lint">ruby-lint</a>:
+</p>
+<div class="example">
+<pre class="example">$ gem install rubocop ruby-lint
+</pre></div>
+
+<p>See <a href="Supported-languages.html#Supported-languages">Supported languages</a>, for a complete list of all languages that
+Flycheck supports.
+</p>
+<a name="Check-syntax-in-a-buffer"></a>
+<h3 class="section">3.3 Check syntax in a buffer</h3>
+
+<p>Now switch to a Python or Ruby Mode buffer and run <kbd>M-x
+flycheck-verify-setup</kbd> to check whether Flycheck is correctly setup.
+</p>
+<p>If everything is fine Flycheck will now check syntax using these tools,
+when you visit a buffer in any of these languages.  Syntax checking
+happens <em>automatically</em> when you save the buffer or make any
+changes.  Flycheck highlights errors and warnings in the buffer,
+indicates them in the fringe, and reports their numbers in the mode
+line.
+</p>
+<p>You can also manually check a buffer with <kbd>C-c ! c</kbd>
+(<code>flycheck-buffer</code>).
+</p>
+<a name="Navigate-and-list-errors"></a>
+<h3 class="section">3.4 Navigate and list errors</h3>
+
+<p>Use <kbd>C-c ! n</kbd> (<code>flycheck-next-error</code>) and <kbd>C-c ! p</kbd>
+(<code>flycheck-previous-error</code>) to navigate between error locations.
+If you keep the point at an error location, Flycheck will show the error
+message in the echo area after a short delay.  You can also hover error
+locations with the mouse and see the error message in a tooltip.
+</p>
+<p>To get an overview of all errors and warnings in the current buffer,
+type <kbd>C-c ! l</kbd> (<code>flycheck-list-errors</code>) to pop up a list of all
+errors in your current buffer.  The error list updates automatically
+when you fix errors or introduce new ones, or when you switch to another
+buffer.
+</p>
+<a name="More-features"></a>
+<h3 class="section">3.5 More features</h3>
+
+<p>All Flycheck commands are available in the Emacs menu at &lsquo;<samp>Syntax
+checking</samp>&rsquo; in the &lsquo;<samp>Tools</samp>&rsquo; menu.
+</p>
+<img src="images/flycheck-menu.png" alt="images/flycheck-menu">
+
+<p>The same menu is also available by clicking on the mode line lighter of
+Flycheck.
+</p>
+<img src="images/flycheck-mode-line-menu.png" alt="images/flycheck-mode-line-menu">
+
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Usage.html#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="Installation.html#Installation" accesskey="p" rel="prev">Installation</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>
