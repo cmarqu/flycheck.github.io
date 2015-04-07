@@ -36,6 +36,9 @@ Features
 Manual
 ------
 
+With Flycheck installed you can read the manual of your Flycheck installation
+inside Emacs with `M-x flycheck-info`.
+
 {% if site.data.releases.include_latest %}
 - [Snapshot](manual/latest/index.html) (for MELPA users){% endif %}{% if site.data.releases.versions %}
 - [Latest release](manual/{{site.data.releases.versions | last}}/index.html)
