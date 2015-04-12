@@ -3,7 +3,7 @@
   <head>
     {% include head-static.html %}
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
     <meta name="description" content="Syntax checking for GNU Emacs">
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
