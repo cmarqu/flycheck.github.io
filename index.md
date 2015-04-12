@@ -1,5 +1,6 @@
 ---
 layout: index
+title: Syntax checking for GNU Emacs
 ---
 
 Flycheck <small>Syntax checking for GNU Emacs</small>
