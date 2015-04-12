@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: default
 title: Syntax checking for GNU Emacs
 ---
 
