@@ -5,6 +5,7 @@ description: On the fly syntax checking for GNU Emacs
 baseurl: ""
 url: "http://www.flycheck.org"
 github_username: flycheck
+repo: "https://github.com/flycheck/flycheck.github.io/"
 
 # Build settings
 markdown: kramdown
