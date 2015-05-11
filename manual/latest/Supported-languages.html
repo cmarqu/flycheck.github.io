@@ -348,15 +348,6 @@ adds a syntax checker which runs D unittests on the fly and reports the
 results.
 </p></div>
 
-<a name="Elixir"></a>
-<h3 class="unnumberedsec">Elixir</h3>
-<a name="language_002dElixir"></a><a name="index-Language_002c-Elixir"></a>
-<a name="index-Elixir-language"></a>
-
-<ul>
-<li> <code>elixir</code> (<a href="http://elixir-lang.org/">Elixir interpreter</a>)
-</li></ul>
-
 <a name="Emacs-Lisp"></a>
 <h3 class="unnumberedsec">Emacs Lisp</h3>
 <a name="language_002dEmacs-Lisp"></a><a name="index-Language_002c-Emacs-Lisp"></a>
@@ -585,12 +576,15 @@ with the following option:
 <a name="language_002dJavascript"></a><a name="index-Language_002c-Javascript"></a>
 <a name="index-Javascript-language"></a>
 
-<ul>
+<ol>
+<li> <ul>
 <li> <code>javascript-jshint</code> (<a href="http://jshint.com/">JSHint</a>)
 </li><li> Or <code>javascript-eslint</code> (<a href="http://eslint.org/">ESLint</a>)
 </li><li> Or <code>javascript-gjslint</code>
 (<a href="https://developers.google.com/closure/utilities">Closure Linter</a>)
 </li></ul>
+</li><li> <code>javascript-jscs</code> (<a href="http://jscs.info/">JSCS</a>)
+</li></ol>
 
 <p>The <code>javascript-eslint</code> checker provides the following option:
 </p>
@@ -605,8 +599,8 @@ with the following option:
 </p></dd>
 </dl>
 
-<p><code>javascript-jshint</code> and <code>javascript-gjslint</code> read
-configuration files:
+<p><code>javascript-jshint</code>, <code>javascript-gjslint</code> and <code>javascript-jscs</code>
+read configuration files:
 </p>
 <dl compact="compact">
 <dt><code>flycheck-jshintrc</code></dt>
@@ -616,6 +610,10 @@ configuration files:
 <dt><code>flycheck-gjslintrc</code></dt>
 <dd><a name="index-flycheck_002dgjslintrc"></a>
 <p>Configuration file for Closure Linter.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+<dt><code>flycheck-jscsrc</code></dt>
+<dd><a name="index-flycheck_002djscsrc"></a>
+<p>Configuration file for JSCS.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
 </p></dd>
 </dl>
 
