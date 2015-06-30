@@ -11,6 +11,8 @@ repo: "https://github.com/flycheck/flycheck.github.io/"
 markdown: kramdown
 timezone: UTC
 encoding: utf-8
+exclude:
+  - "Rakefile"
 
 defaults:
   - scope:
