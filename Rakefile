@@ -42,8 +42,7 @@ namespace :icons do
   end
 
   file '_includes/head-icon.html' => ICONS do |t|
-    Pathname.new(t.name).write(
-      t.prerequisites.map { |icon| make_link(icon) }.join("\n"))
+    IO.write(t.name, t.prerequisites.map { |icon| make_link(icon) }.join("\n"))
   end
 
   file 'images/logo.png', [:inkscape, :logo_height] =>
@@ -57,4 +56,49 @@ namespace :icons do
   end
 
   task :all, [:inkscape] => ['_includes/head-icon.html', 'images/logo.png']
+end
+
+namespace :manual do
+  DEFAULT_CUSTOMIZATIONS = {
+    # Wrap our container around the body
+    'AFTER_BODY_OPEN' => '<div class="container">',
+    'PRE_BODY_CLOSE' => '</div>',
+    # Add classes to Texinfo rulers
+    'BIG_RULE' => '<hr class="texinfo-big-rule"/>',
+    'DEFAULT_RULE' => '<hr class="texinfo-default-rule"/>',
+    # Point up from top to the right place
+    'TOP_NODE_UP_URL' => '/index.html',
+    # Suggest that we use HTML 5.  We don't do actually, but we want the browse
+    # to think that we do
+    'DOCTYPE' => '<!DOCTYPE html>'
+  }
+
+  def customizations
+    customizations = DEFAULT_CUSTOMIZATIONS.clone
+    customizations['CSS_LINES'] = IO.read('_includes/head-css.html')
+    customizations['EXTRA_HEAD'] = ['head-static.html', 'head-icon.html']
+                                   .map { |file| IO.read("_includes/#{file}") }
+                                   .join("\n")
+    after_body_open = customizations['AFTER_BODY_OPEN']
+    customizations['AFTER_BODY_OPEN'] =
+      IO.read('_includes/ga.html') + after_body_open
+    customizations
+  end
+
+  task :update, [:srcdir, :version, :texi2any] do |_, args|
+    args.with_defaults(version: 'latest', texi2any: 'texi2any')
+    fail 'srcdir argument missing' if args.srcdir.nil?
+    source = Pathname.new(args.srcdir).join('doc').join('flycheck.texi')
+    target = "manual/#{args.version}/"
+    rm_r(target)
+    mkdir_p(target)
+    customization_options =
+      customizations
+      .map { |var, value| ['--set-customization-variable', "#{var}=#{value}"] }
+      .flatten
+    sh(*[args.texi2any, '--html', '-o', target] +
+        customization_options +
+        [source.to_path])
+    cp_r(source.dirname.join('images').to_path, target)
+  end
 end
