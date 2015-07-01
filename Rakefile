@@ -18,8 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'rake/dsl_definition'
-require 'rake/file_list'
 require 'pathname'
 
 ICON_SIZES = [16, 32, 64, 96, 196]
