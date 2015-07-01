@@ -22,7 +22,6 @@ require 'rake/dsl_definition'
 require 'rake/file_list'
 require 'pathname'
 
-ICON_SOURCE = 'flycheck.svg'
 ICON_SIZES = [16, 32, 64, 96, 196]
 ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
 LOGO_HEIGHT = 30
@@ -33,14 +32,13 @@ namespace :icons do
     "<link rel=\"icon\" sizes=\"#{size}x#{size}\" href=\"/#{icon}\">"
   end
 
-  rule(/icon-.*\.png/, [:srcdir, :inkscape]) do |t, args|
+  rule(/icon-.*\.png/, [:inkscape] => ['flycheck.svg']) do |t, args|
     args.with_defaults(inkscape: 'inkscape')
-    fail 'Missing srcdir' if args.srcdir.nil?
     /^icon-(?<size>\d+)\.png$/ =~ t.name
     sh(args.inkscape, '--without-gui', '--export-area-age',
        '--export-background=white', "--export-png=#{t.name}",
        "--export-width=#{size}",
-       Pathname.new(args.srcdir).join(ICON_SOURCE).to_path)
+       t.source)
   end
 
   file '_includes/head-icon.html' => ICONS do |t|
@@ -48,15 +46,15 @@ namespace :icons do
       t.prerequisites.map { |icon| make_link(icon) }.join("\n"))
   end
 
-  file 'images/logo.png', [:srcdir, :inkscape, :logo_height] do |t, args|
+  file 'images/logo.png', [:inkscape, :logo_height] =>
+                          ['flycheck.svg'] do |t, args|
     args.with_defaults(inkscape: 'inkscape', logo_height: LOGO_HEIGHT)
-    fail 'Missing srcdir' if args.srcdir.nil?
     sh('--without-gui', '--export-area-drawing',
        '--export-background-opacity=0,0',
        "--export-height=#{args.logo_height}",
        "--export-png=#{t.name}",
-       Pathname.new(args.srcdir).join(ICON_SOURCE).to_path)
+       t.source)
   end
 
-  task :all, [:srcdir, :inkscape] => ['_includes/head-icon.html']
+  task :all, [:inkscape] => ['_includes/head-icon.html', 'images/logo.png']
 end
