@@ -85,6 +85,7 @@ namespace :manual do
     customizations
   end
 
+  desc 'Update the HTML manual from "srcdir" for "version" (default latest)'
   task :update, [:srcdir, :version, :texi2any] do |_, args|
     args.with_defaults(version: 'latest', texi2any: 'texi2any')
     fail 'srcdir argument missing' if args.srcdir.nil?
@@ -104,6 +105,7 @@ namespace :manual do
 end
 
 namespace :dev do
+  desc 'Install all dependencies to _vendor/'
   task :deps do
     sh 'bundler', 'install', '--path', '_vendor', '--binstubs=_vendor/bin'
   end
@@ -112,7 +114,8 @@ namespace :dev do
   CLOBBER << '_vendor'
   CLOBBER << '_site'
 
-  task :serve do
+  desc 'Preview the site at http://localhost:4000'
+  task :preview do
     sh '_vendor/bin/jekyll', 'serve', '-w'
   end
 end
