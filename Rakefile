@@ -123,7 +123,13 @@ namespace :docs do
   task 'changes.md', [:srcdir] do |_, args|
     ensure_srcdir args
     source = Pathname.new(args.srcdir).join('CHANGES.md')
-    cp(source, '_includes/changes.md')
+    target = '_includes/changes.md'
+    Rake.rake_output_message "cp #{source} #{target} (substituting issue references)"
+    changelog = IO.read(source)
+    changelog.gsub!(
+      /(?<label>\[GH-(?<issue>\d+)\])/,
+      '[\k<label>](https://github.com/flycheck/flycheck/issues/\k<issue>)')
+    IO.write(target, changelog)
   end
 
   desc 'Update all documents from srcdir'
