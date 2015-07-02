@@ -7,7 +7,8 @@ Flycheck <small>Syntax checking for GNU Emacs</small>
 =====================================================
 
 {% if site.data.releases.versions %}
-*Latest release: {{site.data.releases.versions | last}}*
+*Latest release: {{site.data.releases.versions | last}}
+([changelog]({{ "/changes.html" | prepend: site.baseurl }}))*
 {% endif %}
 
 Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,

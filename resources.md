@@ -27,6 +27,8 @@ All releases:
 Other documents
 ===============
 
+- The [Changelog]({{site.baseurl}}/changes.html) lists all changes in all
+  releases and the development version of Flycheck.
 - [Flymake versus Flycheck]({{site.baseurl}}/flycheck-versus-flymake.html)
   provides a detailed comparison between the built-in Flymake extensions and
   Flycheck.
