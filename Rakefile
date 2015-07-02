@@ -20,11 +20,12 @@
 
 require 'pathname'
 
-ICON_SIZES = [16, 32, 64, 96, 196]
-ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
-LOGO_HEIGHT = 30
 
 namespace :icons do
+  ICON_SIZES = [16, 32, 64, 96, 196]
+  ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
+  LOGO_HEIGHT = 30
+
   def make_link(icon)
     /^icon-(?<size>\d+)\.png$/ =~ icon
     "<link rel=\"icon\" sizes=\"#{size}x#{size}\" href=\"/#{icon}\">"
