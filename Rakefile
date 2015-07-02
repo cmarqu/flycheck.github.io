@@ -21,6 +21,9 @@
 require 'pathname'
 require 'rake/clean'
 
+def ensure_srcdir(args)
+  fail 'srcdir argument missing' if args.srcdir.nil?
+end
 
 namespace :images do
   ICON_SIZES = [16, 32, 64, 96, 196]
@@ -88,7 +91,7 @@ namespace :manual do
   desc 'Update the HTML manual from "srcdir" for "version" (default latest)'
   task :update, [:srcdir, :version, :texi2any] do |_, args|
     args.with_defaults(version: 'latest', texi2any: 'texi2any')
-    fail 'srcdir argument missing' if args.srcdir.nil?
+    ensure_srcdir args
     source = Pathname.new(args.srcdir).join('doc').join('flycheck.texi')
     target = "manual/#{args.version}/"
     rm_r(target)
@@ -102,6 +105,29 @@ namespace :manual do
         [source.to_path])
     cp_r(source.dirname.join('images').to_path, target)
   end
+end
+
+namespace :docs do
+  desc 'Update credits.md from srcdir'
+  task 'credits.md', [:srcdir] do |_, args|
+    ensure_srcdir args
+    source = Pathname.new(args.srcdir).join('CREDITS.md')
+    target = '_includes/credits.md'
+    Rake.rake_output_message "cp #{source} #{target}"
+    File.open(target, 'w') do |sink|
+      File.foreach(source).drop(3).each { |line| sink.write(line) }
+    end
+  end
+
+  desc 'Update changes.md from srcdir'
+  task 'changes.md', [:srcdir] do |_, args|
+    ensure_srcdir args
+    source = Pathname.new(args.srcdir).join('CHANGES.md')
+    cp(source, '_includes/changes.md')
+  end
+
+  desc 'Update all documents from srcdir'
+  task :all, [:srcdir] => %w(changes.md credits.md)
 end
 
 namespace :dev do
