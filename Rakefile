@@ -22,7 +22,7 @@ require 'pathname'
 require 'rake/clean'
 
 
-namespace :icons do
+namespace :images do
   ICON_SIZES = [16, 32, 64, 96, 196]
   ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
   LOGO_HEIGHT = 30
