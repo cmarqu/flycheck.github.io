@@ -19,6 +19,7 @@
 # SOFTWARE.
 
 require 'pathname'
+require 'rake/clean'
 
 
 namespace :icons do
@@ -99,5 +100,19 @@ namespace :manual do
         customization_options +
         [source.to_path])
     cp_r(source.dirname.join('images').to_path, target)
+  end
+end
+
+namespace :dev do
+  task :deps do
+    sh 'bundler', 'install', '--path', '_vendor', '--binstubs=_vendor/bin'
+  end
+
+  CLOBBER << '.bundle'
+  CLOBBER << '_vendor'
+  CLOBBER << '_site'
+
+  task :serve do
+    sh '_vendor/bin/jekyll', 'serve', '-w'
   end
 end
