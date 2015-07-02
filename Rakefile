@@ -127,7 +127,7 @@ namespace :docs do
   end
 
   desc 'Update all documents from srcdir'
-  task :all, [:srcdir] => %w(changes.md credits.md)
+  task :update, [:srcdir] => %w(changes.md credits.md)
 end
 
 namespace :dev do
