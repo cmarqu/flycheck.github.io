@@ -4,6 +4,7 @@ master (in development)
 - **Breaking changes**:
 
   - Remove Elixir syntax checker due to code execution [[GH-630]](https://github.com/flycheck/flycheck/issues/630)
+  - Drop support for Emacs 24.1 and 24.2
 
 - New syntax checkers:
 
