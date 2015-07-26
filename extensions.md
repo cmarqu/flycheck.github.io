@@ -27,6 +27,8 @@ The following extensions provide additional cool features for Flycheck:
   Flycheck syntax checker for the [Mercury language](http://mercurylang.org/).
 - [flycheck-ocaml](https://github.com/flycheck/flycheck-ocaml) adds a syntax
   checker for OCaml.
+- [flycheck-package](https://github.com/purcell/flycheck-package) checks
+  emacs lisp package source code for common problems.
 - [flycheck-pos-tip](https://github.com/flycheck/flycheck-pos-tip) shows
   Flycheck error messages in a popup.
 - [flycheck-pyflakes](https://github.com/Wilfred/flycheck-pyflakes) adds a
