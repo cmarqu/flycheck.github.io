@@ -31,7 +31,7 @@ Features
 - Nice error indication and highlighting
 - Optional error list popup
 - Many customization options
-- A [comprehensive manual](#manual)
+- [Comprehensive documentation]({{ "/extensions.html" | prepend: site.baseurl}})
 - A simple interface to define new syntax checkers
 - A “doesn't get in your way” guarantee
 - Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
