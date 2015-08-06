@@ -99,6 +99,13 @@ window.  After each refresh the hook
 <dt><kbd>p</kbd></dt>
 <dd><p>Move to the previous error.
 </p></dd>
+<dt><kbd>f</kbd></dt>
+<dd><p>Filter the list, showing only errors whose level is above a threshold of
+your choice.
+</p></dd>
+<dt><kbd>F</kbd></dt>
+<dd><p>Remove all filters.
+</p></dd>
 <dt><kbd>q</kbd></dt>
 <dd><p>Hide the error list window.
 </p></dd>
@@ -119,12 +126,30 @@ You can achieve the same effect by clicking on the column header.
 </p></dd>
 </dl>
 
+<p>By default, the error list shows all errors in the current buffer.  In
+addition to filtering manually, you can restrict it to errors
+above certain levels with <code>flycheck-error-list-minimum-level</code>:
+</p>
+<dl>
+<dt><a name="index-flycheck_002derror_002dlist_002dminimum_002dlevel"></a>User Option: <strong>flycheck-error-list-minimum-level</strong></dt>
+<dd><p>The minimum level of errors to display in the error list.
+</p>
+<p>If set to an error level, only displays errors whose error level
+is at least as severe as this one in the error list.  If nil,
+display all errors.
+</p></dd></dl>
+
 <a name="index-flycheck_002derror_002dlist_002dhighlight"></a>
 
 <p>When you move the point in the current buffer while the error list is
 visible, all errors on the current line are highlighted in the error
 list with the <code>flycheck-error-list-highlight</code> face.
 </p>
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Mode-line-display.html#Mode-line-display" accesskey="n" rel="next">Mode line display</a>, Previous: <a href="Killing-errors.html#Killing-errors" accesskey="p" rel="prev">Killing errors</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 </div>
