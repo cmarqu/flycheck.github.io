@@ -11,6 +11,7 @@ master (in development)
   - Javascript with `jscs` [[GH-634]](https://github.com/flycheck/flycheck/issues/634) and `standard` [[GH-644]](https://github.com/flycheck/flycheck/issues/644)
   - Jade [[GH-686]](https://github.com/flycheck/flycheck/issues/686)
   - SQL with `sqllint` [[GH-691]](https://github.com/flycheck/flycheck/issues/691)
+  - Groovy [[GH-715]](https://github.com/flycheck/flycheck/issues/715)
 
 - New features:
 
