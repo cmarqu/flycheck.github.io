@@ -58,6 +58,7 @@ master (in development)
   - Parse error ids from luacheck 0.11
   - Fix patterns for Puppet environment names [[GH-694]](https://github.com/flycheck/flycheck/issues/694)
   - Properly locate configuration files from jshint and jscs [[GH-703]](https://github.com/flycheck/flycheck/issues/703)
+  - Fix column offsets in eslint 1.0 [[GH-718]](https://github.com/flycheck/flycheck/issues/718)
 
 0.23 (Apr 6, 2015)
 ==================
