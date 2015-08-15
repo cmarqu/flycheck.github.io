@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Supported languages</title>
+
+<meta name="description" content="Flycheck: Supported languages">
+<meta name="keywords" content="Flycheck: Supported languages">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Issues.html#Issues" rel="next" title="Issues">
+<link href="Errors.html#Errors" rel="prev" title="Errors">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59155409-4', 'auto');
+  ga('send', 'pageview');
+</script>
+<div class="container"><a name="Supported-languages"></a>
+<div class="header">
+<p>
+Next: <a href="Issues.html#Issues" accesskey="n" rel="next">Issues</a>, Previous: <a href="Flycheck-API.html#Flycheck-API" accesskey="p" rel="prev">Flycheck API</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Supported-languages-1"></a>
+<h2 class="appendix">Appendix A Supported languages</h2>
+
+<p>This chapter lists the languages supported by Flycheck.  Some 3rd party
+extensions add support for more languages:
+</p>
+<ul>
+<li> <a href="https://github.com/flycheck-ledger">flycheck-ledger</a> adds a syntax checker for files
+of the <a href="http://ledger-cli.org/">Ledger</a> accounting tool.
+</li><li> <a href="https://github.com/flycheck/flycheck-mercury">flycheck-mercury</a> adds a syntax checker
+for the <a href="http://mercurylang.org/">Mercury</a> programming language.
+</li><li> <a href="https://github.com/flycheck/flycheck-ocaml">flycheck-ocaml</a> adds a syntax checker for
+the OCaml programming language, using the
+<a href="https://github.com/the-lambda-church/merlin">Merlin</a> tool.
+</li></ul>
+
+<p>Each language has one or more syntax checkers, whose names follow a
+convention of &lsquo;<samp><var>language</var>-<var>tool</var></samp>&rsquo; where <var>language</var> is
+the programming language checked by the checker, and <var>tool</var> the name
+of the checker tool.
+</p>
+<p>The syntax checkers are listed in the order they are applied to a
+buffer.  Use <kbd>C-c ! ?</kbd> (<code>flycheck-describe-checker</code>) to obtain
+more information about a syntax checker.
+</p>
+
+
+
+
+<a name="Ada"></a>
+<h3 class="unnumberedsec">Ada</h3>
+<a name="language_002dAda"></a><a name="index-Language_002c-Ada"></a>
+<a name="index-Ada-language"></a>
+
+<ul>
+<li> <code>ada-gnat</code>
+(<a href="https://gcc.gnu.org/onlinedocs/gnat_ugn_unw/">GNAT</a>), with the
+following options:
+
+<dl compact="compact">
+<dt><code>flycheck-gnat-args</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dargs"></a>
+<p>A list of additional arguments to GNAT.
+</p></dd>
+<dt><code>flycheck-gnat-include-path</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dinclude_002dpath"></a>
+<p>A list of include directories for GNAT.  Relative paths are relative to
+the file being checked.
+</p></dd>
+<dt><code>flycheck-gnat-language-standard</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dlanguage_002dstandard"></a>
+<p>The language standard to use in GNAT, as string.
+</p></dd>
+<dt><code>flycheck-gnat-warnings</code></dt>
+<dd><a name="index-flycheck_002dgnat_002dwarnings"></a>
+<p>A list of additional warnings to enable in GNAT.  Each item is the name
+of a warning category to enable.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<a name="AsciiDoc"></a>
+<h3 class="unnumberedsec">AsciiDoc</h3>
+<a name="language_002dAsciiDoc"></a><a name="index-Language_002c-AsciiDoc"></a>
+<a name="index-AsciiDoc-language"></a>
+
+<ul>
+<li> <code>asciidoc</code> (<a href="http://www.methods.co.nz/asciidoc">AsciiDoc</a>)
+</li></ul>
+
+<a name="C_002fC_002b_002b"></a>
+<h3 class="unnumberedsec">C/C++</h3>
+<a name="language_002dC_002fC_002b_002b"></a><a name="index-Language_002c-C_002fC_002b_002b"></a>
+<a name="index-C_002fC_002b_002b-language"></a>
+
+<ol>
+<li> <code>c/c++-clang</code> (syntax and type check with
+<a href="http://clang.llvm.org/">Clang</a>) or <code>c/c++-gcc</code> (syntax and
+type check with <a href="https://gcc.gnu.org/">GCC</a>), and
+</li><li> <code>c/c++-cppcheck</code> (style and error check with
+<a href="http://cppcheck.sourceforge.net/">cppcheck</a>).
+</li></ol>
+
+<p><code>c/c++-clang</code> and <code>c/c++-gcc</code> provide the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-clang-args</code></dt>
+<dd><a name="index-flycheck_002dclang_002dargs"></a>
+</dd>
+<dt><code>flycheck-gcc-args</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dargs"></a>
+<p>A list of additional arguments for Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-blocks</code></dt>
+<dd><a name="index-flycheck_002dclang_002dblocks"></a>
+<p>Whether to enable blocks in Clang.
+</p></dd>
+<dt><code>flycheck-clang-definitions</code></dt>
+<dd><a name="index-flycheck_002dclang_002ddefinitions"></a>
+</dd>
+<dt><code>flycheck-gcc-definitions</code></dt>
+<dd><a name="index-flycheck_002dgcc_002ddefinitions"></a>
+<p>A list of additional preprocessor definitions for Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-include-path</code></dt>
+<dd><a name="index-flycheck_002dclang_002dinclude_002dpath"></a>
+</dd>
+<dt><code>flycheck-gcc-include-path</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dinclude_002dpath"></a>
+<p>A list of include directories for Clang/GCC, relative to the file being
+checked.
+</p></dd>
+<dt><code>flycheck-clang-includes</code></dt>
+<dd><a name="index-flycheck_002dclang_002dincludes"></a>
+</dd>
+<dt><code>flycheck-gcc-includes</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dincludes"></a>
+<p>A list of additional include files for Clang/GCC, relative to the file
+being checked.
+</p></dd>
+<dt><code>flycheck-clang-language-standard</code></dt>
+<dd><a name="index-flycheck_002dclang_002dlanguage_002dstandard"></a>
+</dd>
+<dt><code>flycheck-gcc-language-standard</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dlanguage_002dstandard"></a>
+<p>The language standard to use in Clang/GCC, as string, via the
+<samp>-std</samp> option.
+</p></dd>
+<dt><code>flycheck-clang-ms-extensions</code></dt>
+<dd><a name="index-flycheck_002dclang_002dms_002dextensions"></a>
+<p>Whether to enable Microsoft extensions to C/C++ in Clang.
+</p></dd>
+<dt><code>flycheck-clang-no-exceptions</code></dt>
+<dd><a name="index-flycheck_002dclang_002dno_002dexceptions"></a>
+</dd>
+<dt><code>flycheck-gcc-no-exceptions</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dno_002dexceptions"></a>
+<p>Whether to disable exceptions in Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-no-rtti</code></dt>
+<dd><a name="index-flycheck_002dclang_002dno_002drtti"></a>
+</dd>
+<dt><code>flycheck-gcc-no-rtti</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dno_002drtti"></a>
+<p>Whether to disable RTTI in Clang/GCC, via <samp>-fno-rtti</samp>.
+</p></dd>
+<dt><code>flycheck-clang-standard-library</code></dt>
+<dd><a name="index-flycheck_002dclang_002dstandard_002dlibrary"></a>
+<p>The name of the standard library to use for Clang, as string.
+</p></dd>
+<dt><code>flycheck-gcc-openmp</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dopenmp"></a>
+<p>Whether to enable OpenMP in GCC.
+</p></dd>
+<dt><code>flycheck-clang-pedantic</code></dt>
+<dd><a name="index-flycheck_002dclang_002dpedantic"></a>
+</dd>
+<dt><code>flycheck-gcc-pedantic</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dpedantic"></a>
+<p>Whether to warn about language extensions in Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-pedantic-errors</code></dt>
+<dd><a name="index-flycheck_002dclang_002dpedantic_002derrors"></a>
+</dd>
+<dt><code>flycheck-gcc-pedantic-errors</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dpedantic_002derrors"></a>
+<p>Whether to error on language extensions in Clang/GCC.
+</p></dd>
+<dt><code>flycheck-clang-warnings</code></dt>
+<dd><a name="index-flycheck_002dclang_002dwarnings"></a>
+</dd>
+<dt><code>flycheck-gcc-warnings</code></dt>
+<dd><a name="index-flycheck_002dgcc_002dwarnings"></a>
+<p>A list of additional warnings to enable in Clang.  Each item is the name
+of a warning or warning category for <samp>-W</samp>.
+</p></dd>
+</dl>
+
+<p><code>c/c++-cppcheck</code> provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-cppcheck-checks</code></dt>
+<dd><a name="index-flycheck_002dcppcheck_002dchecks"></a>
+<p>A list of enabled checks for cppcheck.  Each item is the name of a
+check for the <samp>--enable</samp> option.
+</p></dd>
+<dt><code>flycheck-cppcheck-inconclusive</code></dt>
+<dd><a name="index-flycheck_002dcppcheck_002dinconclusive"></a>
+<p>Whether to enable inconclusive checks in cppcheck.  These checks may
+yield more false positives than normal checks.
+</p></dd>
+<dt><code>flycheck-cppcheck-include-path</code></dt>
+<dd><a name="index-flycheck_002dcppcheck_002dinclude_002dpath"></a>
+<p>A list of include directories for cppcheck.  Relative paths are relative to
+the file being checked.
+</p></dd>
+</dl>
+
+<a name="CFEngine"></a>
+<h3 class="unnumberedsec">CFEngine</h3>
+<a name="language_002dCFEngine"></a><a name="index-Language_002c-CFEngine"></a>
+<a name="index-CFEngine-language"></a>
+
+<ul>
+<li> <code>cfengine</code> (<a href="http://cfengine.com/">CFEngine</a>)
+</li></ul>
+
+<a name="Chef"></a>
+<h3 class="unnumberedsec">Chef</h3>
+<a name="language_002dChef"></a><a name="index-Language_002c-Chef"></a>
+<a name="index-Chef-language"></a>
+
+<ul>
+<li> <code>chef-foodcritic</code> (style check with
+<a href="http://acrmp.github.io/foodcritic/">foodcritic</a>), with the
+following option:
+
+<dl compact="compact">
+<dt><code>flycheck-foodcritic-tags</code></dt>
+<dd><a name="index-flycheck_002dfoodcritic_002dtags"></a>
+<p>A list of tags to select for Foodcritic.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<a name="Coffeescript"></a>
+<h3 class="unnumberedsec">Coffeescript</h3>
+<a name="language_002dCoffeescript"></a><a name="index-Language_002c-Coffeescript"></a>
+<a name="index-Coffeescript-language"></a>
+
+<ol>
+<li> <code>coffee</code> (syntax check with <a href="http://coffeescript.org/">coffee</a>)
+</li><li> <code>coffee-coffeelint</code> (code style check with
+<a href="http://www.coffeelint.org/">coffeelint</a>), with the following
+option:
+
+<dl compact="compact">
+<dt><code>flycheck-coffeelintrc</code></dt>
+<dd><a name="index-flycheck_002dcoffeelintrc"></a>
+<p>Configuration file for coffeelint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+</li></ol>
+
+<a name="Coq"></a>
+<h3 class="unnumberedsec">Coq</h3>
+<a name="language_002dCoq"></a><a name="index-Language_002c-Coq"></a>
+<a name="index-Coq-language"></a>
+
+<ul>
+<li> <code>coq</code> (<a href="http://coq.inria.fr/">Coq</a>)
+</li></ul>
+
+<a name="CSS"></a>
+<h3 class="unnumberedsec">CSS</h3>
+<a name="language_002dCSS"></a><a name="index-Language_002c-CSS"></a>
+<a name="index-CSS-language"></a>
+
+<ul>
+<li> <code>css-csslint</code> (style and error check with
+<a href="https://github.com/CSSLint/csslint">CSSLint</a>)
+</li></ul>
+
+<a name="D"></a>
+<h3 class="unnumberedsec">D</h3>
+<a name="language_002dD"></a><a name="index-Language_002c-D"></a>
+<a name="index-D-language"></a>
+
+<ul>
+<li> <code>d-dmd</code> (<a href="http://dlang.org/">DMD</a>), with the following options:
+
+<dl compact="compact">
+<dt><code>flycheck-dmd-include-path</code></dt>
+<dd><a name="index-flycheck_002ddmd_002dinclude_002dpath"></a>
+<p>A list of include directories for DMD.
+</p></dd>
+<dt><code>flycheck-dmd-args</code></dt>
+<dd><a name="index-flycheck_002ddmd_002dargs"></a>
+<p>A list of additional arguments for DMD.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<div class="smallindentedblock">
+<p>The extension <a href="https://github.com/flycheck/flycheck-d-unittest">flycheck-d-unittest</a>
+adds a syntax checker which runs D unittests on the fly and reports the
+results.
+</p></div>
+
+<a name="Emacs-Lisp"></a>
+<h3 class="unnumberedsec">Emacs Lisp</h3>
+<a name="language_002dEmacs-Lisp"></a><a name="index-Language_002c-Emacs-Lisp"></a>
+<a name="index-Emacs-Lisp-language"></a>
+
+<ol>
+<li> <code>emacs-lisp</code> (syntax check with the built-in Emacs byte compiler)
+</li><li> <code>emacs-lisp-checkdoc</code> (code and documentation check with
+<code>checkdoc</code>)
+</li></ol>
+
+<div class="smallindentedblock">
+<p>The extension <a href="https://github.com/purcell/flycheck-package">flycheck-package</a> adds a
+syntax checker which checks for violations of Emacs Lisp packaging
+conventions.
+</p></div>
+
+<p>The <code>emacs-lisp</code> checker provides the following options
+</p>
+<dl compact="compact">
+<dt><code>flycheck-emacs-lisp-load-path</code></dt>
+<dd><a name="index-flycheck_002demacs_002dlisp_002dload_002dpath"></a>
+<p>The load path to use while checking Emacs Lisp files, as list of
+strings.  Relative directories are expanded against the
+<code>default-directory</code> of the buffer being checked.
+</p>
+</dd>
+<dt><code>flycheck-emacs-lisp-initialize-packages</code></dt>
+<dd><a name="index-flycheck_002demacs_002dlisp_002dinitialize_002dpackages"></a>
+<p>Whether to initialize Emacs&rsquo; package manager with
+<code>package-initialize</code> before checking the buffer.  If set to
+<code>auto</code> (the default), only initialize the package managers for
+files in under <code>user-emacs-directory</code>.
+</p>
+</dd>
+<dt><code>flycheck-emacs-lisp-package-user-dir</code></dt>
+<dd><a name="index-flycheck_002demacs_002dlisp_002dpackage_002duser_002ddir"></a>
+<p>The package directory for the Emacs Lisp checker, as string.  Has no
+effect if <code>flycheck-emacs-lisp-initialize-packages</code> is nil.
+</p></dd>
+</dl>
+
+<a name="Erlang"></a>
+<h3 class="unnumberedsec">Erlang</h3>
+<a name="language_002dErlang"></a><a name="index-Language_002c-Erlang"></a>
+<a name="index-Erlang-language"></a>
+
+<ul>
+<li> <code>erlang</code> (<a href="http://www.erlang.org/">Erlang</a>)
+
+<dl compact="compact">
+<dt><code>flycheck-erlang-include-path</code></dt>
+<dd><a name="index-flycheck_002derlang_002dinclude_002dpath"></a>
+<p>A list of include directories for Erlang.
+</p>
+</dd>
+<dt><code>flycheck-erlang-library-path</code></dt>
+<dd><a name="index-flycheck_002derlang_002dlibrary_002dpath"></a>
+<p>A list of library directories for Erlang.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<a name="ERuby"></a>
+<h3 class="unnumberedsec">ERuby</h3>
+<a name="language_002dERuby"></a><a name="index-Language_002c-ERuby"></a>
+<a name="index-ERuby-language"></a>
+
+<ul>
+<li> <code>eruby-erubis</code>
+(<a href="http://www.kuwata-lab.com/erubis/"><code>erubis</code></a>)
+</li></ul>
+
+<a name="Fortran"></a>
+<h3 class="unnumberedsec">Fortran</h3>
+<a name="language_002dFortran"></a><a name="index-Language_002c-Fortran"></a>
+<a name="index-Fortran-language"></a>
+
+<ol>
+<li> <code>fortran-gfortran</code>
+(<a href="https://gcc.gnu.org/onlinedocs/gfortran/">GFortran</a>), with the
+following options:
+
+<dl compact="compact">
+<dt><code>flycheck-gfortran-args</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dargs"></a>
+<p>A list of additional arguments to GFortran.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-include-path</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dinclude_002dpath"></a>
+<p>A list of include directories for GFortran.  Relative paths are relative
+to the file being checked.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-language-standard</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dlanguage_002dstandard"></a>
+<p>The language standard to use with GFortran, for the <samp>-std</samp>
+option.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-layout</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dlayout"></a>
+<p>The source code layout to use with GFortran.  Set to <code>free</code> or
+<code>fixed</code> for free or fixed layout respectively, or nil (the default)
+to let GFortran automatically determine the layout.
+</p>
+</dd>
+<dt><code>flycheck-gfortran-warnings</code></dt>
+<dd><a name="index-flycheck_002dgfortran_002dwarnings"></a>
+<p>A list of warnings enabled for GFortran, via the <samp>-W</samp> option.
+</p></dd>
+</dl>
+
+</li></ol>
+
+<a name="Go"></a>
+<h3 class="unnumberedsec">Go</h3>
+<a name="language_002dGo"></a><a name="index-Language_002c-Go"></a>
+<a name="index-Go-language"></a>
+
+<ol>
+<li> <code>go-gofmt</code> (syntax check with
+<a href="http://golang.org/cmd/gofmt/">gofmt</a>)
+</li><li> <code>go-golint</code> (coding style with
+<a href="https://github.com/golang/lint">Golint</a>)
+</li><li> <code>go-vet</code> (check for suspicious code with
+<a href="http://godoc.org/golang.org/x/tools/cmd/vet"><code>go tool
+vet</code></a>)
+</li><li> <code>go-build</code> or <code>go-test</code> (syntax and type check with
+<a href="http://golang.org/cmd/go">Go</a>, for source and tests
+respectively)
+</li><li> <code>go-errcheck</code> (check for unhandled error returns with
+<a href="https://github.com/kisielk/errcheck">errcheck</a>)
+</li></ol>
+
+<p><code>go-vet</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-go-vet-print-functions</code></dt>
+<dd><a name="index-flycheck_002dgo_002dvet_002dprint_002dfunctions"></a>
+<p>A list of print-like functions for go vet.  Go vet will check these
+functions for format string problems.
+</p></dd>
+</dl>
+
+<a name="Groovy"></a>
+<h3 class="unnumberedsec">Groovy</h3>
+<a name="language_002dGroovy"></a><a name="index-Language_002c-Groovy"></a>
+<a name="index-Groovy-language"></a>
+
+<ul>
+<li> <code>groovy</code> (syntax check using groovy compiler API (<a href="http://www.groovy-lang.org/">http://www.groovy-lang.org/</a>))
+
+</li></ul>
+
+<a name="Haml"></a>
+<h3 class="unnumberedsec">Haml</h3>
+<a name="language_002dHaml"></a><a name="index-Language_002c-Haml"></a>
+<a name="index-Haml-language"></a>
+
+<ul>
+<li> <code>haml</code> (<a href="http://haml.info/">Haml</a>)
+</li></ul>
+
+<a name="Handlebars"></a>
+<h3 class="unnumberedsec">Handlebars</h3>
+<a name="language_002dHandlebars"></a><a name="index-Language_002c-Handlebars"></a>
+<a name="index-Handlebars-language"></a>
+
+<ul>
+<li> <code>handlebars</code> (<a href="http://handlebarsjs.com/">Handlebars</a>)
+</li></ul>
+
+<a name="Haskell"></a>
+<h3 class="unnumberedsec">Haskell</h3>
+<a name="language_002dHaskell"></a><a name="index-Language_002c-Haskell"></a>
+<a name="index-Haskell-language"></a>
+
+<ol>
+<li> <ul>
+<li> <code>haskell-stack-ghc</code> (syntax and type checker using
+<a href="https://github.com/commercialhaskell/stack">Stack</a>) in Stack
+projects, or
+</li><li> <code>haskell-ghc</code> (syntax and type checker with
+<a href="http://www.haskell.org/ghc/">GHC</a>),
+</li></ul>
+
+</li><li> and <code>haskell-hlint</code> (style checker with
+<a href="https://github.com/ndmitchell/hlint">hlint</a>), with the
+following options:
+
+<dl compact="compact">
+<dt><code>flycheck-hlint-language-extensions</code></dt>
+<dd><a name="index-flycheck_002dhlint_002dlanguage_002dextensions"></a>
+<p>Extensions list.
+</p>
+</dd>
+<dt><code>flycheck-hlint-ignore-rules</code></dt>
+<dd><a name="index-flycheck_002dhlint_002dignore_002drules"></a>
+<p>Ignore rules list.
+</p>
+</dd>
+<dt><code>flycheck-hlint-hint-packages</code></dt>
+<dd><a name="index-flycheck_002dhlint_002dhint_002dpackages"></a>
+<p>Hint packages to include.
+</p></dd>
+</dl>
+
+<dl compact="compact">
+<dt><code>flycheck-hlintrc</code></dt>
+<dd><a name="index-flycheck_002dhlintrc"></a>
+<p>Configuration file for hlint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+</li></ol>
+
+<div class="smallindentedblock">
+<p>The extension <a href="https://github.com/flycheck/flycheck-haskell">flycheck-haskell</a>
+configures Flycheck from the current Cabal project, and adds support for
+Cabal sandboxes.  The extension
+<a href="https://github.com/flycheck/flycheck-hdevtools">flycheck-hdevtools</a> adds an
+alternative syntax checker for <code>haskell-ghc</code> using
+<a href="https://github.com/bitc/hdevtools/">hdevtools</a>.
+</p></div>
+
+<p>The <code>haskell-ghc</code> checker provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-ghc-args</code></dt>
+<dd><a name="index-flycheck_002dghc_002dargs"></a>
+<p>A list of additional arguments for GHC.
+</p>
+</dd>
+<dt><code>flycheck-ghc-no-user-package-database</code></dt>
+<dd><a name="index-flycheck_002dghc_002dno_002duser_002dpackage_002ddatabase"></a>
+<p>Whether to disable the user package database in GHC.
+</p>
+</dd>
+<dt><code>flycheck-ghc-package-databases</code></dt>
+<dd><a name="index-flycheck_002dghc_002dpackage_002ddatabases"></a>
+<p>A list of additional package databases for GHC.  Each item points to a
+directory containing a package directory, for the <samp>-package-db</samp>
+option.
+</p>
+</dd>
+<dt><code>flycheck-ghc-search-path</code></dt>
+<dd><a name="index-flycheck_002dghc_002dsearch_002dpath"></a>
+<p>A list of module directories for GHC, via the <samp>-i</samp> option.
+</p>
+</dd>
+<dt><code>flycheck-ghc-language-extensions</code></dt>
+<dd><a name="index-flycheck_002dghc_002dlanguage_002dextensions"></a>
+<p>A list of language extensions for GHC, via <samp>-X</samp>.
+</p></dd>
+</dl>
+
+<a name="HTML"></a>
+<h3 class="unnumberedsec">HTML</h3>
+<a name="language_002dHTML"></a><a name="index-Language_002c-HTML"></a>
+<a name="index-HTML-language"></a>
+
+<ul>
+<li> <code>html-tidy</code> (<a href="https://github.com/w3c/tidy-html5">Tidy HTML5</a>),
+with the following option:
+
+<dl compact="compact">
+<dt><code>flycheck-tidyrc</code></dt>
+<dd><a name="index-flycheck_002dtidyrc"></a>
+<p>Configuration file for Tidy.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<a name="Jade"></a>
+<h3 class="unnumberedsec">Jade</h3>
+<a name="language_002dJade"></a><a name="index-Language_002c-Jade"></a>
+<a name="index-Jade-language"></a>
+
+<ul>
+<li> <code>jade</code> (using <a href="http://jade-lang.com/">Jade</a>)
+</li></ul>
+
+<a name="Javascript"></a>
+<h3 class="unnumberedsec">Javascript</h3>
+<a name="language_002dJavascript"></a><a name="index-Language_002c-Javascript"></a>
+<a name="index-Javascript-language"></a>
+
+<ol>
+<li> <ul>
+<li> <code>javascript-jshint</code> (<a href="http://jshint.com/">JSHint</a>),
+</li><li> or <code>javascript-eslint</code> (<a href="http://eslint.org/">ESLint</a>),
+</li><li> or <code>javascript-gjslint</code>
+(<a href="https://developers.google.com/closure/utilities">Closure Linter</a>)
+</li></ul>
+</li><li> <code>javascript-jscs</code> (<a href="http://jscs.info/">JSCS</a>)
+</li><li> <code>javascript-standard</code>
+(<a href="https://github.com/feross/standard">Standard</a> or
+<a href="https://github.com/Flet/semistandard">Semistandard</a>)
+</li></ol>
+
+<p>The <code>javascript-eslint</code> checker provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-eslint-rulesdir</code></dt>
+<dd><a name="index-flycheck_002deslint_002drulesdir"></a>
+<p>A directory with custom rules for ESLint.
+</p></dd>
+<dt><code>flycheck-eslintrc</code></dt>
+<dd><a name="index-flycheck_002deslintrc"></a>
+<p>Configuration file for ESLint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<p><code>javascript-jshint</code>, <code>javascript-gjslint</code> and <code>javascript-jscs</code>
+read configuration files:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-jshintrc</code></dt>
+<dd><a name="index-flycheck_002djshintrc"></a>
+<p>Configuration file for JSHint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+<dt><code>flycheck-gjslintrc</code></dt>
+<dd><a name="index-flycheck_002dgjslintrc"></a>
+<p>Configuration file for Closure Linter.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+<dt><code>flycheck-jscsrc</code></dt>
+<dd><a name="index-flycheck_002djscsrc"></a>
+<p>Configuration file for JSCS.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<a name="JSON"></a>
+<h3 class="unnumberedsec">JSON</h3>
+<a name="language_002dJSON"></a><a name="index-Language_002c-JSON"></a>
+<a name="index-JSON-language"></a>
+
+<ul>
+<li> <code>json-jsonlint</code> (<a href="https://github.com/zaach/jsonlint">jsonlint</a>)
+</li></ul>
+
+<a name="Less"></a>
+<h3 class="unnumberedsec">Less</h3>
+<a name="language_002dLess"></a><a name="index-Language_002c-Less"></a>
+<a name="index-Less-language"></a>
+
+<ul>
+<li> <code>less</code> (<a href="http://lesscss.org/">less</a>)
+</li></ul>
+
+<a name="Lua"></a>
+<h3 class="unnumberedsec">Lua</h3>
+<a name="language_002dLua"></a><a name="index-Language_002c-Lua"></a>
+<a name="index-Lua-language"></a>
+
+<ul>
+<li> <code>luacheck</code> (<a href="https://github.com/mpeterv/luacheck">Luacheck</a>)
+with the following option:
+
+<dl compact="compact">
+<dt><code>flycheck-luacheckrc</code></dt>
+<dd><a name="index-flycheck_002dluacheckrc"></a>
+<p>Configuration file for Luacheck.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+</li><li> <code>lua</code> (<a href="http://www.lua.org/">Lua compiler</a>)
+</li></ul>
+
+<a name="Perl"></a>
+<h3 class="unnumberedsec">Perl</h3>
+<a name="language_002dPerl"></a><a name="index-Language_002c-Perl"></a>
+<a name="index-Perl-language"></a>
+
+<ol>
+<li> <code>perl</code> (syntax check with the <a href="http://www.perl.org/">Perl
+interpreter</a>)
+</li><li> <code>perl-perlcritic</code> (style and code check with
+<a href="https://metacpan.org/pod/Perl::Critic">Perl::Critic</a>)
+</li></ol>
+
+<p>These syntax checkers checker provide the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-perl-include-path</code></dt>
+<dd><a name="index-flycheck_002dperl_002dinclude_002dpath"></a>
+<p>A list of include directories for Perl, relative to the file being
+checked.
+</p></dd>
+<dt><code>flycheck-perlcritic-severity</code></dt>
+<dd><a name="index-flycheck_002dperlcritic_002dseverity"></a>
+<p>The severity level for Perl::Critic, as integer for the
+<samp>--severity</samp> option of Perl::Critic.
+</p></dd>
+</dl>
+
+<a name="PHP"></a>
+<h3 class="unnumberedsec">PHP</h3>
+<a name="language_002dPHP"></a><a name="index-Language_002c-PHP"></a>
+<a name="index-PHP-language"></a>
+
+<ol>
+<li> <code>php</code> (syntax check with
+<a href="https://metacpan.org/pod/Perl::Critic">PHP CLI</a>)
+</li><li> <code>php-phpmd</code> (code check with <a href="http://phpmd.org/">PHP Mess
+Detector</a>)
+</li><li> <code>php-phpcs</code> (style check with
+<a href="http://pear.php.net/package/PHP_CodeSniffer/">PHP CodeSniffer</a>)
+</li></ol>
+
+<p>These checkers provide the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-phpmd-rulesets</code></dt>
+<dd><a name="index-flycheck_002dphpmd_002drulesets"></a>
+<p>A list of rule sets for PHP Mess Detector as strings.  Each item is
+either the name of a default rule set, or the path to a custom rule set
+file.
+</p>
+</dd>
+<dt><code>flycheck-phpcs-standard</code></dt>
+<dd><a name="index-flycheck_002dphpcs_002dstandard"></a>
+<p>The coding standard for PHP CodeSniffer, either as name of a built-in
+standard, or as path to a standard specification.
+</p></dd>
+</dl>
+
+<a name="Puppet"></a>
+<h3 class="unnumberedsec">Puppet</h3>
+<a name="language_002dPuppet"></a><a name="index-Language_002c-Puppet"></a>
+<a name="index-Puppet-language"></a>
+
+<ul>
+<li> <code>puppet-parser</code> (syntax check with <a href="http://puppetlabs.com/">Puppet</a>)
+</li><li> <code>puppet-lint</code> (style check with <a href="http://puppet-lint.com/">Puppet Lint</a>)
+</li></ul>
+
+<a name="Python"></a>
+<h3 class="unnumberedsec">Python</h3>
+<a name="language_002dPython"></a><a name="index-Language_002c-Python"></a>
+<a name="index-Python-language"></a>
+
+<ul>
+<li> <code>python-flake8</code> (syntax and style checking with
+<a href="https://pypi.python.org/pypi/flake8">flake8</a>), or
+</li><li> <code>python-pylint</code> (syntax and style checking with
+<a href="http://pylint.org/">Pylint</a>), or
+</li><li> <code>python-pycompile</code> (syntax checking with Python&rsquo;s
+<a href="https://docs.python.org/3.4/library/py_compile.html">built-in byte
+compiler</a>, as last resort)
+</li></ul>
+
+<div class="smallindentedblock">
+<p>The extension <a href="https://github.com/Wilfred/flycheck-pyflakes">flycheck-pyflakes</a> adds a
+syntax checker using
+<a href="https://pypi.python.org/pypi/pyflakes">Pyflakes</a>.
+</p></div>
+
+<p><code>python-flake8</code> provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-flake8-error-level-alist</code></dt>
+<dd><a name="index-flycheck_002dflake8_002derror_002dlevel_002dalist"></a>
+<p>An alist mapping Flake8 error IDs to Flycheck error levels.
+</p>
+</dd>
+<dt><code>flycheck-flake8-maximum-complexity</code></dt>
+<dd><a name="index-flycheck_002dflake8_002dmaximum_002dcomplexity"></a>
+<p>The maximum McCabe complexity of methods allowed by Flake8.
+</p>
+</dd>
+<dt><code>flycheck-flake8-maximum-line-length</code></dt>
+<dd><a name="index-flycheck_002dflake8_002dmaximum_002dline_002dlength"></a>
+<p>The maximum length of lines for Flake8.
+</p>
+</dd>
+<dt><code>flycheck-flake8rc</code></dt>
+<dd><a name="index-flycheck_002dflake8rc"></a>
+<p>Configuration file for Flake8.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<p><code>python-pylint</code> reads a configuration file:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-pylintrc</code></dt>
+<dd><a name="index-flycheck_002dpylintrc"></a>
+<p>Configuration file for Pylint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<a name="R"></a>
+<h3 class="unnumberedsec">R</h3>
+<a name="language_002dR"></a><a name="index-Language_002c-R"></a>
+<a name="index-R-language"></a>
+
+<ul>
+<li> <code>r-lintr</code> (syntax and style check with
+<a href="jimhester/lintr">lintr</a>), with the following options:
+
+<dl compact="compact">
+<dt><code>flycheck-lintr-caching</code></dt>
+<dd><a name="index-flycheck_002dlintr_002dcaching"></a>
+<p>Whether to enable caching in lintr.  On by default.  Only disable it if
+caching causes real problems.
+</p>
+</dd>
+<dt><code>flycheck-lintr-linters</code></dt>
+<dd><a name="index-flycheck_002dlintr_002dlinters"></a>
+<p>Linters to use with lintr, as a string containing an R expression which
+selects the linters to use.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<a name="Racket"></a>
+<h3 class="unnumberedsec">Racket</h3>
+<a name="language_002dRacket"></a><a name="index-Language_002c-Racket"></a>
+<a name="index-Racket-language"></a>
+
+<ul>
+<li> <code>racket</code> (<a href="http://racket-lang.org/">Racket</a>)
+</li></ul>
+
+<a name="RPM-Spec"></a>
+<h3 class="unnumberedsec">RPM Spec</h3>
+<a name="language_002dRPM-Spec"></a><a name="index-Language_002c-RPM-Spec"></a>
+<a name="index-RPM-Spec-language"></a>
+
+<ul>
+<li> <code>rpm-rpmlint</code>
+(<a href="http://sourceforge.net/projects/rpmlint/">rpmlint</a>)
+</li></ul>
+
+<a name="reStructuredText"></a>
+<h3 class="unnumberedsec">reStructuredText</h3>
+<a name="language_002dreStructuredText"></a><a name="index-Language_002c-reStructuredText"></a>
+<a name="index-reStructuredText-language"></a>
+
+<ul>
+<li> <code>rst</code> (using <a href="http://docutils.sourceforge.net/">docutils</a>, for
+plain reStructuredFiles files), or
+<code>rst-sphinx</code> (using <a href="http://sphinx-doc.org/">Sphinx</a>, for Sphinx
+documentation files)
+</li></ul>
+
+<p><code>rst-sphinx</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-sphinx-warn-on-missing-references</code></dt>
+<dd><a name="index-flycheck_002dsphinx_002dwarn_002don_002dmissing_002dreferences"></a>
+<p>Whether to emit warnings for all missing references in Sphinx.
+</p></dd>
+</dl>
+
+<a name="Ruby"></a>
+<h3 class="unnumberedsec">Ruby</h3>
+<a name="language_002dRuby"></a><a name="index-Language_002c-Ruby"></a>
+<a name="index-Ruby-language"></a>
+
+<ol>
+<li> <code>ruby-rubocop</code> (syntax and style check using
+<a href="http://batsov.com/rubocop/">RuboCop</a>)
+</li><li> <code>ruby-rubylint</code> (syntax and style check using
+<a href="http://code.yorickpeterse.com/ruby-lint/latest/">ruby-lint</a>)
+</li></ol>
+
+<p>These checkers provide the following options
+</p>
+<dl compact="compact">
+<dt><code>flycheck-rubocop-lint-only</code></dt>
+<dd><a name="index-flycheck_002drubocop_002dlint_002donly"></a>
+<p>Whether to suppress warnings about style issues in Rubocop, via the
+<samp>--lint</samp> option.
+</p></dd>
+<dt><code>flycheck-rubocoprc</code></dt>
+<dd><a name="index-flycheck_002drubocoprc"></a>
+<p>Configuration file for Rubocop.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+<dt><code>flycheck-rubylintrc</code></dt>
+<dd><a name="index-flycheck_002drubylintrc"></a>
+<p>Configuration file for ruby-lint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<p>If none of the above is available, Flycheck will fall back to one of the
+following checkers for very basic checking:
+</p>
+<ul>
+<li> <code>ruby</code> (using the <a href="https://www.ruby-lang.org/">standard Ruby
+interpreter</a>),
+</li><li> <code>ruby-jruby</code> (using <a href="http://jruby.org/">JRuby</a>)
+</li></ul>
+
+<a name="Rust"></a>
+<h3 class="unnumberedsec">Rust</h3>
+<a name="language_002dRust"></a><a name="index-Language_002c-Rust"></a>
+<a name="index-Rust-language"></a>
+
+<ul>
+<li> <code>rust</code> (using the <a href="http://www.rust-lang.org/">Rust compiler</a>),
+with the following options:
+
+<dl compact="compact">
+<dt><code>flycheck-rust-args</code></dt>
+<dd><a name="index-flycheck_002drust_002dargs"></a>
+<p>A list of additional arguments for the Rust compiler <code>rustc</code>.
+</p></dd>
+<dt><code>flycheck-rust-check-tests</code></dt>
+<dd><a name="index-flycheck_002drust_002dcheck_002dtests"></a>
+<p>Whether to check test code in Rust.
+</p>
+</dd>
+<dt><code>flycheck-rust-crate-root</code></dt>
+<dd><a name="index-flycheck_002drust_002dcrate_002droot"></a>
+<p>A path to the crate root for the current buffer, or nil if the current
+buffer is a crate by itself.
+</p>
+</dd>
+<dt><code>flycheck-rust-crate-type</code></dt>
+<dd><a name="index-flycheck_002drust_002dcrate_002dtype"></a>
+<p>The type of the crate to check, as string for the <samp>--crate-type</samp>
+option.
+</p>
+</dd>
+<dt><code>flycheck-rust-library-path</code></dt>
+<dd><a name="index-flycheck_002drust_002dlibrary_002dpath"></a>
+<p>A list of library directories for Rust.  Relative paths are relative to
+the buffer being checked.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<div class="smallindentedblock">
+<p>The <a href="https://github.com/flycheck/flycheck-rust">flycheck-rust</a> extension configures
+Flycheck according to the current
+<a href="http://doc.crates.io/guide.html">Cargo</a> project.
+</p></div>
+
+<a name="Sass"></a>
+<h3 class="unnumberedsec">Sass</h3>
+<a name="language_002dSass"></a><a name="index-Language_002c-Sass"></a>
+<a name="index-Sass-language"></a>
+
+<ul>
+<li> <code>sass</code> (using the <a href="http://sass-lang.com/">standard Sass
+processor</a>), with the following option:
+
+<dl compact="compact">
+<dt><code>flycheck-sass-compass</code></dt>
+<dd><a name="index-flycheck_002dsass_002dcompass"></a>
+<p>Whether to enable the Compass CSS framework in SASS, via
+<samp>--compass</samp>.
+</p></dd>
+</dl>
+
+</li></ul>
+
+<a name="Scala"></a>
+<h3 class="unnumberedsec">Scala</h3>
+<a name="language_002dScala"></a><a name="index-Language_002c-Scala"></a>
+<a name="index-Scala-language"></a>
+
+<ol>
+<li> <code>scala</code> (syntax and type check using the
+<a href="http://www.scala-lang.org/">Scala compiler</a>)
+</li><li> <code>scala-scalastyle</code> (style check using
+<a href="http://www.scalastyle.org/">Scalastyle</a>)
+</li></ol>
+
+<p>The <code>scala-scalastyle</code> syntax checker needs the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-scalastyle-jar</code></dt>
+<dd><a name="index-flycheck_002dscalastyle_002djar"></a>
+<p>The path to the main JAR file of Scalastyle.
+</p></dd>
+<dt><code>flycheck-scalastylerc</code></dt>
+<dd><a name="index-flycheck_002dscalastylerc"></a>
+<p>Configuration file for Scalastyle.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<p>If these options are not set, <code>scala-scalastyle</code> will not be used.
+</p>
+<a name="SCSS"></a>
+<h3 class="unnumberedsec">SCSS</h3>
+<a name="language_002dSCSS"></a><a name="index-Language_002c-SCSS"></a>
+<a name="index-SCSS-language"></a>
+
+<ul>
+<li> <code>scss-lint</code> (using <a href="https://github.com/brigade/scss-lint">SCSS-Lint</a>), or
+</li><li> <code>scss</code> (using the <a href="http://sass-lang.com/">standard SCSS
+processor</a>)
+</li></ul>
+
+<p>These syntax checkers provide the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-scss-compass</code></dt>
+<dd><a name="index-flycheck_002dscss_002dcompass"></a>
+<p>Whether to enable the Compass CSS framework in SCSS, via
+<samp>--compass</samp>.
+</p></dd>
+<dt><code>flycheck-scss-lintrc</code></dt>
+<dd><a name="index-flycheck_002dscss_002dlintrc"></a>
+<p>Configuration file for SCSS-Lint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<a name="Shell-scripting-languages"></a>
+<h3 class="unnumberedsec">Shell scripting languages</h3>
+<a name="language_002dShell-scripting-languages"></a><a name="index-Language_002c-Shell-scripting-languages"></a>
+<a name="index-Shell-scripting-languages-language"></a>
+
+<ol>
+<li> Syntax check with one of the following checkers, depending on the shell
+used for the current Sh Mode buffer,
+<ul>
+<li> <code>sh-bash</code> (for <a href="http://www.gnu.org/software/bash/">Bash</a>)
+</li><li> <code>sh-posix-dash</code> or <code>sh-posix-bash</code> (for POSIX shell scripts,
+using <a href="http://gondor.apana.org.au/~herbert/dash/">Dash</a> or
+<a href="http://www.gnu.org/software/bash/">Bash</a> respectively)
+</li><li> <code>sh-zsh</code> (for <a href="http://www.zsh.org/">Zsh</a>)
+</li></ul>
+</li><li> <code>sh-shellcheck</code> (code and style check using
+<a href="https://github.com/koalaman/shellcheck/">ShellCheck</a>)
+</li></ol>
+
+<p><code>sh-shellcheck</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-shellcheck-excluded-warnings</code></dt>
+<dd><a name="index-flycheck_002dshellcheck_002dexcluded_002dwarnings"></a>
+<p>A list of excluded warnings for ShellCheck.
+</p></dd>
+</dl>
+
+<a name="Slim"></a>
+<h3 class="unnumberedsec">Slim</h3>
+<a name="language_002dSlim"></a><a name="index-Language_002c-Slim"></a>
+<a name="index-Slim-language"></a>
+
+<ul>
+<li> <code>slim</code> (using <a href="http://slim-lang.com/">Slim</a>)
+</li></ul>
+
+<a name="SQL"></a>
+<h3 class="unnumberedsec">SQL</h3>
+<a name="language_002dSQL"></a><a name="index-Language_002c-SQL"></a>
+<a name="index-SQL-language"></a>
+
+<ul>
+<li> <code>sql-sqlint</code> (using <a href="https://github.com/purcell/sqlint">Sqlint</a>)
+</li></ul>
+
+<a name="TeX_002fLaTeX"></a>
+<h3 class="unnumberedsec">TeX/LaTeX</h3>
+<a name="language_002dTeX_002fLaTeX"></a><a name="index-Language_002c-TeX_002fLaTeX"></a>
+<a name="index-TeX_002fLaTeX-language"></a>
+
+<ul>
+<li> <code>tex-chktex</code> (style check using
+<a href="http://www.nongnu.org/chktex/">ChkTeX</a>), or
+</li><li> <code>tex-lacheck</code> (style check using
+<a href="http://www.ctan.org/pkg/lacheck">Lacheck</a>)
+</li></ul>
+
+<p><code>tex-chktex</code> provides the following option:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-chktexrc</code></dt>
+<dd><a name="index-flycheck_002dchktexrc"></a>
+<p>Configuration file for ChkTeX.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
+</p></dd>
+</dl>
+
+<a name="Texinfo"></a>
+<h3 class="unnumberedsec">Texinfo</h3>
+<a name="language_002dTexinfo"></a><a name="index-Language_002c-Texinfo"></a>
+<a name="index-Texinfo-language"></a>
+
+<ul>
+<li> <code>texinfo</code> (using
+<a href="http://www.gnu.org/software/texinfo/">makeinfo</a>)
+</li></ul>
+
+<a name="Verilog"></a>
+<h3 class="unnumberedsec">Verilog</h3>
+<a name="language_002dVerilog"></a><a name="index-Language_002c-Verilog"></a>
+<a name="index-Verilog-language"></a>
+
+<ul>
+<li> <code>verilog-verilator</code> (using
+<a href="http://www.veripool.org/wiki/verilator">Verilator</a>)
+</li></ul>
+
+<p><code>verilog-verilator</code> provides the following options:
+</p>
+<dl compact="compact">
+<dt><code>flycheck-verilator-include-path</code></dt>
+<dd><a name="index-flycheck_002dverilator_002dinclude_002dpath"></a>
+<p>A list of include directories for Verilator.  Relative paths are relative to
+the file being checked.
+</p></dd>
+</dl>
+
+<a name="XML"></a>
+<h3 class="unnumberedsec">XML</h3>
+<a name="language_002dXML"></a><a name="index-Language_002c-XML"></a>
+<a name="index-XML-language"></a>
+
+<ul>
+<li> <code>xml-xmlstarlet</code> (using <a href="http://xmlstar.sourceforge.net">XMLStarlet</a>),
+or
+</li><li> <code>xml-xmllint</code> (using <a href="http://www.xmlsoft.org/">xmllint</a>)
+</li></ul>
+
+<a name="YAML"></a>
+<h3 class="unnumberedsec">YAML</h3>
+<a name="language_002dYAML"></a><a name="index-Language_002c-YAML"></a>
+<a name="index-YAML-language"></a>
+
+<ul>
+<li> <code>yaml-jsyaml</code> (using
+<a href="https://github.com/nodeca/js-yaml">js-yaml</a>), or
+</li><li> <code>yaml-ruby</code> (using Ruby&rsquo;s YAML parser)
+</li></ul>
+
+
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Issues.html#Issues" accesskey="n" rel="next">Issues</a>, Previous: <a href="Flycheck-API.html#Flycheck-API" accesskey="p" rel="prev">Flycheck API</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>
