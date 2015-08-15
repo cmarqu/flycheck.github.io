@@ -19,9 +19,8 @@ Marmalade and MELPA Stable users)
 
 All releases:
 
-{% for version in site.data.releases.versions %}
-- [Version {{version}}]({{site.baseurl}}/manual/{{version}}/index.html)
-{% endfor %}
+{% for version in site.data.releases.versions reversed %}
+- [Version {{version}}]({{site.baseurl}}/manual/{{version}}/index.html){% endfor %}
 {% endif %}
 
 Other documents
