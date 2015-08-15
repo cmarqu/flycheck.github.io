@@ -94,7 +94,7 @@ namespace :manual do
     ensure_srcdir args
     source = Pathname.new(args.srcdir).join('doc').join('flycheck.texi')
     target = "manual/#{args.version}/"
-    rm_r(target)
+    rm_rf(target)
     mkdir_p(target)
     customization_options =
       customizations
