@@ -12,6 +12,7 @@ master (in development)
   - Jade [[GH-686]](https://github.com/flycheck/flycheck/issues/686)
   - SQL with `sqllint` [[GH-691]](https://github.com/flycheck/flycheck/issues/691)
   - Groovy [[GH-716]](https://github.com/flycheck/flycheck/issues/716)
+  - Haskell with `stack ghc` [[GH-711]](https://github.com/flycheck/flycheck/issues/711)
 
 - New features:
 
