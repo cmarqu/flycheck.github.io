@@ -1,9 +1,19 @@
 master (in development)
 =======================
 
+- New features:
+
+  - Add `flycheck-help-echo-function` to customize the Help Echo of Flycheck
+    overlays [[GH-730]](https://github.com/flycheck/flycheck/issues/730)
+
 - Improvements:
 
   - Improve mode line display for buffers with only info messages [[GH-733]](https://github.com/flycheck/flycheck/issues/733)
+  - Merge messages of all errors under cursor for Help Echo [[GH-730]](https://github.com/flycheck/flycheck/issues/730)
+
+- Bug fixes:
+
+  - Fix error patterns of `coq` [[GH-742]](https://github.com/flycheck/flycheck/issues/742)
 
 0.24 (Aug 15, 2015)
 ===================
