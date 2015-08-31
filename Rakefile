@@ -82,9 +82,6 @@ namespace :manual do
     customizations['EXTRA_HEAD'] = ['head-static.html', 'head-icon.html']
                                    .map { |file| IO.read("_includes/#{file}") }
                                    .join("\n")
-    after_body_open = customizations['AFTER_BODY_OPEN']
-    customizations['AFTER_BODY_OPEN'] =
-      IO.read('_includes/ga.html') + after_body_open
     customizations
   end
 
