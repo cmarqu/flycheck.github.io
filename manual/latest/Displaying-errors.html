@@ -68,7 +68,7 @@ Floating point numbers can express fractions of seconds.
 </p></dd></dl>
 
 <p>You can set <code>flycheck-display-errors-function</code> to change how
-Flycheck displays error, and what information it displays:
+Flycheck displays errors, and what information it displays:
 </p>
 <dl>
 <dt><a name="index-flycheck_002ddisplay_002derrors_002dfunction"></a>User Option: <strong>flycheck-display-errors-function</strong></dt>
@@ -94,6 +94,20 @@ information about the error list.
 <p>The <a href="https://github.com/flycheck/flycheck-pos-tip">flycheck-pos-tip</a> extension
 provides an alternative display function, which shows error messages in
 a graphical popup.
+</p>
+<p>In addition to this display mechanism, Flycheck adds a tooltip to each
+error.  Its contents are computed by <code>flycheck-help-echo-function</code>:
+</p>
+<dl>
+<dt><a name="index-flycheck_002dhelp_002decho_002dfunction"></a>User Option: <strong>flycheck-help-echo-function</strong></dt>
+<dd><p>A function to compute the contents of the error tooltips.  The function
+is called with the list of errors to display as single argument.  It
+should return a string, which is displayed when the user hovers over an
+error.
+</p></dd></dl>
+
+<p>The default is <code>flycheck-make-help-echo</code>, which displays contents
+similar to those produced by <code>flycheck-display-error-messages</code>.
 </p>
 
 
