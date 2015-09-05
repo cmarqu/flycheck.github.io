@@ -11,6 +11,7 @@ master (in development)
   - Improve mode line display for buffers with only info messages [[GH-733]](https://github.com/flycheck/flycheck/issues/733)
   - Improve indentation of multi-line error messages in error list [[GH-731]](https://github.com/flycheck/flycheck/issues/731)
   - Merge messages of all errors under cursor for Help Echo [[GH-730]](https://github.com/flycheck/flycheck/issues/730)
+  - Align multi-line messages in error list [[GH-732]](https://github.com/flycheck/flycheck/issues/732)
 
 - Bug fixes:
 
