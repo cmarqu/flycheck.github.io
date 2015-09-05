@@ -5,6 +5,9 @@ master (in development)
 
   - Add `flycheck-help-echo-function` to customize the Help Echo of Flycheck
     overlays [[GH-730]](https://github.com/flycheck/flycheck/issues/730)
+  - Use symbolic error IDs in Pylint [[GH-714]](https://github.com/flycheck/flycheck/issues/714)
+  - Add `flycheck-pylint-use-symbolic-id` to disable symbolic IDs for Pylint
+    [[GH-714]](https://github.com/flycheck/flycheck/issues/714)
 
 - Improvements:
 
