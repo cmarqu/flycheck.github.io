@@ -833,9 +833,16 @@ syntax checker using
 </p></dd>
 </dl>
 
-<p><code>python-pylint</code> reads a configuration file:
+<p><code>python-pylint</code> provides the following options:
 </p>
 <dl compact="compact">
+<dt><code>flycheck-pylint-use-symbolic-id</code></dt>
+<dd><a name="index-flycheck_002dpylint_002duse_002dsymbolic_002did"></a>
+<p>A boolean indicating whether to report symbolic or numeric message identifiers.
+For example, whether to report a message type as no-name-in-module, or E0611.
+On by default.
+</p>
+</dd>
 <dt><code>flycheck-pylintrc</code></dt>
 <dd><a name="index-flycheck_002dpylintrc"></a>
 <p>Configuration file for Pylint.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more information about configuration files.
