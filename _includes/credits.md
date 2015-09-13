@@ -1,5 +1,6 @@
-Flycheck is written and maintained by
-[Sebastian Wiesner](https://github.com/lunaryorn) (primary maintainer).
+Flycheck was written by [Sebastian Wiesner](https://github.com/lunaryorn) and is
+now maintained by Sebastian Wiesner and
+[Clément Pit--Claudel](https://github.com/cpitclaudel).
 
 The following people—listed in alphabetical order—contributed
 substantial code to Flycheck:
