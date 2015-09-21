@@ -17,6 +17,7 @@ master (in development)
   - Cache GHC output for faster syntax checking and better template haskell
     support [[GH-708]](https://github.com/flycheck/flycheck/issues/708)
   - Fall back to `rst` if `rst-sphinx` is disabled [[GH-745]](https://github.com/flycheck/flycheck/issues/745) [[GH-746]](https://github.com/flycheck/flycheck/issues/746)
+  - New uniform fringe indicators [[GH-750]](https://github.com/flycheck/flycheck/issues/750)
 
 - Bug fixes:
 
