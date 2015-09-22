@@ -20,7 +20,7 @@ It uses various syntax checking and linting tools to automatically check the
 contents of buffers while you type, and reports warnings and errors directly in
 the buffer, or in an optional error list:
 
-[![Flycheck screencast](images/screencast.gif)](images/screencast.gif)
+[![Annotated screenshot of Flycheck](images/flycheck-annotated.png)](images/flycheck-annotated.png)
 
 Features
 --------
