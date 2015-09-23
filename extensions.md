@@ -36,3 +36,6 @@ The following extensions provide additional cool features for Flycheck:
 - [flycheck-rust](https://github.com/flycheck/flycheck-rust) improves Rust
   support in Flycheck, by configuring Flycheck according to Cargo settings and
   layouts.
+- [flycheck-status-emoji](https://github.com/liblit/flycheck-status-emoji)
+  replaces mode-line status with cute, compact emoji, such as `😱` for
+  errors or `😌` if no problems were found.
