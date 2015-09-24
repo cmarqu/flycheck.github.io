@@ -36,17 +36,25 @@ Features
 - A “doesn't get in your way” guarantee
 - Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
 
-Manual
-------
+Help
+----
 
-With Flycheck installed you can read the manual of your Flycheck installation
-inside Emacs with `M-x flycheck-info`.
+Flycheck comes with a comprehensive manual.  You can read this manual in Emacs
+with `M-x flycheck-info`, provided that you already installed Flycheck.
+Alternatively, the manual is available online:
 
-{% if site.data.releases.include_latest %}
-- [Snapshot](manual/latest/index.html) (for MELPA users){% endif %}{% if site.data.releases.versions %}
+{% if site.data.releases.versions %}
 - [Latest release](manual/{{site.data.releases.versions | last}}/index.html)
-v{{site.data.releases.versions | last}} (for Marmalade and MELPA Stable users)
+  v{{site.data.releases.versions | last}}, if you installed Flycheck from
+  MELPA Stable {% endif %}{% if site.data.releases.include_latest %}
+- [Snapshot](manual/latest/index.html), if you installed Flycheck from MELPA
 {% endif %}
+
+If you have questions about Flycheck or need help with a particular problem,
+please ask a question on
+[Stack Exchange](https://emacs.stackexchange.com/questions/tagged/flycheck).  If
+you found a bug in Flycheck, please report it to our
+[issue tracker](https://github.com/flycheck/flycheck/issues).
 
 Latest news
 -----------
