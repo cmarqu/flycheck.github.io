@@ -15,12 +15,17 @@ github:
   username: flycheck
   url: "https://github.com/flycheck/flycheck.github.io/"
 
+feed:
+  path: "feed.atom"
+
 # Build settings
 markdown: kramdown
 timezone: UTC
 encoding: utf-8
 exclude:
   - "Rakefile"
+gems:
+  - jekyll-feed
 
 defaults:
   - scope:
