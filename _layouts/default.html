@@ -3,7 +3,7 @@
   <head>
     {% include head-static.html %}
 
-    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.name }}</title>
     <meta name="description" content="Syntax checking for GNU Emacs">
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
@@ -41,7 +41,7 @@
         <a href="/colophon.html">Colophon</a>
         · <a href="/archive.html">Archive</a>
         · <a href="/feed.atom">Feed</a>
-        · <a href="{{ site.repo }}blob/master/{{page.path}}">Source on Github</a>
+        · <a href="{{ site.github.url }}blob/master/{{page.path}}">Source on Github</a>
       </p>
       <p>
           <a rel="license"

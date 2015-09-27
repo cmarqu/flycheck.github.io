@@ -1,11 +1,19 @@
-# Site settings
-title: Flycheck
-email: flycheck@lunaryorn.com
-description: On the fly syntax checking for GNU Emacs
+# Site metadata
+name: Flycheck
+description: "On the fly syntax checking for GNU Emacs"
 baseurl: ""
 url: "http://www.flycheck.org"
-github_username: flycheck
-repo: "https://github.com/flycheck/flycheck.github.io/"
+
+# Author settings
+author:
+  name: "Sebastian Wiesner"
+  email: "flycheck@lunaryorn.com"
+  uri: "http://www.lunaryorn.com"
+
+# Github settings
+github:
+  username: flycheck
+  url: "https://github.com/flycheck/flycheck.github.io/"
 
 # Build settings
 markdown: kramdown
