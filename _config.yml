@@ -24,6 +24,8 @@ timezone: UTC
 encoding: utf-8
 exclude:
   - "Rakefile"
+  - "Gemfile"
+  - "Gemfile.lock"
 gems:
   - jekyll-feed
 
