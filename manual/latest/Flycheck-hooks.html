@@ -73,8 +73,19 @@ according to the result of the last syntax check.  Additionally,
 change of Flycheck, and provides a fine-grained reporting about what
 Flycheck is currently doing.
 </p>
+<a name="Executables-and-commands"></a>
+<h3 class="section">6.2 Executables and commands</h3>
+
+<p>Flycheck uses the function given by the option
+<code>flycheck-executable-find</code> to search for executables, and passes
+all syntax checker commands through
+<code>flycheck-command-wrapper-function</code> before running them.  These
+features let you adapt Flycheck to search executables and run commands
+in sandboxed environments such as <code>bundle exec</code> or
+<code>nix-shell</code>.
+</p>
 <a name="Error-processing"></a>
-<h3 class="section">6.2 Error processing</h3>
+<h3 class="section">6.3 Error processing</h3>
 
 <p>The functions in <code>flycheck-process-error-functions</code> are used to
 process new errors reported by a Flycheck syntax checker.  Add to this
@@ -85,7 +96,7 @@ to the buffer.  As a consequence, you can <em>entirely opt out</em> from
 highlighting with a custom hook.
 </p>
 <a name="Error-display"></a>
-<h3 class="section">6.3 Error display</h3>
+<h3 class="section">6.4 Error display</h3>
 
 <p>The function <code>flycheck-display-errors-function</code> is called to
 display an error at point.  The <a href="https://github.com/flycheck/flycheck-pos-tip">flycheck-pos-tip</a> extension uses this hook to show errors in a GUI popup
