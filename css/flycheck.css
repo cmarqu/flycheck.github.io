@@ -380,6 +380,7 @@ a[rel="next"]:before {
     .navbar {
         width: 100%;
         padding-left: 0;
+        padding-right: 0;
     }
 
     .navbar-header {
