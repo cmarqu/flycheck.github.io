@@ -152,6 +152,16 @@ namespace :build do
   task :documents, [:srcdir] => %w(changes.md credits.md)
 end
 
+namespace :verify do
+  desc 'Run jekyll doctor'
+  task :doctor do
+    sh 'bundle', 'exec', 'jekyll', 'doctor'
+  end
+end
+
+desc 'Verify the site'
+task verify: ['verify:doctor']
+
 desc 'Build everything'
 task build: ['build:site']
 
