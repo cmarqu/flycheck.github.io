@@ -1,6 +1,6 @@
 _site/
 
 # Vendored dependencies from bundle install
-_vendor/
+vendor/
 # Bundler configuration
 .bundle/
