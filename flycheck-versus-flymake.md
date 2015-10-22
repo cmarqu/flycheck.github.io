@@ -88,9 +88,9 @@ Enabling syntax checking
 enabled for each mode individually and **carefully**, because it does not deal
 well with unavailable syntax checker tools.  In a GUI frame, it signals errors
 in GUI dialogs.  In a TTY frame, it does not signal any error at all, but
-instead silently hangs.  The same occurs, when a syntax checker tool becomes
-unavailable after Flymake Mode is enabled, for instance, because the underlying
-tool was uninstalled.
+instead silently hangs.  The same occurs when a syntax checker tool becomes
+unavailable after Flymake Mode is enabled (for instance, because the underlying
+tool was uninstalled).
 
 <figure>
 <img src="{{site.baseurl}}/images/flymake-error.png"
@@ -104,12 +104,12 @@ available
 The third-party library [flymake-easy][] provides an alternate way to enable
 Flymake Mode, which gracefully handles unavailable syntax checkers.  It does not
 check whether the tool still exists before a syntax check, though, and thus does
-still exposes above behavior, when a tool becomes unavailable after the mode was
+still exposes above behavior when a tool becomes unavailable after the mode was
 enabled.
 
 **Flycheck** provides a global mode `global-flycheck-mode`, which enables syntax
 checking in every supported language.  If a syntax checking tool is not
-available, Flycheck fails gracefully, does not enable syntax checking, and just
+available Flycheck fails gracefully, does not enable syntax checking, and just
 indicates the failure in the mode line.
 
 Syntax checkers
@@ -120,7 +120,7 @@ Syntax checkers
 **Flymake** supports Java, Makefiles, Perl, PHP, TeX/LaTeX and XML.  Notably, it
 does *not* support Emacs Lisp.  A third-party [Flymake fork][] supports more
 languages, though.  Furthermore there are many recipes for other languages on
-the [Flymake page][] in the EmacsWiki, and many extension packages for other
+the [Flymake page][] in the EmacsWiki and many extension packages for other
 languages in the popular ELPA archive [MELPA][].
 
 **Flycheck** provides support for over 40 languages with over 70 syntax
@@ -140,7 +140,7 @@ syntax checker is difficult for users who are not familiar with Emacs Lisp.
 [flymake-easy][] provides an easier way to define new syntax checkers, though.
 
 **Flycheck** provides a single function `flycheck-define-checker` to define a
-new syntax checker.  This function uses a declarative syntax, which is easy to
+new syntax checker.  This function uses a declarative syntax which is easy to
 understand even for users unfamiliar with Emacs Lisp.  In fact, many syntax
 checkers in Flycheck were [contributed by the community][1].
 
@@ -195,7 +195,7 @@ synchronous as well as asynchronous functions, and provides simple
 callback-based protocol to communicate the status of syntax checks.  This allows
 Flycheck to use persistent background processes for syntax checking.  For
 instance, [flycheck-ocaml][] uses a running [Merlin][] process to check OCaml
-buffers, which is much easier and faster than invoking the OCaml compiler.
+buffers.  This is much easier and faster than invoking the OCaml compiler.
 
 [flycheck-ocaml]: https://github.com/flycheck/flycheck-ocaml
 [Merlin]: https://github.com/the-lambda-church/merlin
@@ -203,7 +203,7 @@ buffers, which is much easier and faster than invoking the OCaml compiler.
 ### Customization of syntax checkers
 
 **Flymake** does not provide built-in means to customize syntax checkers.
-Instead, when defining a new syntax checker, the user needs to declare
+Instead, when defining a new syntax checker the user needs to declare
 customization variables explicitly and explicitly check their value in the init
 function.
 
@@ -220,14 +220,14 @@ configuration files for syntax checkers.
 checker.
 
 **Flycheck** implicitly defines a variable to set the path of a syntax checker
-tool for each defined syntax checker, and provides the interactive command
+tool for each defined syntax checker and provides the interactive command
 `flycheck-set-checker-executable` to change the executable used in a buffer.
 
 Syntax checker selection
 ------------------------
 
 **Flymake** selects syntax checkers based on file name patterns in
-`flymake-allowed-file-name-masks`.  Effectively, this duplicates the existing
+`flymake-allowed-file-name-masks`.  Effectively this duplicates the existing
 logic Emacs uses to choose the right major mode, but lacks its flexibility and
 power.  For instance, Flymake cannot pick a syntax checker based on the shebang
 of a file.
@@ -248,12 +248,11 @@ However, [flymake-easy][] patches Flymake to allow for custom syntax checkers
 per buffer.  This does not happen automatically though.  The user still needs to
 explicitly register a syntax checker in a major mode hook.
 
-**Flycheck** supports custom predicate function.  It uses these to implement the
-shell script syntax checkers, for instance.  Emacs uses a single major mode for
-various shell script types (e.g. Bash, Zsh, POSIX Shell, etc.), so Flycheck
-additionally uses a custom predicate to look at the value of the variable
-`sh-shell` in Sh Mode buffers, to determine which shell to use for syntax
-checking.
+**Flycheck** supports custom predicate function.  For instance, Emacs uses a
+single major mode for various shell script types (e.g. Bash, Zsh, POSIX Shell,
+etc.), so Flycheck additionally uses a custom predicate to look at the value of
+the variable `sh-shell` in Sh Mode buffers to determine which shell to use for
+syntax checking.
 
 ### Manual selection
 
@@ -261,7 +260,7 @@ checking.
 either interactively, or via local variables.
 
 **Flycheck** provides the local variable `flycheck-checker` to explicitly use a
-specific syntax checker for a buffer, and the command `flycheck-select-checker`
+specific syntax checker for a buffer and the command `flycheck-select-checker`
 to set this variable interactively.
 
 ### Multiple syntax checkers per buffer
@@ -302,7 +301,7 @@ Error identifiers
 **Flycheck** supports unique identifiers for different kinds of errors, if a
 syntax checker provides these.  The identifiers appear in the error list and in
 error display, and can be copied independently, for instance for use in an
-inline suppression comment, or to search the web for a particular kind of error.
+inline suppression comment or to search the web for a particular kind of error.
 
 Error parsing
 -------------
@@ -319,8 +318,8 @@ messages.
 By means of such functions, it can parse JSON, XML or other structured output
 formats.  Flycheck includes some ready-to-use parsing functions for well-known
 output formats, such as Checkstyle XML.  By parsing structured output format,
-Flycheck can handle arbitrarily complex error messages.  Also, with regular
-expressions it uses the error patterns to split the output into tokens, and thus
+Flycheck can handle arbitrarily complex error messages.  With regular
+expressions it uses the error patterns to split the output into tokens and thus
 handles multiline messages just as well.
 
 Error message display
@@ -378,7 +377,7 @@ Resource consumption
 **Flymake** starts a syntax check after every change, regardless of whether the
 buffer is visible in a window or not.  It does not limit the number of
 concurrent syntax checks.  As such, Flymake starts many concurrent syntax
-checks, if many buffers are changed at the same time (e.g. after a VCS revert),
+checks when many buffers are changed at the same time (e.g. after a VCS revert),
 which is known to freeze Emacs temporarily.
 
 The third-party [Flymake fork][] limits the number of concurrent syntax checks.
@@ -401,9 +400,9 @@ changes.  This greatly reduces the CPU load, but still consumes some marginal
 CPU, even if Emacs is idle and not in use currently.
 
 **Flycheck** does not use timers at all to check for changes.  Instead it
-registers a handler for Emacs' built-in `after-change-functions` hook, which is
+registers a handler for Emacs' built-in `after-change-functions` hook which is
 run after changes to the buffer.  This handler is only invoked when the buffer
-actually changed, and starts a one-shot timer to delay the syntax check until
+actually changed and starts a one-shot timer to delay the syntax check until
 the editing stopped for a short time, to save resources and avoid checking
 half-finished editing.
 
@@ -414,7 +413,8 @@ Unit tests
 
 **Flycheck** has unit tests for all built-in syntax checkers, and for large
 parts of the underlying machinery and API.  Contributed syntax checkers are
-required to have test cases.  The tests are continuously run on [Travis CI][].
+required to have test cases.  A subset of the est suite is continuously run on
+[Travis CI][].
 
 [Travis CI]: https://travis-ci.org/flycheck/flycheck
 
