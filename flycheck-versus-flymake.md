@@ -93,7 +93,8 @@ unavailable after Flymake Mode is enabled, for instance, because the underlying
 tool was uninstalled.
 
 <figure>
-<img src="{{site.baseurl}}/images/flymake-error.png" />
+<img src="{{site.baseurl}}/images/flymake-error.png"
+     alt="Flymake showing a GUI dialog to inform about a program not being available"/>
 <figcaption>
 Flymake showing a GUI dialog to inform that a syntax checker tool is not
 available
@@ -330,7 +331,8 @@ hovers the mouse over an error location.  It does not provide means to show
 error messages in a TTY frame, or with the keyboard only.
 
 <figure>
-<img src="{{site.baseurl}}/images/flymake-tooltip.png"/>
+<img src="{{site.baseurl}}/images/flymake-tooltip.png"
+     alt="A tooltip showing Flycheck error messages"/>
 <figcaption>Tooltip showing a Flymake error message</figcaption>
 </figure>
 
@@ -342,12 +344,14 @@ messages in the echo area, if the point is at an error location.  This feature
 is fully customizable via `flycheck-display-errors-function`.
 
 <figure>
-<img src="/images/flycheck-tooltip-and-echo-area.png"/>
+<img src="/images/flycheck-tooltip-and-echo-area.png"
+     alt="Flycheck showing error messages in a tooltip and in the echo area"/>
 <figcaption>Tooltip and echo area showing a Flycheck error message</figcaption>
 </figure>
 
 <figure>
-<img src="/images/flycheck-echo-area-in-tty-frame.png"/>
+<img src="/images/flycheck-echo-area-in-tty-frame.png"
+     alt="Flycheck showing error messages in the echo area in a TTY frame"/>
 <figcaption>Echo area showing a Flycheck error messages in a TTY
 frame.</figcaption>
 </figure>
@@ -361,7 +365,8 @@ This error list is automatically updated after each syntax check, and follows
 the focus.
 
 <figure>
-<img src="/images/flycheck-error-list.png"/>
+<img src="/images/flycheck-error-list.png"
+     alt="Flycheck showing all errors for the current buffer in a list buffer"/>
 <figcaption>Listing all errors in the current buffer</figcaption>
 </figure>
 
