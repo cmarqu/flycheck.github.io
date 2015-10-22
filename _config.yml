@@ -26,6 +26,7 @@ exclude:
   - "Rakefile"
   - "Gemfile"
   - "Gemfile.lock"
+  - "vendor"
 gems:
   - jekyll-feed
 
