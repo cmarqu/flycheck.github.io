@@ -157,10 +157,18 @@ namespace :verify do
   task :doctor do
     sh 'bundle', 'exec', 'jekyll', 'doctor'
   end
+
+  desc 'Run HTML Proofer'
+  task proof: ['build:site'] do
+    sh 'bundle', 'exec', 'htmlproof', '_site/',
+       '--disable-external',
+       '--check-html',
+       '--check-favicon'
+  end
 end
 
 desc 'Verify the site'
-task verify: ['verify:doctor']
+task verify: ['verify:doctor', 'verify:proof']
 
 desc 'Build everything'
 task build: ['build:site']
