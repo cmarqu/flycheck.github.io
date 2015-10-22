@@ -11,24 +11,24 @@
 
 @font-face {
     font-family: "Lato";
-    src: url("Lato-Regular.woff") format('woff');
+    src: url("LatoLatin-Regular.woff") format('woff');
 }
 
 @font-face {
     font-family: "Lato";
-    src: url("Lato-Italic.woff") format('woff');
+    src: url("LatoLatin-Italic.woff") format('woff');
     font-style: italic;
 }
 
 @font-face {
     font-family: "Lato";
-    src: url("Lato-Bold.woff") format('woff');
+    src: url("LatoLatin-Bold.woff") format('woff');
     font-weight: bold;
 }
 
 @font-face {
     font-family: "Lato";
-    src: url("Lato-BoldItalic.woff") format('woff');
+    src: url("LatoLatin-BoldItalic.woff") format('woff');
     font-weight: bold;
     font-style: italic;
 }
