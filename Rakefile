@@ -25,43 +25,64 @@ def ensure_srcdir(args)
   fail 'srcdir argument missing' if args.srcdir.nil?
 end
 
-namespace :images do
-  ICON_SIZES = [16, 32, 64, 96, 196]
-  ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
-  LOGO_HEIGHT = 30
+# File rules
+ICON_SIZES = [16, 32, 64, 96, 196]
+ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
+LOGO_HEIGHT = 30
 
-  def make_link(icon)
-    /^icon-(?<size>\d+)\.png$/ =~ icon
-    "<link rel=\"icon\" sizes=\"#{size}x#{size}\" href=\"/#{icon}\">"
-  end
-
-  rule(/icon-.*\.png/, [:inkscape] => ['flycheck.svg']) do |t, args|
-    args.with_defaults(inkscape: 'inkscape')
-    /^icon-(?<size>\d+)\.png$/ =~ t.name
-    sh(args.inkscape, '--without-gui', '--export-area-age',
-       '--export-background=white', "--export-png=#{t.name}",
-       "--export-width=#{size}",
-       t.source)
-  end
-
-  file '_includes/head-icon.html' => ICONS do |t|
-    IO.write(t.name, t.prerequisites.map { |icon| make_link(icon) }.join("\n"))
-  end
-
-  file 'images/logo.png', [:inkscape, :logo_height] =>
-                          ['flycheck.svg'] do |t, args|
-    args.with_defaults(inkscape: 'inkscape', logo_height: LOGO_HEIGHT)
-    sh('--without-gui', '--export-area-drawing',
-       '--export-background-opacity=0,0',
-       "--export-height=#{args.logo_height}",
-       "--export-png=#{t.name}",
-       t.source)
-  end
-
-  task :all, [:inkscape] => ['_includes/head-icon.html', 'images/logo.png']
+def make_link(icon)
+  /^icon-(?<size>\d+)\.png$/ =~ icon
+  "<link rel=\"icon\" sizes=\"#{size}x#{size}\" href=\"/#{icon}\">"
 end
 
-namespace :manual do
+rule(/icon-.*\.png/, [:inkscape] => ['flycheck.svg']) do |t, args|
+  args.with_defaults(inkscape: 'inkscape')
+  /^icon-(?<size>\d+)\.png$/ =~ t.name
+  sh(args.inkscape, '--without-gui', '--export-area-age',
+     '--export-background=white', "--export-png=#{t.name}",
+     "--export-width=#{size}",
+     t.source)
+end
+
+file '_includes/head-icon.html' => ICONS do |t|
+  IO.write(t.name, t.prerequisites.map { |icon| make_link(icon) }.join("\n"))
+end
+
+file 'images/logo.png', [:inkscape, :logo_height] =>
+                        ['flycheck.svg'] do |t, args|
+  args.with_defaults(inkscape: 'inkscape', logo_height: LOGO_HEIGHT)
+  sh('--without-gui', '--export-area-drawing',
+     '--export-background-opacity=0,0',
+     "--export-height=#{args.logo_height}",
+     "--export-png=#{t.name}",
+     t.source)
+end
+
+namespace :init do
+  CLOBBER << '.bundle'
+  CLOBBER << 'vendor'
+
+  desc 'Install dependencies via bundle'
+  task :dependencies do
+    sh 'bundle', 'install', '--path', 'vendor'
+  end
+end
+
+desc 'Initialize the repository'
+task init: ['init:dependencies']
+
+namespace :build do
+  CLOBBER << '_site'
+
+  desc 'Build the site'
+  task :site do
+    sh 'bundle', 'exec', 'jekyll', 'build'
+  end
+
+  desc 'Build all images'
+  task :images, [:inkscape] => ['_includes/head-icon.html', 'images/logo.png']
+
+  # Build the manual
   DEFAULT_CUSTOMIZATIONS = {
     # Wrap our container around the body
     'AFTER_BODY_OPEN' => '<div class="container">',
@@ -86,7 +107,7 @@ namespace :manual do
   end
 
   desc 'Update the HTML manual from "srcdir" for "version" (default latest)'
-  task :update, [:srcdir, :version, :texi2any] do |_, args|
+  task :manual, [:srcdir, :version, :texi2any] do |_, args|
     args.with_defaults(version: 'latest', texi2any: 'texi2any')
     ensure_srcdir args
     source = Pathname.new(args.srcdir).join('doc').join('flycheck.texi')
@@ -102,10 +123,8 @@ namespace :manual do
         [source.to_path])
     cp_r(source.dirname.join('images').to_path, target)
   end
-end
 
-namespace :docs do
-  desc 'Update credits.md from srcdir'
+  # Build documents
   task 'credits.md', [:srcdir] do |_, args|
     ensure_srcdir args
     source = Pathname.new(args.srcdir).join('CREDITS.md')
@@ -130,21 +149,15 @@ namespace :docs do
   end
 
   desc 'Update all documents from srcdir'
-  task :update, [:srcdir] => %w(changes.md credits.md)
+  task :documents, [:srcdir] => %w(changes.md credits.md)
 end
 
-namespace :dev do
-  desc 'Install all dependencies to _vendor/'
-  task :deps do
-    sh 'bundler', 'install', '--path', '_vendor', '--binstubs=_vendor/bin'
-  end
+desc 'Build everything'
+task build: ['build:site']
 
-  CLOBBER << '.bundle'
-  CLOBBER << '_vendor'
-  CLOBBER << '_site'
-
+namespace :run do
   desc 'Preview the site at http://localhost:4000'
   task :preview do
-    sh '_vendor/bin/jekyll', 'serve', '-w'
+    sh 'bundle', 'exec', 'jekyll', 'serve', '-w', '-D', '--future'
   end
 end
