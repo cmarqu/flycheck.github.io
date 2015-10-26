@@ -11,7 +11,7 @@ inside Emacs with `M-x flycheck-info`.
 
 {% if site.data.releases.include_latest %}
 - [Snapshot]({{site.baseurl}}/manual/latest/index.html) (for MELPA users){% endif %}{% if site.data.releases.versions %}
-- [Latest release]({{site.baseurl}}/manual/{{site.data.releases.versions | last}}/index.html) (for
+- [Latest release {{site.data.releases.versions | last}}]({{site.baseurl}}/manual/{{site.data.releases.versions | last}}/index.html) (for
 Marmalade and MELPA Stable users)
 {% endif %}
 
