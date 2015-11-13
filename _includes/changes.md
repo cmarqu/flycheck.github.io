@@ -9,6 +9,7 @@ master (in development)
 - New syntax checkers:
 
   - JSON with Python’s built-in `json` module [[GH-758]](https://github.com/flycheck/flycheck/issues/758)
+  - Rust with `cargo rustc` [[GH-772]](https://github.com/flycheck/flycheck/issues/772)
 
 - New features:
 

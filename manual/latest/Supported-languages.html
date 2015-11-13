@@ -966,7 +966,7 @@ following checkers for very basic checking:
 </p>
 <ul>
 <li> <code>ruby</code> (using the <a href="https://www.ruby-lang.org/">standard Ruby
-interpreter</a>),
+interpreter</a>), or
 </li><li> <code>ruby-jruby</code> (using <a href="http://jruby.org/">JRuby</a>)
 </li></ul>
 
@@ -976,14 +976,18 @@ interpreter</a>),
 <a name="index-Rust-language"></a>
 
 <ul>
-<li> <code>rust</code> (using the <a href="http://www.rust-lang.org/">Rust compiler</a>),
-with the following options:
+<li> <code>rust-cargo</code> (using the <a href="https://crates.io/">Cargo</a>), or
 
+</li><li> <code>rust</code> (using the <a href="http://www.rust-lang.org/">Rust compiler</a>)
+
+<p>These checkers provide the following options:
+</p>
 <dl compact="compact">
 <dt><code>flycheck-rust-args</code></dt>
 <dd><a name="index-flycheck_002drust_002dargs"></a>
 <p>A list of additional arguments for the Rust compiler <code>rustc</code>.
-</p></dd>
+</p>
+</dd>
 <dt><code>flycheck-rust-check-tests</code></dt>
 <dd><a name="index-flycheck_002drust_002dcheck_002dtests"></a>
 <p>Whether to check test code in Rust.
@@ -992,19 +996,19 @@ with the following options:
 <dt><code>flycheck-rust-crate-root</code></dt>
 <dd><a name="index-flycheck_002drust_002dcrate_002droot"></a>
 <p>A path to the crate root for the current buffer, or nil if the current
-buffer is a crate by itself.
+buffer is a crate by itself.  <code>rust-cargo</code> ignores this option, as
+the crate root comes from Cargo.
 </p>
 </dd>
 <dt><code>flycheck-rust-crate-type</code></dt>
 <dd><a name="index-flycheck_002drust_002dcrate_002dtype"></a>
-<p>The type of the crate to check, as string for the <samp>--crate-type</samp>
-option.
-</p>
-</dd>
+<p>The type of the crate to check, as string for the
+<samp>--crate-type</samp> option.
+</p></dd>
 <dt><code>flycheck-rust-library-path</code></dt>
 <dd><a name="index-flycheck_002drust_002dlibrary_002dpath"></a>
-<p>A list of library directories for Rust.  Relative paths are relative to
-the buffer being checked.
+<p>A list of additional library directories for Rust. Relative paths are
+relative to the buffer being checked.
 </p></dd>
 </dl>
 
