@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Passing configuration to checkers</title>
+
+<meta name="description" content="Flycheck: Passing configuration to checkers">
+<meta name="keywords" content="Flycheck: Passing configuration to checkers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="Syntax-checker-definitions.html#Syntax-checker-definitions" rel="up" title="Syntax checker definitions">
+<link href="Controlling-use-of-checkers.html#Controlling-use-of-checkers" rel="next" title="Controlling use of checkers">
+<link href="Parsing-structured-output.html#Parsing-structured-output" rel="prev" title="Parsing structured output">
+<link rel="stylesheet" href="/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en">
+<div class="container"><a name="Passing-configuration-to-checkers"></a>
+<div class="header">
+<p>
+Next: <a href="Controlling-use-of-checkers.html#Controlling-use-of-checkers" accesskey="n" rel="next">Controlling use of checkers</a>, Previous: <a href="Parsing-structured-output.html#Parsing-structured-output" accesskey="p" rel="prev">Parsing structured output</a>, Up: <a href="Syntax-checker-definitions.html#Syntax-checker-definitions" accesskey="u" rel="up">Syntax checker definitions</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Passing-options-and-configuration-files-to-syntax-checkers"></a>
+<h3 class="section">5.6 Passing options and configuration files to syntax checkers</h3>
+
+<p>Many linting tools provide a rich set of options to configure their
+analysis.  Flycheck makes it to define proper Emacs options and map them
+to options of commands.
+</p>
+<p>For instance, the <a href="https://github.com/bbatsov/rubocop">Rubocop</a> tool checks Ruby for
+semantic and stylistic issues.  Since style is mainly a matter of taste,
+it has a special linting mode in which all stylistic checks are disabled
+(error patterns omitted for readability):
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-define-checker ruby-rubocop
+  &quot;A Ruby syntax and style checker using the RuboCop tool.
+
+See URL `http://batsov.com/rubocop/'.&quot;
+  :command (&quot;rubocop&quot; &quot;--format&quot; &quot;emacs&quot;
+            (option-flag &quot;--lint&quot; flycheck-rubocop-lint-only)
+            source)
+  :error-patterns ...
+  :modes (ruby-mode))
+</pre></div>
+
+<p>Note the special <code>option-flag</code> argument, which splices the value of
+the boolean Emacs option <code>flycheck-rubocop-lint-only</code> into the
+command: If the variable is non-nil, Flycheck adds the <samp>--lint</samp>
+option to the final command line, other Flycheck omits the entire
+argument.
+</p>
+<p>Flycheck also supports other special <code>option-</code> arguments for plain
+values or lists of values.  See <a href="Argument-Substitution.html#Argument-Substitution">Argument Substitution</a>, for a list of
+all special arguments.
+</p>
+<p>Flycheck also provides a convenience macro
+<code>flycheck-def-option-var</code> to declare these options:
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-def-option-var flycheck-rubocop-lint-only nil ruby-rubocop
+  &quot;Whether to only report code issues in Rubocop.
+
+When non-nil, only report code issues in Rubocop, via `--lint'.
+Otherwise report style issues as well.&quot;
+  :safe #'booleanp
+  :type 'boolean)
+</pre></div>
+
+<p>Essentially, this macro is just a wrapper around the built-in
+<code>defcustom</code>, which additionally keeps track of the syntax checker
+the option belongs to, and adds the option to the appropriate custom
+group.  You can pass arbitrary custom keywords to this macro as we did
+in this example: <code>:type</code> marks this option as boolean flag, and
+<code>:safe</code> allows the use as file-local variable, if the value is
+boolean.  See <a href="Configuring-checkers.html#Syntax-checker-options">Syntax checker options</a>, for more information about
+syntax checker configuration, and <a href="Checker-configuration.html#Checker-configuration">Checker configuration</a>, for the
+corresponding API reference.
+</p>
+<p>By a similar mechanism you can also pass paths to configuration files to
+a syntax checker tool.  The aforementioned
+<a href="http://www.pylint.org/">Pylint</a> reads a configuration file for
+instance:
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-define-checker python-pylint
+  &quot;A Python syntax and style checker using Pylint.
+
+This syntax checker requires Pylint 1.0 or newer.
+
+See URL `http://www.pylint.org/'.&quot;
+  ;; -r n disables the scoring report
+  :command (&quot;pylint&quot; &quot;-r&quot; &quot;n&quot;
+            &quot;--msg-template&quot; &quot;{path}:{line}:{column}:{C}:{msg} ({msg_id})&quot;
+            (config-file &quot;--rcfile&quot; flycheck-pylintrc)
+            source)
+  :error-patterns ...
+  :modes python-mode)
+</pre></div>
+
+<p>The special <code>config-file</code> argument passes a configuration file from
+<code>flycheck-pylintrc</code> to <code>pylint</code>, if the value of the
+variable is non-nil.
+</p>
+<p>Flycheck provides a sophisticated logic to find an appropriate
+configuration file.  See <a href="Configuring-checkers.html#Syntax-checker-configuration-files">Syntax checker configuration files</a>, for more
+information about syntax checker configuration, and <a href="Checker-configuration.html#Checker-configuration">Checker configuration</a>, for the corresponding API reference.
+</p>
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Next: <a href="Controlling-use-of-checkers.html#Controlling-use-of-checkers" accesskey="n" rel="next">Controlling use of checkers</a>, Previous: <a href="Parsing-structured-output.html#Parsing-structured-output" accesskey="p" rel="prev">Parsing structured output</a>, Up: <a href="Syntax-checker-definitions.html#Syntax-checker-definitions" accesskey="u" rel="up">Syntax checker definitions</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>
