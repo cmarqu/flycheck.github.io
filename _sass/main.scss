@@ -1,404 +1,416 @@
 @charset "UTF-8";
 
-/**************************************************************************/
-/* Copyright (c) 2014-2015 Sebastian Wiesner <swiesner@lunaryorn.com>     */
-/*                                                                        */
-/* Permission is hereby granted, free of charge, to any person obtaining  */
-/* a copy of this software and associated documentation files (the        */
-/* "Software"), to deal in the Software without restriction, including    */
-/* without limitation the rights to use, copy, modify, merge, publish,    */
-/* distribute, sublicense, and/or sell copies of the Software, and to     */
-/* permit persons to whom the Software is furnished to do so, subject to  */
-/* the following conditions:                                              */
-/*                                                                        */
-/* The above copyright notice and this permission notice shall be         */
-/* included in all copies or substantial portions of the Software.        */
-/*                                                                        */
-/* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,        */
-/* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     */
-/* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  */
-/* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE */
-/* LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION */
-/* OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  */
-/* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        */
-/**************************************************************************/
+// Copyright (c) 2014-2015 Sebastian Wiesner <swiesner@lunaryorn.com>
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 
 @import 'normalize';
 @import 'fonts';
 
-/* Basic typography styles */
-body {                          /* Body text */
-    font-family: "Lato", sans-serif;
-    font-size: 18px;
-    line-height: 1.35;
-    color: #444;
-    word-wrap: break-word;
-    font-feature-settings: "kern", "liga", "clig", "calt";
-    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+@mixin font-feature-settings($features...) {
+  // scss-lint:disable VendorPrefix
+  font-feature-settings: $features;
+  -webkit-font-feature-settings: $features;
 }
 
-.container {                    /* Page container */
-    margin: 0 auto;
-    padding: 0 15px;
+// Basic typography styles
+body {
+  // Enable a couple of nice font features
+  @include font-feature-settings('kern', 'liga', 'clig', 'calt');
+
+  color: #444;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 0.86em;
+  margin-bottom: .86em;
+  margin-top: 0;
 }
 
-h1, h2, h3, h4 {
-    font-family: "Lato", sans-serif;
-    font-weight: bold;
-    line-height: 1;
-    color: #222;
-    margin-top: 1.5em;
-    margin-bottom: 0.86em;
-    hyphens: none;
+h1,
+h2,
+h3,
+h4 {
+  color: #222;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  hyphens: none;
+  line-height: 1;
+  margin-bottom: .86em;
+  margin-top: 1.5em;
 }
 
 h1 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 h2 {
-    font-size: 1.1em;
+  font-size: 1.1em;
 }
 
 h3 {
-    font-size: 1.05em;
+  font-size: 1.05em;
 }
 
 h4 {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 .page-title {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 em {
-    font-style: italic;
+  font-style: italic;
 }
 
 strong {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-kbd, pre, code, samp, kbd {
-    font-family: "Source Code Pro", monospace;
-    font-size: 0.9em;
-    font-variant: normal;
+kbd,
+pre,
+code,
+samp,
+kbd {
+  font-family: 'Source Code Pro', monospace;
+  font-size: .9em;
+  font-variant: normal;
 }
 
 pre {
-    overflow: auto;
-    margin: 0.86em 0;
-    margin-left: 1.2em;
+  margin: .86em 0;
+  margin-left: 1.2em;
+  overflow: auto;
 }
 
 var {
-    font-style: normal;
-    text-transform: uppercase;
+  font-style: normal;
+  text-transform: uppercase;
 }
 
 blockquote {
-    margin: 1.2em 0;
-    padding: 0 2em;
-    line-height: 1.25;
-    font-size: 0.9em;
-    border-left: 5px solid #EEE;
+  border-left: 5px solid #eee;
+  font-size: .9em;
+  line-height: 1.25;
+  margin: 1.2em 0;
+  padding: 0 2em;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 0.86em;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  height: auto;
+  margin-bottom: .86em;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 hr {
-    border-width: 1px;
-    border-color: #CCC;
-    border-style: none none solid;
+  border-color: #ccc;
+  border-style: none none solid;
+  border-width: 1px;
+
+  + .header {
+    // Remove margin from bottom header
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
 }
 
 small {
-    font-size: 0.86em;
+  font-size: .86em;
 }
 
-h1 small, h2 small, h3 small, h4 small {
-    font-weight: normal;
-    font-size: 0.65em;
-    line-height: 1;
-    color: #777;
+h1 small,
+h2 small,
+h3 small,
+h4 small {
+  color: #777;
+  font-size: .65em;
+  font-weight: normal;
+  line-height: 1;
 }
 
-ul, ol {
-    margin: 0.86em 2.86em;
-    padding: 0;
+ul,
+ol {
+  margin: .86em 2.86em;
+  padding: 0;
 }
 
 dl {
-    margin: 0.86em 0;
+  margin: .86em 0;
+
+  &[compact='compact'] dt + dd {
+    margin-bottom: .5;
+    margin-top: .1em;
+  }
+
+  &[compact='compact'] dd {
+    margin-left: 2em;
+  }
+
+  &[compact='compact'] p:last-child {
+    margin-bottom: .5em;
+  }
 }
 
 dt + dd {
-    margin-top: 0.86em;
+  margin-top: .86em;
 }
 
 dd {
-    margin-left: 2.86em;
-}
-
-dl[compact="compact"] dt + dd {
-    margin-top: 0.1em;
-    margin-bottom: 0.5;
-}
-
-dl[compact="compact"] dd {
-    margin-left: 2em;
-}
-
-dl[compact="compact"] p:last-child {
-    margin-bottom: 0.5em;
-}
-
-td {
-    margin: 0.1em;
+  margin-left: 2.86em;
 }
 
 a {
-    color: #333;
+  color: #333;
 }
 
 a:hover {
-    background-color: #eee;
-    border-radius: 4px;
-    transition-property: background;
-    transition-duration: 0.2s;
-    text-decoration: none;
+  background-color: #eee;
+  border-radius: 4px;
+  text-decoration: none;
+  transition-duration: .2s;
+  transition-property: background;
 }
 
-/* Tables */
+// Tables
 td,
 th {
-    padding: 0.5em 0.66em;;
+  margin: .1em;
+  padding: .5em .66em;
 }
 
 tr,
 th {
-    border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 tr:last-child {
-    border-bottom: none;
+  border-bottom: 0;
 }
 
-/* Images and figures */
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
+// Figures
 figure {
-    margin: 2em;
+  margin: 2em;
 }
 
 figcaption {
-    margin-top: 0.8em;
-    text-align: center;
-    font-size: 0.9em;
-}
+  font-size: .9em;
+  margin-top: .8em;
+  text-align: center;
 
-figcaption:before {
-    content: "Figure.";
+  &:before {
+    content: 'Figure.';
     font-weight: 700;
-    margin-right: 0.5em;
+    margin-right: .5em;
+  }
 }
 
-/* Table of contents */
+// Table of contents
 .toc {
-    list-style-position: disc inside none;
-    margin-left: 0;
-}
+  list-style-position: disc inside none;
+  margin-left: 0;
 
-.toc ul {
+  .toc ul {
     list-style: disc inside none;
-    margin: 0.2em 1em;
+    margin: .2em 1em;
+  }
 }
 
-/* Post lists */
-.post-list {                    /* Post lists */
-    margin-left: 0;
-    margin-right: 0;
-}
+// Post lists
+.post-list {
+  margin-left: 0;
+  margin-right: 0;
 
-.post-list dt {
-    font-weight: bold;
-    float: left;
+  dt {
     clear: left;
+    float: left;
+    font-weight: bold;
     text-align: right;
     width: 150px;
-}
+  }
 
-.post-list dd {
-    margin-top: 0;
+  dd {
     margin-left: 170px;
+    margin-top: 0;
+  }
 }
 
-/* Navigation bar, for non-texinfo pages */
+// Navigation bar, for non-texinfo pages
 .navbar {
-    padding: 0.8em;
-}
+  padding: .8em;
 
-.navbar .container {
-    padding-bottom: 0.2em;
+  .container {
     border-bottom: solid 1px #ccc;
+    padding-bottom: .2em;
+  }
 }
 
 .navbar-header {
-    display: block;
-    text-align: center;
-}
+  display: block;
+  text-align: center;
 
-.navbar-header img {
-    margin: 0;
+  img {
     display: inline;
+    margin: 0;
     vertical-align: bottom;
+  }
 }
 
 .navbar-brand {
-    padding-right: 0.8em;
+  padding-right: .8em;
 }
 
 .navbar-nav {
-    display: block;
-    text-align: center;
-    list-style: outside none;
-    margin: 0;
-}
+  display: block;
+  list-style: outside none;
+  margin: 0;
+  text-align: center;
 
-.navbar-nav > li {
+  > li {
     display: inline;
+  }
+
+  > li:after {
+    content: ' · ';
+  }
+
+  :after {
+    content: '';
+  }
 }
 
-.navbar-nav > li:after {
-    content: " · "
-}
+// Page footer
+.page-footer {
+  border-top: 1px solid #ccc;
+  font-size: .86em;
+  margin-top: 5rem;
+  padding: .5rem;
 
-.navbar-nav > li:last-child:after {
-    content: ""
-}
-
-.page-footer {                  /* Footer */
-    border-top: 1px solid #CCC;
-    margin-top: 5rem;
-    padding: 0.5rem;
-    font-size: 0.86em;
-}
-
-.page-footer p {
-    text-indent: 0;
+  p {
+    margin-bottom: .5em;
     text-align: center;
-    margin-bottom: 0.5em;
+    text-indent: 0;
+  }
 }
 
-/* Texinfo navigation headers */
+// Texinfo navigation headers
 .header {
-    margin-top: 2rem;
-}
+  margin-top: 2rem;
 
-hr + .header {                  /* Remove margin from bottom header */
-    margin-top: 0;
-    margin-bottom: 2rem;
-}
-
-.header p {
+  p {
     margin-bottom: 0;
     text-align: right;
-}
+  }
 
-.header a {
+  a {
     white-space: nowrap;
+
+    &[rel='up']:before {
+      content: ' ↑ ';
+    }
+
+    &[rel='prev']:before {
+      content: ' ← ';
+    }
+
+    &[rel='next']:before {
+      content: ' → ';
+    }
+  }
 }
 
-a[rel="up"]:before {
-    content: " ↑ ";
-}
-
-a[rel="prev"]:before {
-    content: " ← ";
-}
-
-a[rel="next"]:before {
-    content: " → ";
-}
-
-/* Texinfo menus */
+// Texinfo menus
 .menu {
-    margin: 2em 0;
+  margin: 2em 0;
+
+  tr {
+    border: 0;
+  }
+
+  td {
+    padding: .1em 0;
+  }
 }
 
-.menu tr {
-    border: none;
-}
-
-.menu td {
-    padding: 0.1em 0;
-}
-
-/* Texinfo indexes */
+// Texinfo indexes
 .index-cp {
-    margin: 0.86em 0;
+  margin: .86em 0;
 }
 
-/* Texinfo blocks */
+// Texinfo blocks
 .smallindentedblock {
-    font-size: 0.86em;
-    margin-left: 1.2em;
+  font-size: .86em;
+  margin-left: 1.2em;
 }
 
 @media print {
-    .container {
-        width: auto;
-    }
+  .container {
+    width: auto;
+  }
 
-    /* No headers and navigation in print */
-    .header {
-        display: none;
-    }
+  // No headers and navigation in print
+  .header {
+    display: none;
+  }
 
-    .navbar {
-        display: none;
-    }
+  .navbar {
+    display: none;
+  }
 }
 
-@media screen and (min-width: 750px) {     /* Larger devices */
-    .container {
-        width: 700px;
-    }
+// Larger devices
+@media screen and (min-width: 750px) {
+  .container {
+    width: 700px;
+  }
 
-    /* Put the nav header beneath the nav links instead of placing it on top */
-    .navbar {
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-    }
+  // Put the nav header beneath the nav links instead of placing it on top
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
 
-    .navbar-header {
-        display: inline;
-        text-align: left;
-    }
+  .navbar-header {
+    display: inline;
+    text-align: left;
+  }
 
-    .navbar-brand {
-        display: inline-block;
-    }
+  .navbar-brand {
+    display: inline-block;
+  }
 
-    .navbar-nav {
-        display: inline;
-        text-align: left;
-    }
+  .navbar-nav {
+    display: inline;
+    text-align: left;
+  }
 }
