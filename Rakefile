@@ -66,10 +66,15 @@ namespace :init do
   task :dependencies do
     sh 'bundle', 'install', '--path', 'vendor'
   end
+
+  desc 'Install git submodules'
+  task :submodules do
+    sh 'git', 'submodule', 'update', '--init'
+  end
 end
 
 desc 'Initialize the repository'
-task init: ['init:dependencies']
+task init: ['init:dependencies', 'init:submodules']
 
 namespace :build do
   CLOBBER << '_site'

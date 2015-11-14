@@ -1,13 +1,4 @@
-@font-face {
-  font-family: 'Source Code Pro';
-  src: url('fonts/SourceCodePro-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  src: url('fonts/SourceCodePro-Bold.woff') format('woff');
-  font-weight: bold;
-}
+@import 'fonts/source-code-pro/source-code-pro.css';
 
 @font-face {
   font-family: 'Lato';
