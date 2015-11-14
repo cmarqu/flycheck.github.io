@@ -30,13 +30,13 @@
   -webkit-font-feature-settings: $features;
 }
 
-$main-font: 'Source Sans Pro', sans-serif;
+$main-font: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $main-color: #444;
 $font-size: 18px;
 
-$sans-font: 'Source Sans Pro', sans-serif;
+$sans-font: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$mono-font: 'Source Code Pro', monospace;
+$mono-font: 'Source Code Pro', Menlo, Monaco, Consolas, 'DejaVu Sans Mono', monospace;
 $mono-font-size: .9em;
 
 $heading-color: #222;
