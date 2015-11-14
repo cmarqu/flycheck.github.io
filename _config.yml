@@ -1,8 +1,9 @@
 # Site metadata
 name: Flycheck
 description: "On the fly syntax checking for GNU Emacs"
-baseurl: ""
 url: "http://www.flycheck.org"
+
+baseurl: ""
 
 # Author settings
 author:
@@ -15,9 +16,6 @@ github:
   username: flycheck
   url: "https://github.com/flycheck/flycheck.github.io/"
 
-feed:
-  path: "feed.atom"
-
 # Build settings
 markdown: kramdown
 timezone: UTC
@@ -27,8 +25,15 @@ exclude:
   - "Gemfile"
   - "Gemfile.lock"
   - "vendor"
+
 gems:
   - jekyll-feed
+
+feed:
+  path: "feed.atom"
+
+sass:
+  style: compressed
 
 defaults:
   - scope:

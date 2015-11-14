@@ -21,6 +21,11 @@
 /* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        */
 /**************************************************************************/
 
+@charset "UTF-8";
+
+@import 'normalize';
+@import 'fonts';
+
 /* Basic typography styles */
 body {                          /* Body text */
     font-family: "Lato", sans-serif;

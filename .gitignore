@@ -1,6 +1,9 @@
+# Generated site
 _site/
 
-# Vendored dependencies from bundle install
+# Bundled gems
 vendor/
-# Bundler configuration
 .bundle/
+
+# SASS/SCSS cache
+.sass-cache/
