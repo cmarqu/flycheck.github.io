@@ -30,11 +30,14 @@
   -webkit-font-feature-settings: $features;
 }
 
-$main-font: 'Lato', sans-serif;
+$main-font: 'Source Sans Pro', sans-serif;
 $main-color: #444;
 $font-size: 18px;
 
-$sans-font: 'Lato', sans-serif;
+$sans-font: 'Source Sans Pro', sans-serif;
+
+$mono-font: 'Source Code Pro', monospace;
+$mono-font-size: .9em;
 
 $heading-color: #222;
 $secondary-color: #777;
@@ -111,8 +114,8 @@ pre,
 code,
 samp,
 kbd {
-  font-family: 'Source Code Pro', monospace;
-  font-size: .9em;
+  font-family: $mono-font;
+  font-size: $mono-font-size;
   font-variant: normal;
 }
 

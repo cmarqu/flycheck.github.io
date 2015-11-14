@@ -1,25 +1,2 @@
 @import 'fonts/source-code-pro/source-code-pro.css';
-
-@font-face {
-  font-family: 'Lato';
-  src: url('fonts/LatoLatin-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('fonts/LatoLatin-Italic.woff') format('woff');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('fonts/LatoLatin-Bold.woff') format('woff');
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('fonts/LatoLatin-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-}
+@import 'fonts/source-sans-pro/source-sans-pro.css';
