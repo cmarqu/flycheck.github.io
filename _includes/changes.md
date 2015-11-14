@@ -5,6 +5,9 @@ master (in development)
 
   - `scala-scalastyle` now expects a `scalastyle` executable in `exec-path`
     [[GH-763]](https://github.com/flycheck/flycheck/issues/763)
+  - Drop support for legacy Ruby YAML implementations prior to Ruby 1.9.3 in
+    `ruby-yaml`
+  - Remove racket syntax checker due to possible code execution [[GH-786]](https://github.com/flycheck/flycheck/issues/786)
 
 - New syntax checkers:
 
