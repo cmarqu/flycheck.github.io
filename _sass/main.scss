@@ -316,7 +316,7 @@ figcaption {
     content: ' · ';
   }
 
-  :after {
+  > li:last-child:after {
     content: '';
   }
 }
