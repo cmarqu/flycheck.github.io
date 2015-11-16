@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<!-- Modern on-the-fly syntax checking for GNU Emacs 24.
+
+Copyright (C) 2014–2015  Sebastian Wiesner
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+A copy of the license is also available from the Free Software
+Foundation Web site at http://www.gnu.org/licenses/fdl.html.
+
+Alternatively, you may copy, distribute and/or modify this documentation
+under the terms of the Creative Commons Attribution-ShareAlike 4.0
+International Public License. A copy of the license can be obtained at
+https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Flycheck: Applying multiple checkers</title>
+
+<meta name="description" content="Flycheck: Applying multiple checkers">
+<meta name="keywords" content="Flycheck: Applying multiple checkers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Main-Index.html#Main-Index" rel="index" title="Main Index">
+<link href="Syntax-checker-definitions.html#Syntax-checker-definitions" rel="up" title="Syntax checker definitions">
+<link href="Flycheck-hooks.html#Flycheck-hooks" rel="next" title="Flycheck hooks">
+<link href="Controlling-use-of-checkers.html#Controlling-use-of-checkers" rel="prev" title="Controlling use of checkers">
+<link rel="stylesheet" href="/flycheck.css">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" sizes="16x16" href="/icon-16.png">
+<link rel="icon" sizes="32x32" href="/icon-32.png">
+<link rel="icon" sizes="64x64" href="/icon-64.png">
+<link rel="icon" sizes="96x96" href="/icon-96.png">
+<link rel="icon" sizes="196x196" href="/icon-196.png">
+</head>
+
+<body lang="en">
+<div class="container"><a name="Applying-multiple-checkers"></a>
+<div class="header">
+<p>
+Previous: <a href="Controlling-use-of-checkers.html#Controlling-use-of-checkers" accesskey="p" rel="prev">Controlling use of checkers</a>, Up: <a href="Syntax-checker-definitions.html#Syntax-checker-definitions" accesskey="u" rel="up">Syntax checker definitions</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr class="texinfo-default-rule"/>
+<a name="Applying-multiple-syntax-checkers"></a>
+<h3 class="section">5.8 Applying multiple syntax checkers</h3>
+
+<p>Frequently, we would like to use multiple syntax checkers in a buffer.
+For instance, we might want to check the syntax of a script with
+<code>sh-zsh</code> from the previous section, and then use
+<a href="https://github.com/koalaman/shellcheck/">Shellcheck</a> to check for questionable code
+such as unquoted variable expansions, if there are no syntax errors.
+Flycheck supports this scenario by <em>chaining</em> syntax checkers.
+</p>
+<p>Suppose we defined a syntax checker for Shellcheck called
+<small>SH-SHELLCHECK</small> as follows:
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-define-checker sh-shellcheck
+  &quot;A shell script syntax and style checker using Shellcheck.
+
+See URL `https://github.com/koalaman/shellcheck/'.&quot;
+  :command (&quot;shellcheck&quot; &quot;-f&quot; &quot;checkstyle&quot;
+            &quot;-s&quot; (eval (symbol-name sh-shell))
+            source)
+  :modes sh-mode
+  :error-parser flycheck-parse-checkstyle)
+</pre></div>
+
+<p>Note how we use the special <code>eval</code> argument to put the result of an
+arbitrary Emacs Lisp expression into the command line of
+<code>shellcheck</code>, in order to tell Shellcheck what shell the script
+is written for.
+</p>
+<p>We can now arrange for this syntax checker to be used after
+<code>sh-zsh</code> with <code>flycheck-add-next-checker</code>:
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-add-next-checker 'sh-zsh '(warning . sh-shellcheck))
+</pre></div>
+
+<p>The first item of the cons cell in the second argument is the
+<em>maximum error level</em> in the buffer, for which <code>sh-shellcheck</code>
+is still applicable.  With <code>warning</code> Flycheck will run
+<code>sh-shellcheck</code> after <code>sh-zsh</code> if there are <code>warning</code> or
+<code>info</code> level errors from <code>sh-zsh</code>, but not if there are any
+errors with level <code>error</code>, such as syntax errors.
+</p>
+<p>Flycheck will only use a chained syntax checker if it is registered in
+<code>flycheck-checkers</code>, so we need to register our new syntax checker
+(see <a href="Registering-new-checkers.html#Registering-new-checkers">Registering new checkers</a>):
+</p>
+<div class="lisp">
+<pre class="lisp">(add-to-list 'flycheck-checkers 'sh-shellcheck 'append)
+</pre></div>
+
+<p>Note that unlike before we <em>append</em> the new syntax checker at the
+end of <code>flycheck-checkers</code>.  This ensures that Flycheck does not
+try <code>sh-shellcheck</code> <em>before</em> <code>sh-zsh</code>.  Flycheck tries
+all syntax checkers in this list in <em>order of appearance</em>, so if
+you add your new chained syntax checker at the beginning, it will likely
+be used right away, before any prior syntax checkers.
+</p>
+<p>You also can specify chained syntax checkers directly in
+<code>flycheck-define-checker</code> with the <code>:next-checkers</code> property.
+Instead of calling <code>flycheck-add-next-checker</code>, we could also have
+added this property to the definition of <code>sh-zsh</code>:
+</p>
+<div class="lisp">
+<pre class="lisp">(flycheck-define-checker sh-zsh
+  &quot;A Zsh syntax checker using the Zsh shell.
+
+See URL `http://www.zsh.org/'.&quot;
+  :command (&quot;zsh&quot; &quot;-n&quot; &quot;-d&quot; &quot;-f&quot; source)
+  :error-patterns ...
+  :modes sh-mode
+  :predicate (lambda () (eq sh-shell 'zsh))
+  :next-checkers ((warning . sh-shellcheck)))
+</pre></div>
+
+<p>If you control the definition of both syntax checkers, this style is
+<em>preferable</em> to <code>flycheck-add-next-checker</code>.  Use the latter
+only if you cannot change the definition of the prior syntax checker.
+</p>
+<hr class="texinfo-default-rule"/>
+<div class="header">
+<p>
+Previous: <a href="Controlling-use-of-checkers.html#Controlling-use-of-checkers" accesskey="p" rel="prev">Controlling use of checkers</a>, Up: <a href="Syntax-checker-definitions.html#Syntax-checker-definitions" accesskey="u" rel="up">Syntax checker definitions</a> &nbsp; [<a href="Main-Index.html#Main-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+</div>
+</body>
+</html>
