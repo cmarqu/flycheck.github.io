@@ -108,6 +108,9 @@ namespace :build do
     customizations['EXTRA_HEAD'] = ['head-static.html', 'head-icon.html']
                                    .map { |file| IO.read("_includes/#{file}") }
                                    .join("\n")
+    tracking = IO.read('_includes/ga.html')
+    customizations['AFTER_BODY_OPEN'] =
+      customizations['AFTER_BODY_OPEN'] + tracking
     customizations
   end
 

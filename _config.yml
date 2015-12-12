@@ -17,6 +17,7 @@ github:
   url: "https://github.com/flycheck/flycheck.github.io/"
 
 # Build settings
+environment: production
 markdown: kramdown
 timezone: UTC
 encoding: utf-8

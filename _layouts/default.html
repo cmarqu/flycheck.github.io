@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    {% if site.environment == 'production' %}{% include ga.html %}{% endif %}
     <div class="navbar">
       <div class="container">
         <div class="navbar-header">
