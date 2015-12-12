@@ -157,10 +157,18 @@ namespace :build do
   task :documents, [:srcdir] => %w(changes.md credits.md)
 end
 
+desc 'Build everything'
+task build: ['build:site']
+
 namespace :verify do
   desc 'Run jekyll doctor'
   task :doctor do
     sh 'bundle', 'exec', 'jekyll', 'doctor'
+  end
+
+  desc 'Run GH Pages health-check'
+  task :healthcheck do
+    sh 'bundle', 'exec', 'github-pages', 'health-check'
   end
 
   desc 'Run SCSS Lint'
@@ -179,10 +187,10 @@ namespace :verify do
 end
 
 desc 'Verify the site'
-task verify: ['verify:doctor', 'verify:lint', 'verify:proof']
-
-desc 'Build everything'
-task build: ['build:site']
+task verify: ['verify:doctor',
+              'verify:healthcheck',
+              'verify:lint',
+              'verify:proof']
 
 namespace :run do
   desc 'Preview the site at http://localhost:4000'
