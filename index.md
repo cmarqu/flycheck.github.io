@@ -25,23 +25,10 @@ Features
 - Nice error indication and highlighting
 - Optional error list popup
 - Many customization options
-- [Comprehensive documentation]({{ "/resources.html" | prepend: site.baseurl}})
+- [Comprehensive documentation]({{ "/manual/latest/index.html" | prepend: site.baseurl}})
 - A simple interface to define new syntax checkers
 - A “doesn't get in your way” guarantee
 - Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
-
-Help
-----
-
-Flycheck comes with a comprehensive manual.  You can read this manual in Emacs
-with `M-x flycheck-info`, provided that you already installed Flycheck.  The
-latest manual is [available online](manual/latest/index.html).
-
-If you have questions about Flycheck or need help with a particular problem
-please ask a question on
-[Stack Exchange](https://emacs.stackexchange.com/questions/tagged/flycheck).  If
-you found a bug in Flycheck please report it to our
-[issue tracker](https://github.com/flycheck/flycheck/issues).
 
 Latest news
 -----------

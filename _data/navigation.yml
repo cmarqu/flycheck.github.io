@@ -1,5 +1,5 @@
 ---
-- { label: Resources, href: '/resources.html' }
+- { label: Getting Help, href: '/getting-help.html' }
 - { label: Extensions, href: '/extensions.html' }
 - { label: Credits, href: '/credits.html' }
 - { label: Github, href: 'https://github.com/flycheck/flycheck', external: true }
