@@ -6,12 +6,6 @@ title: Syntax checking for GNU Emacs
 Flycheck <small>Syntax checking for GNU Emacs</small>
 =====================================================
 
-{% if site.data.releases.versions %}
-*Latest release:
-[{{site.data.releases.versions | last}}](manual/{{site.data.releases.versions | last}}/index.html)
-([changelog]({{ "/changes.html" | prepend: site.baseurl }}))*
-{% endif %}
-
 Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
 intended as replacement for the older Flymake extension which is part of GNU
 Emacs.
@@ -40,20 +34,13 @@ Help
 ----
 
 Flycheck comes with a comprehensive manual.  You can read this manual in Emacs
-with `M-x flycheck-info`, provided that you already installed Flycheck.
-Alternatively, the manual is available online:
+with `M-x flycheck-info`, provided that you already installed Flycheck.  The
+latest manual is [available online](manual/latest/index.html).
 
-{% if site.data.releases.versions %}
-- [Latest release](manual/{{site.data.releases.versions | last}}/index.html)
-  v{{site.data.releases.versions | last}}, if you installed Flycheck from
-  MELPA Stable {% endif %}{% if site.data.releases.include_latest %}
-- [Snapshot](manual/latest/index.html), if you installed Flycheck from MELPA
-{% endif %}
-
-If you have questions about Flycheck or need help with a particular problem,
+If you have questions about Flycheck or need help with a particular problem
 please ask a question on
 [Stack Exchange](https://emacs.stackexchange.com/questions/tagged/flycheck).  If
-you found a bug in Flycheck, please report it to our
+you found a bug in Flycheck please report it to our
 [issue tracker](https://github.com/flycheck/flycheck/issues).
 
 Latest news

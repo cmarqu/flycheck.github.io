@@ -1,5 +1,0 @@
-include_latest: true
-versions:
-  - '0.23'
-  - '0.24'
-  - '0.25.1'
