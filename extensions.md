@@ -3,7 +3,7 @@ layout: page
 title: 3rd party extensions
 ---
 
-The Emacs community has produces a number of extensions to Flycheck.  This page
+The Emacs community has produced a number of extensions to Flycheck.  This page
 lists all that we know of and can safely recommend to our users.
 
 If you do know extensions not in this list, or would like to see your own
