@@ -26,8 +26,9 @@ Fonts
 
 The fonts used on this site are subject to their respective licenses:
 
-- Lato (</fonts/LICENSE Lato.txt>)
-- Source Code Pro (</fonts/LICENSE Source Code Pro.txt>)
+- [Source Serif Pro]({{site.baseurl}}/fonts/source-serif-pro/LICENSE.txt)
+- [Source Sans Pro]({{site.baseurl}}/fonts/source-sans-pro/LICENSE.txt)
+- [Source Code Pro]({{site.baseurl}}/fonts/source-code-pro/LICENSE.txt)
 
 normalize.css
 =============
