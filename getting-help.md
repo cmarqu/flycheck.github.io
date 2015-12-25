@@ -30,8 +30,8 @@ reporting to our [issue tracker][].
 Ask questions
 =============
 
-Please feel free to ask questions on [Emacs Stack Exchange][SX] or on our
-[issue tracker][].  We try to answer any question, but please be
+Please ask your questions on [Emacs Stack Exchange][SX] or on our
+[issue tracker][].
 
 [SX]: https://emacs.stackexchange.com/questions/tagged/flycheck
 [issue tracker]: https://github.com/flycheck/flycheck/issues
