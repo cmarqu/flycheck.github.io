@@ -3,14 +3,19 @@ title: People
 layout: page
 ---
 
-Maintainers
-===========
+Teams
+=====
 
-These people maintain Flycheck and all repositories within the
-[Flycheck organisation](https://github.com/flycheck):
+Maintainers
+-----------
 
 - **[Sebastian Wiesner](https://github.com/lunaryorn)** (head maintainer)
 - [Clément Pit--Claudel](https://github.com/cpitclaudel) (maintainer)
+
+They maintain Flycheck and all official extensions within the
+[Flycheck organisation](https://github.com/flycheck), and set the direction, and
+scope Flycheck.  They also accept or decline pull requests and feature
+proposals, implement changes and fix bugs in Flycheck.
 
 Acknowledgements
 ================
