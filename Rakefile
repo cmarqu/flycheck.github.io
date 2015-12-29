@@ -133,10 +133,10 @@ namespace :build do
   end
 
   # Build documents
-  task 'credits.md', [:srcdir] do |_, args|
+  task 'authors.md', [:srcdir] do |_, args|
     ensure_srcdir args
-    source = Pathname.new(args.srcdir).join('CREDITS.md')
-    target = '_includes/credits.md'
+    source = Pathname.new(args.srcdir).join('AUTHORS.md')
+    target = '_includes/authors.md'
     Rake.rake_output_message "cp #{source} #{target}"
     File.open(target, 'w') do |sink|
       File.foreach(source).drop(3).each { |line| sink.write(line) }
@@ -157,7 +157,7 @@ namespace :build do
   end
 
   desc 'Update all documents from srcdir'
-  task :documents, [:srcdir] => %w(changes.md credits.md)
+  task :documents, [:srcdir] => %w(changes.md authors.md)
 end
 
 desc 'Build everything'
