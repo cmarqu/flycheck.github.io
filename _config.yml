@@ -29,6 +29,7 @@ exclude:
 
 gems:
   - jekyll-feed
+  - jekyll-redirect-from
 
 feed:
   path: "feed.atom"

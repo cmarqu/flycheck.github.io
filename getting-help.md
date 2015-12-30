@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Getting Help
+redirect_from: "/resources.html"
 ---
 
 Documentation

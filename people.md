@@ -1,6 +1,7 @@
 ---
 title: People
 layout: page
+redirect_from: "/credits.html"
 ---
 
 Teams
