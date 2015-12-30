@@ -5,7 +5,8 @@ title: 3rd party extensions
 
 The Emacs community has produced a number of extensions to Flycheck.  This page
 lists all that we know of and can safely recommend to our users.  *Official*
-extensions are maintained by the [Flycheck maintainers](/people.md#maintainers).
+extensions are maintained by the
+[Flycheck maintainers](/people.html#maintainers).
 
 If you do know extensions not in this list, or would like to see your own
 extension here, please feel free to [add it][].
