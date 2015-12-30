@@ -11,11 +11,6 @@ author:
   email: "flycheck@lunaryorn.com"
   uri: "http://www.lunaryorn.com"
 
-# Github settings
-github:
-  username: flycheck
-  url: "https://github.com/flycheck/flycheck.github.io/"
-
 # Build settings
 environment: production
 markdown: kramdown
