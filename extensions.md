@@ -38,6 +38,10 @@ Language integration
 Additional languages and syntax checkers
 ========================================
 
+- [flycheck-checkbashisms](https://github.com/Gnouc/flycheck-checkbashisms) adds
+  a shell script syntax checker using `checkbashisms` which is part of Debian’s
+  [devscripts](https://anonscm.debian.org/cgit/collab-maint/devscripts.git) and
+  checks for common Bash constructs in POSIX shell scripts.
 - [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure) provides
   syntax checking for Clojure.
 - [flycheck-d-unittest](https://github.com/flycheck/flycheck-d-unittest)
