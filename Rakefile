@@ -180,9 +180,15 @@ namespace :verify do
        '--config', '_sass/.scss-lint.yml', '_sass/'
   end
 
+  VERIFY_HTML_IGNORE = [
+    'resources.html',
+    'credits.html'
+  ].map { |f| "_site/#{f}" }
+
   desc 'Verify generated HTML'
   task html: ['build:site'] do
     sh 'bundle', 'exec', 'htmlproof', '_site/',
+       '--file-ignore', VERIFY_HTML_IGNORE.join(','),
        '--disable-external',
        '--check-html',
        '--check-favicon'
