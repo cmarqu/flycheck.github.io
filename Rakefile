@@ -164,24 +164,24 @@ desc 'Build everything'
 task build: ['build:site']
 
 namespace :verify do
-  desc 'Run jekyll doctor'
-  task :doctor do
+  desc 'Verify Jekyll configuration'
+  task :jekyll do
     sh 'bundle', 'exec', 'jekyll', 'doctor'
   end
 
-  desc 'Run GH Pages health-check'
-  task :healthcheck do
+  desc 'Verify Github Pages setup'
+  task :ghpages do
     sh 'bundle', 'exec', 'github-pages', 'health-check'
   end
 
-  desc 'Run SCSS Lint'
-  task :lint do
+  desc 'Verify SCSS stylesheets'
+  task :scss do
     sh 'bundle', 'exec', 'scss-lint',
        '--config', '_sass/.scss-lint.yml', '_sass/'
   end
 
-  desc 'Run HTML Proofer'
-  task proof: ['build:site'] do
+  desc 'Verify generated HTML'
+  task html: ['build:site'] do
     sh 'bundle', 'exec', 'htmlproof', '_site/',
        '--disable-external',
        '--check-html',
@@ -190,10 +190,10 @@ namespace :verify do
 end
 
 desc 'Verify the site'
-task verify: ['verify:doctor',
-              'verify:healthcheck',
-              'verify:lint',
-              'verify:proof']
+task verify: ['verify:jekyll',
+              'verify:ghpages',
+              'verify:scss',
+              'verify:html']
 
 namespace :run do
   desc 'Preview the site at http://localhost:4000'
