@@ -1,6 +1,10 @@
 master (in development)
 =======================
 
+Flycheck now has a code of conduct (http://www.flycheck.org/conduct.html) (see
+`CONDUCT.md`) which defines the acceptable behaviour and the moderation
+guidelines for the Flycheck community. [[GH-819]](https://github.com/flycheck/flycheck/issues/819)
+
 - New syntax checkers:
 
   - Processing [[GH-793]](https://github.com/flycheck/flycheck/issues/793) [[GH-812]](https://github.com/flycheck/flycheck/issues/812)
