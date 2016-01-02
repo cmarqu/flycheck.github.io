@@ -1,5 +1,10 @@
 ---
-- { label: Getting Help, href: '/getting-help.html' }
-- { label: Extensions, href: '/extensions.html' }
-- { label: People, href: '/people.html' }
-- { label: Github, href: 'https://github.com/flycheck/flycheck', external: true }
+- label: Getting Help
+  href: '/getting-help.html'
+- label: Extensions
+  href: '/extensions.html'
+- label: People
+  href: '/people.html'
+- label: Github
+  href: 'https://github.com/flycheck/flycheck'
+  external: true
