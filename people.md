@@ -18,6 +18,16 @@ They maintain Flycheck and all official extensions within the
 scope Flycheck.  They also accept or decline pull requests and feature
 proposals, implement changes and fix bugs in Flycheck.
 
+Moderators
+----------
+
+Our moderators help uphold our [Code of Conduct][coc].  We do not currently have
+a dedicated moderation team; all our [Maintainers](#maintainers) are also
+moderators throughout our Github organisation and in our official communication
+channels.
+
+[coc]: https://github.com/flycheck/flycheck/blob/master/CONDUCT.md
+
 Acknowledgements
 ================
 
