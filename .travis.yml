@@ -11,3 +11,10 @@ env:
   global:
     # Speeds up installation of nokogiri
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/efdc5fd9433efa7c6b80
+    on_success: change
+    on_failure: always
+    on_start: never

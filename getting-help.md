@@ -31,8 +31,12 @@ reporting to our [issue tracker][].
 Ask questions
 =============
 
-Please ask your questions on [Emacs Stack Exchange][SX] or on our
-[issue tracker][].
+Please ask questions about Flycheck on [Stack Exchange][sx] or in our
+[Gitter chat][gitter].  We try to answer all questions as fast and as precise as
+possible.
+
+Please follow our [Code of Conduct][coc] in these places.
 
 [SX]: https://emacs.stackexchange.com/questions/tagged/flycheck
-[issue tracker]: https://github.com/flycheck/flycheck/issues
+[gitter]: https://gitter.im/flycheck/flycheck
+[coc]: {{site.baseurl}}/conduct.html
