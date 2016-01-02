@@ -54,8 +54,9 @@ Additional languages and syntax checkers
   [Irony Mode](https://github.com/Sarcasm/irony-mode).
 - [flycheck-ledger](https://github.com/purcell/flycheck-ledger) adds a syntax
   checker for the [Ledger](http://ledger-cli.org/) accounting tool.
-- [flycheck-mercury](https://github.com/flycheck/flycheck-mercury) adds a
-  Flycheck syntax checker for the [Mercury language](http://mercurylang.org/).
+- [flycheck-mercury](https://github.com/flycheck/flycheck-mercury) (*official*)
+  adds a Flycheck syntax checker for the
+  [Mercury language](http://mercurylang.org/).
 - [flycheck-ocaml](https://github.com/flycheck/flycheck-ocaml) (*official*) adds
   a syntax checker for OCaml.
 - [flycheck-package](https://github.com/purcell/flycheck-package) checks
