@@ -132,16 +132,26 @@ namespace :build do
     cp_r(source.dirname.join('images').to_path, target)
   end
 
-  # Build documents
-  task 'authors.md', [:srcdir] do |_, args|
-    ensure_srcdir args
-    source = Pathname.new(args.srcdir).join('AUTHORS.md')
-    target = '_includes/authors.md'
-    Rake.rake_output_message "cp #{source} #{target}"
-    File.open(target, 'w') do |sink|
-      File.foreach(source).drop(3).each { |line| sink.write(line) }
+  def document(source)
+    fail 'Missing include => name' unless source.length == 1
+    include = source.keys[0]
+    name = source[include]
+
+    desc "Update #{include} from srcdir"
+    task include, [:srcdir] do |_, args|
+      ensure_srcdir args
+      source = Pathname.new(args.srcdir).join(name)
+      target = "_includes/#{include}"
+      Rake.rake_output_message "cp #{source} #{target}"
+      File.open(target, 'w') do |sink|
+        File.foreach(source).drop(3).each { |line| sink.write(line) }
+      end
     end
   end
+
+  # Build documents
+  document 'authors.md' => 'AUTHORS.md'
+  document 'conduct.md' => 'CONDUCT.md'
 
   desc 'Update changes.md from srcdir'
   task 'changes.md', [:srcdir] do |_, args|
@@ -157,7 +167,7 @@ namespace :build do
   end
 
   desc 'Update all documents from srcdir'
-  task :documents, [:srcdir] => %w(changes.md authors.md)
+  task :documents, [:srcdir] => %w(conduct.md changes.md authors.md)
 end
 
 desc 'Build everything'

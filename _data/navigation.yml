@@ -5,6 +5,8 @@
   href: '/extensions.html'
 - label: People
   href: '/people.html'
+- label: Conduct
+  href: '/conduct.html'
 - label: Github
   href: 'https://github.com/flycheck/flycheck'
   external: true

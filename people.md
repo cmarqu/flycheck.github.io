@@ -26,7 +26,7 @@ a dedicated moderation team; all our [Maintainers](#maintainers) are also
 moderators throughout our Github organisation and in our official communication
 channels.
 
-[coc]: https://github.com/flycheck/flycheck/blob/master/CONDUCT.md
+[coc]: {{site.baseurl}}/conduct.html
 
 Acknowledgements
 ================
