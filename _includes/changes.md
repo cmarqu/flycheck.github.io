@@ -5,6 +5,9 @@ Flycheck now has a code of conduct (http://www.flycheck.org/conduct.html) (see
 `CONDUCT.md`) which defines the acceptable behaviour and the moderation
 guidelines for the Flycheck community. [[GH-819]](https://github.com/flycheck/flycheck/issues/819)
 
+Flycheck also provides a [Gitter channel](https://gitter.im/flycheck/flycheck)
+now for questions and discussions about development. [[GH-820]](https://github.com/flycheck/flycheck/issues/820)
+
 - New syntax checkers:
 
   - Processing [[GH-793]](https://github.com/flycheck/flycheck/issues/793) [[GH-812]](https://github.com/flycheck/flycheck/issues/812)
