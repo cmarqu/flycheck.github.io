@@ -37,6 +37,12 @@ possible.
 
 Please follow our [Code of Conduct][coc] in these places.
 
+Report bugs and problems
+========================
+
+Please report bugs and problems to our [issue tracker][].
+
 [SX]: https://emacs.stackexchange.com/questions/tagged/flycheck
 [gitter]: https://gitter.im/flycheck/flycheck
 [coc]: {{site.baseurl}}/conduct.html
+[Issue Tracker]: https://github.com/flycheck/flycheck/issues
