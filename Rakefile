@@ -26,6 +26,7 @@ require 'rake/clean'
 
 require 'html/proofer'
 require 'scss_lint/rake_task'
+require 'rubocop/rake_task'
 
 def ensure_srcdir(args)
   fail 'srcdir argument missing' if args.srcdir.nil?
@@ -133,6 +134,15 @@ namespace :build do
     cp_r(source.dirname.join('images').to_path, target)
   end
 
+  def copy_document(source, target, block = nil)
+    Rake.rake_output_message "cp #{source} #{target}"
+    # Drop the first line which contains the header.  On the website the
+    # header comes from the YAML frontmatter
+    contents = File.foreach(source).drop(1).join
+    contents = block.call(source, target, contents) if block
+    IO.write(target, contents)
+  end
+
   def document(source, block = nil)
     fail 'Missing include => name' unless source.length == 1
     include = source.keys[0]
@@ -141,13 +151,7 @@ namespace :build do
     task include, [:srcdir] do |_, args|
       ensure_srcdir args
       source = Pathname.new(args.srcdir).join(name)
-      target = "_includes/#{include}"
-      Rake.rake_output_message "cp #{source} #{target}"
-      # Drop the first line which contains the header.  On the website the
-      # header comes from the YAML frontmatter
-      contents = File.foreach(source).drop(1).join
-      contents = block.call(source, target, contents) if block
-      IO.write(target, contents)
+      copy_document(source, "_includes/#{include}", block)
     end
   end
 
@@ -198,6 +202,13 @@ namespace :verify do
     t.files = ['_sass/']
   end
 
+  RUBY_SOURCES = FileList['Rakefile']
+
+  desc 'Verify Ruby sources'
+  RuboCop::RakeTask.new(:ruby) do |t|
+    t.patterns = RUBY_SOURCES
+  end
+
   VERIFY_HTML_IGNORE = [
     'resources.html',
     'credits.html'
@@ -220,6 +231,7 @@ task verify: ['verify:jekyll',
               'verify:ghpages',
               'verify:markdown',
               'verify:scss',
+              'verify:ruby',
               'verify:html']
 
 namespace :run do
