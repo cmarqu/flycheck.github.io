@@ -132,40 +132,31 @@ namespace :build do
     cp_r(source.dirname.join('images').to_path, target)
   end
 
-  def document(source)
+  def document(source, block = nil)
     fail 'Missing include => name' unless source.length == 1
     include = source.keys[0]
     name = source[include]
 
-    desc "Update #{include} from srcdir"
     task include, [:srcdir] do |_, args|
       ensure_srcdir args
       source = Pathname.new(args.srcdir).join(name)
       target = "_includes/#{include}"
       Rake.rake_output_message "cp #{source} #{target}"
-      File.open(target, 'w') do |sink|
-        # Drop the first line which contains the header.  On the website the
-        # header comes from the YAML frontmatter
-        File.foreach(source).drop(1).each { |line| sink.write(line) }
-      end
+      # Drop the first line which contains the header.  On the website the
+      # header comes from the YAML frontmatter
+      contents = File.foreach(source).drop(1).join
+      contents = block.call(source, target, contents) if block
+      IO.write(target, contents)
     end
   end
 
   # Build documents
   document 'authors.md' => 'AUTHORS.md'
   document 'conduct.md' => 'CONDUCT.md'
-
-  desc 'Update changes.md from srcdir'
-  task 'changes.md', [:srcdir] do |_, args|
-    ensure_srcdir args
-    source = Pathname.new(args.srcdir).join('CHANGES.md')
-    target = '_includes/changes.md'
-    Rake.rake_output_message "cp #{source} #{target} (substituting issue references)"
-    changelog = IO.read(source)
-    changelog.gsub!(
+  document 'changes.md' => 'CHANGES.md' do |_, _, contents|
+    contents.gsub!(
       /(?<label>\[GH-(?<issue>\d+)\])/,
       '[\k<label>](https://github.com/flycheck/flycheck/issues/\k<issue>)')
-    IO.write(target, changelog)
   end
 
   desc 'Update all documents from srcdir'
