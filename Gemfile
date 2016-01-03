@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'rake'
+
+# Tools
 gem 'travis'
 gem 'github-pages'
 gem 'mdl'

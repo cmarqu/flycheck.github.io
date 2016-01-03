@@ -18,9 +18,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'pathname'
-require 'rake/clean'
 require 'bundler/setup'
+
+require 'pathname'
+require 'rake'
+require 'rake/clean'
+
+require 'html/proofer'
+require 'scss_lint/rake_task'
 
 def ensure_srcdir(args)
   fail 'srcdir argument missing' if args.srcdir.nil?
@@ -188,23 +193,24 @@ namespace :verify do
   end
 
   desc 'Verify SCSS stylesheets'
-  task :scss do
-    sh 'bundle', 'exec', 'scss-lint',
-       '--config', '_sass/.scss-lint.yml', '_sass/'
+  SCSSLint::RakeTask.new(:scss) do |t|
+    t.config = '_sass/.scss-lint.yml'
+    t.files = ['_sass/']
   end
 
   VERIFY_HTML_IGNORE = [
     'resources.html',
     'credits.html'
-  ].map { |f| "_site/#{f}" }
+  ]
 
   desc 'Verify generated HTML'
   task html: ['build:site'] do
-    sh 'bundle', 'exec', 'htmlproof', '_site/',
-       '--file-ignore', VERIFY_HTML_IGNORE.join(','),
-       '--disable-external',
-       '--check-html',
-       '--check-favicon'
+    Html::Proofer
+      .new('_site',
+           file_ignore: VERIFY_HTML_IGNORE.map { |f| "_site/#{f}" },
+           disable_external: true,
+           check_html: true,
+           check_favicon: true)
   end
 end
 
