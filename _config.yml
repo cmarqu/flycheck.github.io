@@ -20,6 +20,8 @@ exclude:
   - "Rakefile"
   - "Gemfile"
   - "Gemfile.lock"
+  # Travis CI installs gems here so let’s exclude this path
+  - "vendor"
 
 gems:
   - jekyll-feed
