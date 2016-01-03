@@ -216,12 +216,13 @@ namespace :verify do
 
   desc 'Verify generated HTML'
   task html: ['build:site'] do
-    Html::Proofer
+    HTML::Proofer
       .new('_site',
            file_ignore: VERIFY_HTML_IGNORE.map { |f| "_site/#{f}" },
            disable_external: true,
            check_html: true,
            check_favicon: true)
+      .run
   end
 end
 
