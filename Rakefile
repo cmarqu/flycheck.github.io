@@ -20,6 +20,7 @@
 
 require 'pathname'
 require 'rake/clean'
+require 'bundler/setup'
 
 def ensure_srcdir(args)
   fail 'srcdir argument missing' if args.srcdir.nil?
@@ -62,11 +63,6 @@ namespace :init do
   CLOBBER << '.bundle'
   CLOBBER << 'vendor'
 
-  desc 'Install dependencies via bundle'
-  task :dependencies do
-    sh 'bundle', 'install', '--path', 'vendor'
-  end
-
   desc 'Install git submodules'
   task :submodules do
     sh 'git', 'submodule', 'update', '--init'
@@ -74,7 +70,7 @@ namespace :init do
 end
 
 desc 'Initialize the repository'
-task init: ['init:dependencies', 'init:submodules']
+task init: ['init:submodules']
 
 namespace :build do
   CLOBBER << '_site'
