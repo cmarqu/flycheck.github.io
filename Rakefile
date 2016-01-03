@@ -144,7 +144,9 @@ namespace :build do
       target = "_includes/#{include}"
       Rake.rake_output_message "cp #{source} #{target}"
       File.open(target, 'w') do |sink|
-        File.foreach(source).drop(3).each { |line| sink.write(line) }
+        # Drop the first line which contains the header.  On the website the
+        # header comes from the YAML frontmatter
+        File.foreach(source).drop(1).each { |line| sink.write(line) }
       end
     end
   end
