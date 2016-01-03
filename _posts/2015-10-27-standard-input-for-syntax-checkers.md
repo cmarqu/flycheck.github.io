@@ -11,8 +11,8 @@ mechanism for passing buffer contents to syntax checkers.
 
 Changing a syntax checker definition to use standard input is straight forward:
 
-- Add `:standard-input t` to the syntax checker definition.
-- Remove `filename` cells from `:error-patterns`.
+* Add `:standard-input t` to the syntax checker definition.
+* Remove `filename` cells from `:error-patterns`.
 
 When reading from standard input most syntax checking tools don’t include proper
 file names in their error output.  Many actually “invent” filenames such as

@@ -182,6 +182,15 @@ namespace :verify do
     sh 'bundle', 'exec', 'github-pages', 'health-check'
   end
 
+  MARKDOWN_SOURCES = FileList['*.md', '_posts/*.md']
+
+  desc 'Verify Markdown documents'
+  task :markdown do
+    sh('bundle', 'exec', 'mdl',
+       '--style', '_admin/markdown_style',
+       *MARKDOWN_SOURCES)
+  end
+
   desc 'Verify SCSS stylesheets'
   task :scss do
     sh 'bundle', 'exec', 'scss-lint',
@@ -207,6 +216,7 @@ desc 'Verify the site'
 task verify: ['verify:jekyll',
               'verify:travis',
               'verify:ghpages',
+              'verify:markdown',
               'verify:scss',
               'verify:html']
 

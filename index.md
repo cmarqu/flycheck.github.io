@@ -3,8 +3,7 @@ layout: default
 title: Syntax checking for GNU Emacs
 ---
 
-Flycheck <small>Syntax checking for GNU Emacs</small>
-=====================================================
+# Flycheck <small>Syntax checking for GNU Emacs</small> #
 
 Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
 intended as replacement for the older Flymake extension which is part of GNU
@@ -16,22 +15,20 @@ the buffer, or in an optional error list:
 
 [![Annotated screenshot of Flycheck](manual/latest/images/flycheck-annotated.png)](manual/latest/images/flycheck-annotated.png)
 
-Features
---------
+## Features ##
 
-- Supports over 30 programming and markup languages with more than 60 different
+* Supports over 30 programming and markup languages with more than 60 different
   syntax checking tools
-- Fully automatic, fail-safe, on-the-fly syntax checking in background
-- Nice error indication and highlighting
-- Optional error list popup
-- Many customization options
-- [Comprehensive documentation]({{ "/manual/latest/index.html" | prepend: site.baseurl}})
-- A simple interface to define new syntax checkers
-- A “doesn't get in your way” guarantee
-- Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
+* Fully automatic, fail-safe, on-the-fly syntax checking in background
+* Nice error indication and highlighting
+* Optional error list popup
+* Many customization options
+* [Comprehensive documentation]({{ "/manual/latest/index.html" | prepend: site.baseurl}})
+* A simple interface to define new syntax checkers
+* A “doesn't get in your way” guarantee
+* Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
 
-Latest news
------------
+## Latest news ##
 
 <div class="post-list">
 <dl>

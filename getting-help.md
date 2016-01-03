@@ -4,8 +4,7 @@ title: Getting Help
 redirect_from: "/resources.html"
 ---
 
-Documentation
-=============
+## Documentation ##
 
 Flycheck comes with with a [comprehensive manual][manual].  You can read this
 manual in Emacs `M-x flycheck-info`, provided that you already installed
@@ -28,8 +27,7 @@ reporting to our [issue tracker][].
 [1]: {{site.baseurl}}/flycheck-versus-flymake.html
 [manual]: {{site.baseurl}}/manual/latest/index.html
 
-Ask questions
-=============
+## Ask questions ##
 
 Please ask questions about Flycheck on [Stack Exchange][sx] or in our
 [Gitter chat][gitter].  We try to answer all questions as fast and as precise as
@@ -37,8 +35,7 @@ possible.
 
 Please follow our [Code of Conduct][coc] in these places.
 
-Report bugs and problems
-========================
+## Report bugs and problems ##
 
 Please report bugs and problems to our [issue tracker][].
 
