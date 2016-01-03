@@ -174,7 +174,7 @@ namespace :verify do
 
   desc 'Verify Travis CI configuration'
   task :travis do
-    sh 'bundle', 'exec', 'travis', 'lint'
+    sh 'bundle', 'exec', 'travis', 'lint', '--exit-code', '--no-interactive'
   end
 
   desc 'Verify Github Pages setup'
