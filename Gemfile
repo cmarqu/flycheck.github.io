@@ -1,10 +1,18 @@
+require 'json'
+require 'open-uri'
+
 source 'https://rubygems.org'
 
-gem 'rake'
+versions = open('https://pages.github.com/versions.json') do |source|
+  JSON.parse(source.read)
+end
+
+# Github Pages environment
+gem 'github-pages', versions['github-pages']
 
 # Tools
+gem 'rake'
 gem 'travis'
-gem 'github-pages'
 gem 'mdl'
 gem 'html-proofer'
 gem 'scss_lint', require: false

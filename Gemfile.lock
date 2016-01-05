@@ -213,8 +213,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  github-pages
+  github-pages (= 40)
   html-proofer
+  json
   mdl
   rake
   rubocop
