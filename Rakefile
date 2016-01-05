@@ -78,6 +78,53 @@ end
 desc 'Initialize the repository'
 task init: ['init:submodules']
 
+namespace :verify do
+  desc 'Verify Jekyll configuration'
+  task :jekyll do
+    sh 'bundle', 'exec', 'jekyll', 'doctor'
+  end
+
+  desc 'Verify Travis CI configuration'
+  task :travis do
+    sh 'bundle', 'exec', 'travis', 'lint', '--exit-code', '--no-interactive'
+  end
+
+  desc 'Verify Github Pages setup'
+  task :ghpages do
+    sh 'bundle', 'exec', 'github-pages', 'health-check'
+  end
+
+  MARKDOWN_SOURCES = FileList['*.md', '_posts/*.md']
+
+  desc 'Verify Markdown documents'
+  task :markdown do
+    sh('bundle', 'exec', 'mdl',
+       '--style', '_admin/markdown_style',
+       *MARKDOWN_SOURCES)
+  end
+
+  desc 'Verify SCSS stylesheets'
+  SCSSLint::RakeTask.new(:scss) do |t|
+    t.config = '_sass/.scss-lint.yml'
+    t.files = ['_sass/']
+  end
+
+  RUBY_SOURCES = FileList['Rakefile']
+
+  desc 'Verify Ruby sources'
+  RuboCop::RakeTask.new(:ruby) do |t|
+    t.patterns = RUBY_SOURCES
+  end
+end
+
+desc 'Verify the source'
+task verify: ['verify:jekyll',
+              'verify:travis',
+              'verify:ghpages',
+              'verify:markdown',
+              'verify:scss',
+              'verify:ruby']
+
 namespace :build do
   CLOBBER << '_site'
 
@@ -171,54 +218,17 @@ end
 desc 'Build everything'
 task build: ['build:site']
 
-namespace :verify do
-  desc 'Verify Jekyll configuration'
-  task :jekyll do
-    sh 'bundle', 'exec', 'jekyll', 'doctor'
-  end
-
-  desc 'Verify Travis CI configuration'
-  task :travis do
-    sh 'bundle', 'exec', 'travis', 'lint', '--exit-code', '--no-interactive'
-  end
-
-  desc 'Verify Github Pages setup'
-  task :ghpages do
-    sh 'bundle', 'exec', 'github-pages', 'health-check'
-  end
-
-  MARKDOWN_SOURCES = FileList['*.md', '_posts/*.md']
-
-  desc 'Verify Markdown documents'
-  task :markdown do
-    sh('bundle', 'exec', 'mdl',
-       '--style', '_admin/markdown_style',
-       *MARKDOWN_SOURCES)
-  end
-
-  desc 'Verify SCSS stylesheets'
-  SCSSLint::RakeTask.new(:scss) do |t|
-    t.config = '_sass/.scss-lint.yml'
-    t.files = ['_sass/']
-  end
-
-  RUBY_SOURCES = FileList['Rakefile']
-
-  desc 'Verify Ruby sources'
-  RuboCop::RakeTask.new(:ruby) do |t|
-    t.patterns = RUBY_SOURCES
-  end
-
-  VERIFY_HTML_IGNORE = [
+namespace :test do
+  TEST_HTML_IGNORE = [
     'resources.html',
     'credits.html'
   ]
 
-  desc 'Verify generated HTML'
+  desc 'Test generated HTML'
   task html: ['build:site'] do
     HTML::Proofer
       .new('_site',
-           file_ignore: VERIFY_HTML_IGNORE.map { |f| "_site/#{f}" },
+           file_ignore: TEST_HTML_IGNORE.map { |f| "_site/#{f}" },
            disable_external: true,
            check_html: true,
            check_favicon: true)
@@ -226,14 +236,8 @@ namespace :verify do
   end
 end
 
-desc 'Verify the site'
-task verify: ['verify:jekyll',
-              'verify:travis',
-              'verify:ghpages',
-              'verify:markdown',
-              'verify:scss',
-              'verify:ruby',
-              'verify:html']
+desc 'Test everything'
+task test: ['test:html']
 
 namespace :run do
   desc 'Preview the site at http://localhost:4000'
