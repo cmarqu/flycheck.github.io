@@ -66,9 +66,6 @@ file 'images/logo.png', [:inkscape, :logo_height] =>
 end
 
 namespace :init do
-  CLOBBER << '.bundle'
-  CLOBBER << 'vendor'
-
   desc 'Install git submodules'
   task :submodules do
     sh 'git', 'submodule', 'update', '--init'
