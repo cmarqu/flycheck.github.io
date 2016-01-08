@@ -37,9 +37,22 @@ Please follow our [Code of Conduct][coc] in these places.
 
 ## Report bugs and problems ##
 
-Please report bugs and problems to our [issue tracker][].
+Please report bugs and problems to our [issue tracker][].  You can follow the
+progress of your issue on our [Waffle board][].
+
+### Windows-only issues ###
+
+As Flycheck does not support Windows officially we generally do *not* attempt
+to fix issues that only occur on Windows.  We will move all Windows-only issues
+to the [list of open Windows issues][windows], and leave them to Windows
+users and developers.  We welcome anyone who wants to fix open Windows issues,
+and we will merge pull requests for improved Windows compatibility.  If you know
+Windows and Emacs, please take a look at the list of open Windows issues and try
+to fix any of these.  Thank you!
 
 [SX]: https://emacs.stackexchange.com/questions/tagged/flycheck
 [gitter]: https://gitter.im/flycheck/flycheck
 [coc]: {{site.baseurl}}/conduct.html
 [Issue Tracker]: https://github.com/flycheck/flycheck/issues
+[Waffle board]: https://waffle.io/flycheck/flycheck
+[windows]: https://github.com/flycheck/flycheck/labels/B-Windows%20only
