@@ -66,19 +66,10 @@ Next: <a href="Getting-Help.html#Getting-Help" accesskey="n" rel="next">Getting 
 <a name="Supported-languages-1"></a>
 <h2 class="appendix">Appendix A Supported languages</h2>
 
-<p>This chapter lists the languages supported by Flycheck.  Some 3rd party
-extensions add support for more languages:
+<p>This chapter lists the languages supported by Flycheck.  3rd party
+extensions may provide for more languages; please take a look at our
+<a href="http://www.flycheck.org/extensions.html">list of extensions</a> for more information.
 </p>
-<ul>
-<li> <a href="https://github.com/flycheck-ledger">flycheck-ledger</a> adds a syntax checker for files
-of the <a href="http://ledger-cli.org/">Ledger</a> accounting tool.
-</li><li> <a href="https://github.com/flycheck/flycheck-mercury">flycheck-mercury</a> adds a syntax checker
-for the <a href="http://mercurylang.org/">Mercury</a> programming language.
-</li><li> <a href="https://github.com/flycheck/flycheck-ocaml">flycheck-ocaml</a> adds a syntax checker for
-the OCaml programming language, using the
-<a href="https://github.com/the-lambda-church/merlin">Merlin</a> tool.
-</li></ul>
-
 <p>Each language has one or more syntax checkers, whose names follow a
 convention of &lsquo;<samp><var>language</var>-<var>tool</var></samp>&rsquo; where <var>language</var> is
 the programming language checked by the checker, and <var>tool</var> the name
@@ -86,7 +77,8 @@ of the checker tool.
 </p>
 <p>The syntax checkers are listed in the order they are applied to a
 buffer.  Use <kbd>C-c ! ?</kbd> (<code>flycheck-describe-checker</code>) to obtain
-more information about a syntax checker.
+more information about a syntax checker, and <kbd>C-h v</kbd>
+(<code>describe-variable</code>) to read the complete docstring of any option.
 </p>
 
 <a name="Ada"></a>
