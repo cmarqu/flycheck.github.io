@@ -209,7 +209,7 @@ namespace :build do
   document 'authors.md' => 'AUTHORS.md'
   document 'conduct.md' => 'CONDUCT.md'
   document 'changes.md' => 'CHANGES.md' do |_, _, contents|
-    contents.gsub!(
+    contents.gsub(
       /(?<label>\[GH-(?<issue>\d+)\])/,
       '[\k<label>](https://github.com/flycheck/flycheck/issues/\k<issue>)')
   end
