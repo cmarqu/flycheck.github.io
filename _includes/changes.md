@@ -37,6 +37,8 @@ now for questions and discussions about development. [[GH-820]](https://github.c
   * Never display error message buffer in current window [[GH-822]](https://github.com/flycheck/flycheck/issues/822)
   * Work around a caching issue in Rubocop [[GH-844]](https://github.com/flycheck/flycheck/issues/844)
   * Fix checkdoc failure with some Emacs Lisp syntax [[GH-833]](https://github.com/flycheck/flycheck/issues/833) [[GH-845]](https://github.com/flycheck/flycheck/issues/845)
+  * Correctly parse Haskell module name with exports right after the module name
+    [[GH-848]](https://github.com/flycheck/flycheck/issues/848)
 
 [buttercup]: https://github.com/jorgenschaefer/emacs-buttercup
 
