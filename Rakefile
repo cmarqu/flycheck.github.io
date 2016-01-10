@@ -190,17 +190,12 @@ namespace :build do
   def document(source)
     fail 'Missing include => name' unless source.length == 1
     include = source.keys[0]
-    name = source[include]
 
-    task include, [:srcdir] do |_, args|
+    task source[include], [:srcdir] do |_, args|
       ensure_srcdir args
       source = Pathname.new(args.srcdir).join(name)
       copy_document(source, "_includes/#{include}") do |s, t, c|
-        if block_given?
-          yield(s, t, c)
-        else
-          c
-        end
+        block_given? ? yield(s, t, c) : c
       end
     end
   end
