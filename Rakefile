@@ -178,16 +178,16 @@ namespace :build do
     cp_r(source.dirname.join('images').to_path, target)
   end
 
-  def copy_document(source, target, block = nil)
+  def copy_document(source, target)
     Rake.rake_output_message "cp #{source} #{target}"
     # Drop the first line which contains the header.  On the website the
     # header comes from the YAML frontmatter
     contents = File.foreach(source).drop(1).join
-    contents = block.call(source, target, contents) if block
+    contents = yield(source, target, contents) if block_given?
     IO.write(target, contents)
   end
 
-  def document(source, block = nil)
+  def document(source)
     fail 'Missing include => name' unless source.length == 1
     include = source.keys[0]
     name = source[include]
@@ -195,7 +195,13 @@ namespace :build do
     task include, [:srcdir] do |_, args|
       ensure_srcdir args
       source = Pathname.new(args.srcdir).join(name)
-      copy_document(source, "_includes/#{include}", block)
+      copy_document(source, "_includes/#{include}") do |s, t, c|
+        if block_given?
+          yield(s, t, c)
+        else
+          c
+        end
+      end
     end
   end
 
