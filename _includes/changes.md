@@ -8,6 +8,11 @@ guidelines for the Flycheck community. [[GH-819]](https://github.com/flycheck/fl
 Flycheck also provides a [Gitter channel](https://gitter.im/flycheck/flycheck)
 now for questions and discussions about development. [[GH-820]](https://github.com/flycheck/flycheck/issues/820)
 
+* **Breaking changes**:
+
+  * Remove `flycheck-copy-messages-as-kill`, obsolete since Flycheck 0.22
+  * Remove `flycheck-perlcritic-verbosity`, obsolete since Flycheck 0.22
+
 * New syntax checkers:
 
   * Processing [[GH-793]](https://github.com/flycheck/flycheck/issues/793) [[GH-812]](https://github.com/flycheck/flycheck/issues/812)
@@ -20,6 +25,8 @@ now for questions and discussions about development. [[GH-820]](https://github.c
     puppetlint [[GH-824]](https://github.com/flycheck/flycheck/issues/824)
   * New library `flycheck-buttercup` to support writing [Buttercup][] specs for
     Flycheck
+  * Add `flycheck-perlcriticrc` to set a configuration file for Perl::Critic
+    [[GH-851]](https://github.com/flycheck/flycheck/issues/851)
 
 * Improvements:
 
