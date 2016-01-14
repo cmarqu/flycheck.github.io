@@ -150,15 +150,14 @@ namespace :build do
   }.freeze
 
   def customizations
-    customizations = DEFAULT_CUSTOMIZATIONS.clone
-    customizations['CSS_LINES'] = IO.read('_includes/head-css.html')
-    customizations['EXTRA_HEAD'] = ['head-static.html', 'head-icon.html']
-                                   .map { |file| IO.read("_includes/#{file}") }
-                                   .join("\n")
-    tracking = IO.read('_includes/ga.html')
-    customizations['AFTER_BODY_OPEN'] =
-      customizations['AFTER_BODY_OPEN'] + tracking
-    customizations
+    customizations = {
+      'CSS_LINES' => IO.read('_includes/head-css.html'),
+      'EXTRA_HEAD' => ['head-static.html', 'head-icon.html']
+                     .map { |file| IO.read("_includes/#{file}") }
+                     .join("\n"),
+      'AFTER_BODY_OPEN' => IO.read('_includes/ga.html')
+    }
+    DEFAULT_CUSTOMIZATIONS.dup.merge(customizations) { |_, old, new| old + new }
   end
 
   desc 'Update the HTML manual from "srcdir" for "version" (default latest)'
