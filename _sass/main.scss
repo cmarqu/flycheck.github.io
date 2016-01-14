@@ -37,6 +37,7 @@ $font-size: 16px;
 $sans-font: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 $mono-font: 'Source Code Pro', Menlo, Monaco, Consolas, 'DejaVu Sans Mono', monospace;
+$mono-font-size: .93em;
 
 $heading-color: #222;
 $secondary-color: #777;
@@ -114,6 +115,7 @@ code,
 samp,
 kbd {
   font-family: $mono-font;
+  font-size: $mono-font-size;
   font-variant: normal;
 }
 
