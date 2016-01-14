@@ -33,7 +33,7 @@ def ensure_srcdir(args)
 end
 
 # File rules
-ICON_SIZES = [16, 32, 64, 96, 196]
+ICON_SIZES = [16, 32, 64, 96, 196].freeze
 ICONS = Rake::FileList[ICON_SIZES.map { |size| "icon-#{size}.png" }]
 LOGO_HEIGHT = 30
 
@@ -146,7 +146,7 @@ namespace :build do
     # Suggest that we use HTML 5.  We don't do actually, but we want the browse
     # to think that we do
     'DOCTYPE' => '<!DOCTYPE html>'
-  }
+  }.freeze
 
   def customizations
     customizations = DEFAULT_CUSTOMIZATIONS.clone
@@ -220,7 +220,7 @@ namespace :test do
   TEST_HTML_IGNORE = [
     'resources.html',
     'credits.html'
-  ]
+  ].freeze
 
   desc 'Test generated HTML'
   task html: ['build:site'] do
