@@ -31,8 +31,8 @@ indicators.
 
 ## Very quick start ##
 
-Install some [syntax checker tools][languages] and type the following in
-your `*scratch*` buffer and run `M-x eval-buffer`:
+Install some [syntax checker tools][languages] and type the following in your
+`*scratch*` buffer and run `M-x eval-buffer`:
 
     (require 'package)
     (add-to-list 'package-archives
