@@ -46,6 +46,8 @@ now for questions and discussions about development. [[GH-820]](https://github.c
   * Fix checkdoc failure with some Emacs Lisp syntax [[GH-833]](https://github.com/flycheck/flycheck/issues/833) [[GH-845]](https://github.com/flycheck/flycheck/issues/845)
   * Correctly parse Haskell module name with exports right after the module name
     [[GH-848]](https://github.com/flycheck/flycheck/issues/848)
+  * Don’t hang when sending buffers to node.js processes on Windows [[GH-794]](https://github.com/flycheck/flycheck/issues/794)
+    [[GH-850]](https://github.com/flycheck/flycheck/issues/850)
 
 [buttercup]: https://github.com/jorgenschaefer/emacs-buttercup
 
