@@ -5,30 +5,58 @@ title: Syntax checking for GNU Emacs
 
 # Flycheck <small>Syntax checking for GNU Emacs</small> #
 
-Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
+**Flycheck** is a modern on-the-fly syntax checking extension for GNU Emacs,
 intended as replacement for the older Flymake extension which is part of GNU
 Emacs.
 
-It uses various syntax checking and linting tools to automatically check the
-contents of buffers while you type, and reports warnings and errors directly in
-the buffer, or in an optional error list:
+It uses various syntax checking and linting tools to
+[automatically check the contents of buffers][checking] while you type, and
+reports warnings and errors directly in the buffer, or in an optional error
+list:
 
 [![Annotated screenshot of Flycheck](manual/latest/images/flycheck-annotated.png)](manual/latest/images/flycheck-annotated.png)
 
-## Features ##
+Out of the box Flycheck supports over
+[40 different programming languages][languages] with more than 80 different
+syntax checking tools, and comes with a [simple interface][definitions] to
+define new syntax checkers.
 
-* Supports over 30 programming and markup languages with more than 60 different
-  syntax checking tools
-* Fully automatic, fail-safe, on-the-fly syntax checking in background
-* Nice error indication and highlighting
-* Optional error list popup
-* Many customization options
-* [Comprehensive documentation]({{ "/manual/latest/index.html" | prepend: site.baseurl}})
-* A simple interface to define new syntax checkers
-* A “doesn't get in your way” guarantee
-* Many [3rd party extensions]({{ "/extensions.html" | prepend: site.baseurl}})
+Many [3rd party extensions]({{site.baseurl}}/extensions.html) provide new syntax
+checkers and other features like alternative error displays or mode line
+indicators.
+
+[checking]: {{site.baseurl}}/manual/latest/Checking-buffers.html#Checking-buffers
+[languages]: {{site.baseurl}}/manual/latest/Supported-languages.html#Supported-languages
+[definitions]: {{site.baseurl}}/manual/latest/Defining-syntax-checkers.html#Defining-syntax-checkers
+
+## Very quick start ##
+
+Install some [syntax checker tools][languages] and type the following in
+your `*scratch*` buffer and run `M-x eval-buffer`:
+
+    (require 'package)
+    (add-to-list 'package-archives
+                 '("melpa" . "http://stable.melpa.org/packages/") t)
+    (package-initialize)
+
+    (package-install 'flycheck)
+
+    (global-flycheck-mode)
+
+For a more gentle introduction read the [Installation][] instructions and go
+through [Quickstart][] guide.
+
+**Windows users**, please be aware that Flycheck does not support Windows
+officially, although it should mostly work fine on Windows.  See
+[Windows support][].
+
+[Windows support]: {{site.baseurl}}/manual/latest/Installation.html#index-Windows
+[Installation]: {{site.baseurl}}/manual/latest/Installation.html#Installation
+[Quickstart]: {{site.baseurl}}/manual/latest/Quickstart.html#Quickstart
 
 ## Latest news ##
+
+These are the latest news about Flycheck and it’s community:
 
 <div class="post-list">
 <dl>
