@@ -31,6 +31,11 @@ indicators.
 
 ## Very quick start ##
 
+Flycheck needs GNU Emacs 24.1 or newer, and works best on Unix systems.
+**Windows users**, please be aware that Flycheck does not support Windows
+officially, although it should mostly work fine on Windows.  See
+[Windows support][] and watch out for [known Windows issues][windows issues]!
+
 Install some [syntax checker tools][languages] and type the following in your
 `*scratch*` buffer and run `M-x eval-buffer`:
 
@@ -46,11 +51,8 @@ Install some [syntax checker tools][languages] and type the following in your
 For a more gentle introduction read the [Installation][] instructions and go
 through [Quickstart][] guide.
 
-**Windows users**, please be aware that Flycheck does not support Windows
-officially, although it should mostly work fine on Windows.  See
-[Windows support][].
-
 [Windows support]: {{site.baseurl}}/manual/latest/Installation.html#index-Windows
+[windows issues]: https://github.com/flycheck/flycheck/labels/B-Windows%20only
 [Installation]: {{site.baseurl}}/manual/latest/Installation.html#Installation
 [Quickstart]: {{site.baseurl}}/manual/latest/Quickstart.html#Quickstart
 
