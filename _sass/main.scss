@@ -102,7 +102,11 @@ h5 {
 }
 
 em {
-  font-style: italic;
+  // Until Source Serif Pro supports italics, we use the light variant for
+  // italics to avoid arbitrary font choices.  See
+  // https://github.com/adobe-fonts/source-serif-pro/issues/2
+  font-style: normal;
+  font-weight: 300;
 }
 
 strong {
