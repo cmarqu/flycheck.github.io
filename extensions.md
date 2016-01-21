@@ -60,3 +60,6 @@ extension here, please feel free to [add it][].
   emacs lisp package source code for common problems.
 * [flycheck-pyflakes](https://github.com/Wilfred/flycheck-pyflakes) adds a
   Python syntax checker using Pyflakes.
+* [flycheck-hdl-irun](https://github.com/cmarqu/flycheck-hdl-irun) adds a 
+  syntax checker for hardware description languages (HDLs) supported by 
+  Cadence irun.
