@@ -46,6 +46,9 @@ extension here, please feel free to [add it][].
   fly.
 * [flycheck-google-cpplint](https://github.com/flycheck/flycheck-google-cpplint)
   (*official*) adds a syntax checker for Google's C++ style checker.
+* [flycheck-hdl-irun](https://github.com/cmarqu/flycheck-hdl-irun) adds a
+  syntax checker for hardware description languages (HDLs) supported by
+  [Cadence IES/irun](http://www.cadence.com/products/fv/enterprise_simulator/pages/default.aspx).
 * [flycheck-irony](https://github.com/Sarcasm/flycheck-irony) adds a Flycheck
   syntax checker for C, C++ and Objective C using
   [Irony Mode](https://github.com/Sarcasm/irony-mode).
@@ -60,6 +63,3 @@ extension here, please feel free to [add it][].
   emacs lisp package source code for common problems.
 * [flycheck-pyflakes](https://github.com/Wilfred/flycheck-pyflakes) adds a
   Python syntax checker using Pyflakes.
-* [flycheck-hdl-irun](https://github.com/cmarqu/flycheck-hdl-irun) adds a 
-  syntax checker for hardware description languages (HDLs) supported by 
-  Cadence irun.
